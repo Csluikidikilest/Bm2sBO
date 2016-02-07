@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Bm2s.Connectivity.Common.Article;
 using Bm2sBO.Models;
 
 namespace Bm2sBO.Controllers
@@ -15,8 +16,17 @@ namespace Bm2sBO.Controllers
       return View(new ArticleModel());
     }
 
-    [HttpPost]
+    // GET: Article
+    [HttpGet]
     public ActionResult Index(ArticleModel model)
+    {
+      model.Get();
+      return View(model);
+    }
+
+    // POST: Article
+    [HttpPost]
+    public ActionResult Save(ArticleModel model)
     {
       model.Post();
       return View(model);
