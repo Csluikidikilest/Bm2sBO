@@ -15,6 +15,13 @@ namespace Bm2sBO.Models
       this.Get();
     }
 
+    public ArticleModel(int id)
+    {
+      this.Articles = new Article();
+      this.Articles.Request.Ids.Add(id);
+      this.Get();
+    }
+
     public Article Articles { get; set; }
 
     public void Get()

@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,26 +10,14 @@ namespace Bm2sBO.Controllers
 {
   public class ArticleController : Controller
   {
-    // GET: Article
     public ActionResult Index()
     {
       return View(new ArticleModel());
     }
 
-    // GET: Article
-    [HttpGet]
-    public ActionResult Index(ArticleModel model)
+    public ActionResult Edit(int articleId)
     {
-      model.Get();
-      return View(model);
-    }
-
-    // POST: Article
-    [HttpPost]
-    public ActionResult Save(ArticleModel model)
-    {
-      model.Post();
-      return View(model);
+      return View(new ArticleModel(articleId));
     }
   }
 }
