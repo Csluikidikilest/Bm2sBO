@@ -15,6 +15,9 @@ namespace Bm2sBO
       bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/Lib/bootstrap.js"));
 
+      bundles.Add(new ScriptBundle("~/bundles/adminlte").Include(
+                "~/Scripts/Lib/adminlte.js"));
+
       bundles.Add(new ScriptBundle("~/bundles/angular").Include(
             "~/Scripts/Lib/angular.js"));
 
@@ -33,12 +36,11 @@ namespace Bm2sBO
       bundles.Add(new ScriptBundle("~/bundles/configurations").Include(
             "~/Scripts/Configurations/config." + System.Globalization.CultureInfo.CurrentCulture.Name.ToLower() + ".js"));
 
-      bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap-theme.css",
-                "~/Content/bootstrap.css"));
-
-      bundles.Add(new LessBundle("~/Content/less").Include(
-                "~/Content/site.less"));
+      bundles.Add(new StyleBundle("~/Content/csslib").Include(
+                "~/Content/Bootstrap/bootstrap.min.css",
+                "~/Content/FontAwesome/font-awesome.min.css",
+                "~/Content/AdminLTE/AdminLTE.min.css",
+                "~/Content/AdminLTE/skins/skin-blue.min.css"));
     }
   }
 }

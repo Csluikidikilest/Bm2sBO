@@ -192,9 +192,25 @@
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\AdminLTE\AdminLTE.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-black-light.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-black.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-blue-light.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-blue.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-green-light.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-green.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-purple-light.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-purple.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-red-light.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-red.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-yellow-light.min.css" />
+    <Content Include="Content\AdminLTE\skins\skin-yellow.min.css" />
+    <Content Include="Content\AdminLTE\skins\_all-skins.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap.min.css" />
+    <Content Include="Content\FontAwesome\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -203,12 +219,12 @@
     <Content Include="Scripts\Configurations\config.en-gb.js" />
     <Content Include="Scripts\Controllers\Login.js" />
     <Content Include="Scripts\Filters\ctime.js" />
+    <Content Include="Scripts\Lib\adminlte.js" />
     <Content Include="Scripts\Lib\angular.js" />
     <Content Include="Scripts\App\bm2s.js" />
     <Content Include="Scripts\Lib\bootstrap.js" />
     <Content Include="Scripts\Controllers\Article.js" />
     <Content Include="Scripts\Lib\jquery.js" />
-    <Content Include="Scripts\Lib\jquery.select2.js" />
     <Content Include="Scripts\Lib\npm.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Article\Index.cshtml" />
@@ -237,7 +253,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\site.less" />
+    <Content Include="Content\bm2s.less" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
