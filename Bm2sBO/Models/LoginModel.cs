@@ -1,11 +1,14 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using Bm2s.Connectivity.Common.User;
 
 namespace Bm2sBO.Models
 {
   public class LoginModel
   {
+    public const string SessionKey = "currentUser";
+
     public string UserLogin { get; set; }
 
     public string Password { get; set; }
@@ -25,6 +28,7 @@ namespace Bm2sBO.Models
       login.Request.UserLogin = this.UserLogin;
       login.Request.Password = password.ToString();
       login.Get();
+      HttpContext.Current.Session[LoginModel.SessionKey] = login.Response.User;
       return login.Response.User.Id;
     }
   }

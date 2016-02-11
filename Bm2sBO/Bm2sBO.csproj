@@ -110,6 +110,10 @@
     <Reference Include="ServiceStack">
       <HintPath>..\..\Bm2sServer\Bm2s.Server\bin\Debug\ServiceStack.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Common, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalLib\ServiceStack.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Bm2sServer\Bm2s.Connectivity.Common\bin\Debug\ServiceStack.Text.dll</HintPath>
@@ -183,11 +187,15 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LeftMenuController.cs" />
+    <Compile Include="Controllers\TopBarController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\LeftMenuModel.cs" />
+    <Compile Include="Models\TopBarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
@@ -209,6 +217,12 @@
     <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\Bootstrap\bootstrap.min.css" />
     <Content Include="Content\FontAwesome\font-awesome.min.css" />
+    <Content Include="ExternalLib\Bm2s.Connectivity.Common.dll" />
+    <Content Include="ExternalLib\Bm2s.Connectivity.Utils.dll" />
+    <Content Include="ExternalLib\Bm2s.Poco.Common.dll" />
+    <Content Include="ExternalLib\ServiceStack.Common.dll" />
+    <Content Include="ExternalLib\ServiceStack.dll" />
+    <Content Include="ExternalLib\ServiceStack.Text.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -263,6 +277,8 @@
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\LeftMenu\Index.cshtml" />
+    <Content Include="Views\TopBar\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
