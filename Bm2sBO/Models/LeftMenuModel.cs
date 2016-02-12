@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using Bm2s.Poco.Common.User;
+﻿using Bm2s.Poco.Common.User;
+using Bm2sBO.Utils;
 
 namespace Bm2sBO.Models
 {
@@ -12,7 +7,6 @@ namespace Bm2sBO.Models
   {
     public LeftMenuModel()
     {
-      User user = Utils.Utils.CurrentUser;
     }
   }
 }

@@ -25,7 +25,8 @@ namespace Bm2sBO
             "~/Scripts/App/bm2s.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
-            "~/Scripts/Controllers/*.js"));
+            "~/Scripts/Controllers/*.js",
+            "~/Areas/Articles/Scripts/*.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/directives").Include(
             "~/Scripts/Directives/*.js"));

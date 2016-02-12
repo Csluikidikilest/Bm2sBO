@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using Bm2s.Poco.Common.User;
 using Bm2sBO.Models;
@@ -89,6 +91,26 @@ namespace Bm2sBO.Utils
 
         return modulesAuthorization;
       }
+    }
+
+    public static int OpenSession(string userLogin, string userPassword)
+    {
+      SHA512 hash = SHA512.Create();
+      byte[] passwordBytes = hash.ComputeHash(Encoding.UTF8.GetBytes(userPassword));
+
+      StringBuilder password = new StringBuilder();
+      foreach (byte passwordByte in passwordBytes)
+      {
+        password.Append(passwordByte.ToString("X2"));
+      }
+
+      Bm2s.Connectivity.Common.User.Login login = new Bm2s.Connectivity.Common.User.Login();
+      login.Request.UserLogin = userLogin;
+      login.Request.Password = password.ToString();
+      login.Get();
+      HttpContext.Current.Session[UserUtils.UserSessionKey] = login.Response.User;
+      return login.Response.User.Id;
+
     }
   }
 }

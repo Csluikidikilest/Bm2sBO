@@ -1,4 +1,4 @@
-﻿@model Bm2sBO.Models.ArticleModel
+﻿﻿@model Bm2sBO.Areas.Articles.Models.ArticlesModel
 
 @using Bm2sBO.Utils;
 
@@ -36,5 +36,5 @@
 </div>
 
 <script type="text/javascript">
-  var articles = @Model.Articles.Response.ToHtmlJson();
+  var articles = @Model.Article.Response.ToHtmlJson();
 </script>

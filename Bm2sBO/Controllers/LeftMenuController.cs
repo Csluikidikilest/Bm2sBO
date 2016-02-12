@@ -11,7 +11,7 @@ namespace Bm2sBO.Controllers
     {
         public ActionResult Index()
         {
-            return View(new LeftMenuModel());
+            return PartialView(new LeftMenuModel());
         }
     }
 }
