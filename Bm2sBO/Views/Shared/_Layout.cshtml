@@ -11,78 +11,15 @@
 <body data-ng-app="bm2s" class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
     <!-- Top Bar -->
-    <header id="TopBar" class="main-header">
-      <a href="/" class="logo">
-        Bm2s
-      </a>
-      <nav class="navbar navbar-static-top" role="navigation">
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <!-- User Account: style can be found in dropdown.less -->
-            <li class="dropdown user user-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs">Alexander</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- User image -->
-                <li class="user-header">
-                  <p>
-                    Alexander Pierce
-                    <small>Member since Nov. 2012</small>
-                  </p>
-                </li>
-                <!-- Menu Body -->
-                <li class="user-body">
-                  <div class="col-xs-6 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-6 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </li>
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  </div>
-                  <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+    @{ Html.RenderAction("Index", "TopBar", new { area = string.Empty }); }
 
     <!-- Left Menu Bar -->
-    <aside id="LeftMenuBar" class="main-sidebar">
-      <section class="sidebar">
-        <ul class="sidebar-menu">
-          <li class="header">MAIN NAVIGATION</li>
-          <li class="active treeview">
-            <a href="#">
-              <i class="fa fa-product-hunt"></i> <span>Articles</span> <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-              <li class="active"><a href="/Article"><i class="fa fa-search"></i> List</a></li>
-              <li><a href="/Article/New"><i class="fa fa-plus-circle"></i> New</a></li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-    </aside>
+    @{ Html.RenderAction("Index", "LeftMenu", new { area = string.Empty }); }
+
 
     <!-- Body -->
     <div id="Body" class="content-wrapper">
       @RenderBody()
-      @*
-        <hr />
-        <footer>
-              <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-          </footer>
-      *@
     </div>
 
     @Scripts.Render("~/bundles/jquery")

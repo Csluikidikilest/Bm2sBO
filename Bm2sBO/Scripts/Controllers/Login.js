@@ -14,7 +14,7 @@
     }
 
     $http.post(url, params).success(function (data, status) {
-      $cookieStore.put('userId', data);
+        window.location = "/";
     });
   }
 }]);
