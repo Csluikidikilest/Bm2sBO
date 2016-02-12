@@ -7,8 +7,6 @@ namespace Bm2sBO.Models
 {
   public class LoginModel
   {
-    public const string SessionKey = "currentUser";
-
     public string UserLogin { get; set; }
 
     public string Password { get; set; }

@@ -197,6 +197,7 @@
     <Compile Include="Models\LeftMenuModel.cs" />
     <Compile Include="Models\TopBarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\UserUtils.cs" />
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
