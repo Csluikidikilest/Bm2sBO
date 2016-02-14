@@ -7,7 +7,7 @@ namespace Bm2sBO.Controllers
   {
     public ActionResult Index()
     {
-      return View(new LoginModel());
+      return PartialView(new LoginModel());
     }
 
     [HttpPost]

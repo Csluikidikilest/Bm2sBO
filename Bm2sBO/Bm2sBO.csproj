@@ -187,22 +187,30 @@
     <Compile Include="Areas\Articles\ArticlesAreaRegistration.cs" />
     <Compile Include="Areas\Articles\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Articles\Models\ArticlesModel.cs" />
+    <Compile Include="Areas\Parameters\Controllers\TranslationsController.cs" />
+    <Compile Include="Areas\Parameters\Models\TranslationsModel.cs" />
+    <Compile Include="Areas\Parameters\ParametersAreaRegistration.cs" />
+    <Compile Include="Areas\Partners\PartnersAreaRegistration.cs" />
+    <Compile Include="Areas\Trades\TradesAreaRegistration.cs" />
+    <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LeftMenuController.cs" />
-    <Compile Include="Controllers\TopBarController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LeftMenuModel.cs" />
-    <Compile Include="Models\TopBarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\AuthorizationUtils.cs" />
+    <Compile Include="Utils\TranslationUtils.cs" />
     <Compile Include="Utils\UserUtils.cs" />
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Articles\Scripts\Article.js" />
+    <Content Include="Areas\Parameters\Scripts\Translation.js" />
     <Content Include="Content\AdminLTE\AdminLTE.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black-light.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black.min.css" />
@@ -260,7 +268,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Partners\Controllers\" />
+    <Folder Include="Areas\Partners\Models\" />
+    <Folder Include="Areas\Partners\Scripts\" />
+    <Folder Include="Areas\Trades\Controllers\" />
+    <Folder Include="Areas\Trades\Models\" />
+    <Folder Include="Areas\Trades\Scripts\" />
+    <Folder Include="Areas\Users\Controllers\" />
+    <Folder Include="Areas\Users\Models\" />
+    <Folder Include="Areas\Users\Scripts\" />
     <Folder Include="Scripts\Directives\" />
+    <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -277,11 +295,19 @@
     <Content Include="Areas\Articles\Views\web.config" />
     <Content Include="Areas\Articles\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Articles\Views\Articles\Index.cshtml" />
+    <Content Include="Areas\Parameters\Views\web.config" />
+    <Content Include="Areas\Parameters\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Partners\Views\web.config" />
+    <Content Include="Areas\Trades\Views\web.config" />
+    <Content Include="Areas\Users\Views\web.config" />
+    <Content Include="Areas\Partners\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Trades\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Parameters\Views\Translations\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\LeftMenu\Index.cshtml" />
-    <Content Include="Views\TopBar\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

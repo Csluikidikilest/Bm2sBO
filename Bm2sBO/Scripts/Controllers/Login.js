@@ -14,7 +14,17 @@
     }
 
     $http.post(url, params).success(function (data, status) {
-        window.location = "/";
+      window.location = "/";
+    });
+  }
+
+  $scope.closeSession = function () {
+    var url = "/Logout";
+    var params = {
+    }
+
+    $http.post(url, params).success(function (data, status) {
+      window.location = "/";
     });
   }
 }]);

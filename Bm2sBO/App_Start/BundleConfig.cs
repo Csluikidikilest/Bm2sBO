@@ -26,7 +26,11 @@ namespace Bm2sBO
 
       bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
             "~/Scripts/Controllers/*.js",
-            "~/Areas/Articles/Scripts/*.js"));
+            "~/Areas/Articles/Scripts/*.js",
+            "~/Areas/Parameters/Scripts/*.js",
+            "~/Areas/Partners/Scripts/*.js",
+            "~/Areas/Trades/Scripts/*.js",
+            "~/Areas/Users/Scripts/*.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/directives").Include(
             "~/Scripts/Directives/*.js"));
@@ -42,6 +46,9 @@ namespace Bm2sBO
                 "~/Content/FontAwesome/font-awesome.min.css",
                 "~/Content/AdminLTE/AdminLTE.min.css",
                 "~/Content/AdminLTE/skins/skin-blue.min.css"));
+
+      bundles.Add(new LessBundle("~/Content/lessbm2s").Include(
+                "~/Content/bm2s.less"));
     }
   }
 }

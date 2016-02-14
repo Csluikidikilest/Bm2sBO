@@ -12,5 +12,11 @@ namespace Bm2sBO.Models
     {
       return UserUtils.OpenSession(this.UserLogin, this.Password);
     }
+
+    public bool CloseSession()
+    {
+      UserUtils.CloseSession();
+      return UserUtils.CurrentUser.IsAnonymous;
+    }
   }
 }

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Bm2sBO.Utils;
+@using System.Globalization;
+
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
@@ -7,19 +10,72 @@
 
   <title>@ViewBag.Title</title>
   @Styles.Render("~/Content/csslib")
+  @*@Styles.Render("~/Content/lessbm2s")*@
 </head>
 <body data-ng-app="bm2s" class="hold-transition skin-blue sidebar-mini">
-  <div class="wrapper">
+  <div class="wrapper" data-ng-controller="Login">
     <!-- Top Bar -->
-    @{ Html.RenderAction("Index", "TopBar", new { area = string.Empty }); }
+    <header id="TopBar" class="main-header">
+      <a href="/" class="logo">
+        Bm2s
+      </a>
+      <nav class="navbar navbar-static-top" role="navigation">
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="hidden-xs">@UserUtils.CurrentUser.FirstName @UserUtils.CurrentUser.LastName</span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <p>
+                    @UserUtils.CurrentUser.FirstName @UserUtils.CurrentUser.LastName
+                    <small>@Html.TranslationFor("homepage", "membersince", "Member since") @UserUtils.CurrentUser.StartingDate.ToString("MMMM yyyy", new CultureInfo(UserUtils.CurrentUser.DefaultLanguage.Code))</small>
+                  </p>
+                </li>
+                <!-- Menu Body -->
+                <li class="user-body">
+                  <div class="col-xs-6 text-center">
+                    <a href="#">@Html.TranslationFor("homepage", "sales", "Sales")</a>
+                  </div>
+                  <div class="col-xs-6 text-center">
+                    <a href="#">@Html.TranslationFor("homepage", "preferences", "Preferences")</a>
+                  </div>
+                </li>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a href="#" class="btn btn-default btn-flat">@Html.TranslationFor("homepage", "profile", "Profile")</a>
+                  </div>
+                  <div class="pull-right">
+                    @if (UserUtils.CurrentUser.IsAnonymous)
+                    {
+                      <button type="button" class="btn btn-default btn-flat" data-toggle="modal" data-target="#modalLogin">
+                        <i class="fa fa-sign-in"></i>@Html.TranslationFor("homepage", "signin", "Sign in")
+                      </button>}
+                    else
+                    {
+                      <button type="button" class="btn btn-default btn-flat" data-ng-click="closeSession()">
+                    <i class="fa fa-sign-out"></i>@Html.TranslationFor("homepage", "signout", "Sign out")
+                    </button>}
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
     <!-- Left Menu Bar -->
     @{ Html.RenderAction("Index", "LeftMenu", new { area = string.Empty }); }
 
-
     <!-- Body -->
     <div id="Body" class="content-wrapper">
       @RenderBody()
+      @{ Html.RenderAction("Index", "Login", new { area = string.Empty }); }
     </div>
 
     @Scripts.Render("~/bundles/jquery")

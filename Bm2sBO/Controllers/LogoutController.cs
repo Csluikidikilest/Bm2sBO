@@ -7,11 +7,12 @@ using Bm2sBO.Models;
 
 namespace Bm2sBO.Controllers
 {
-    public class TopBarController : Controller
+  public class LogoutController : Controller
+  {
+    [HttpPost]
+    public bool Index(LoginModel model)
     {
-        public ActionResult Index()
-        {
-            return PartialView(new TopBarModel());
-        }
+      return model.CloseSession();
     }
+  }
 }
