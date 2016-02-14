@@ -243,7 +243,10 @@
     </Content>
     <Content Include="Scripts\Configurations\config.en-gb.js" />
     <Content Include="Scripts\Controllers\Login.js" />
+    <Content Include="Scripts\Directives\pagination.html" />
+    <Content Include="Scripts\Directives\Pagination.js" />
     <Content Include="Scripts\Filters\ctime.js" />
+    <Content Include="Scripts\Filters\startFrom.js" />
     <Content Include="Scripts\Lib\adminlte.js" />
     <Content Include="Scripts\Lib\angular.js" />
     <Content Include="Scripts\App\bm2s.js" />
@@ -277,7 +280,6 @@
     <Folder Include="Areas\Users\Controllers\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Scripts\" />
-    <Folder Include="Scripts\Directives\" />
     <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
