@@ -2,22 +2,18 @@
   $scope.Math = window.Math;
   $scope.Languages = languages.Languages;
 
+  $scope.AlwaysShowFirstLastButtons = true;
   $scope.AvailablePagesSize = [20, 50, 100, 200];
+  $scope.LargeStep = 3;
   $scope.PageSize = 20;
   $scope.Interval = 2;
+  $scope.ShowPagination = true;
   $scope.SmallStep = 1;
-  $scope.LargeStep = 3;
-  $scope.AlwaysShowFirstLastButtons = true;
 
-  $scope.refreshPageSize = function () {
-    $scope.FirstItem = ($scope.CurrentPage * $scope.PageSize) + 1;
-    $scope.LastItem = Math.min(($scope.CurrentPage + 1) * $scope.PageSize, $scope.ItemsCount);
+  $scope.generateColumnsHeader = function () {
+    $scope.ColumnsHeader = columnsHeader;
+    $scope.ColumnsHeader.push('');
   }
-
-  $scope.jumpToPage = function (currentPage) {
-    $scope.CurrentPage = currentPage;
-    $scope.refreshPageSize();
-  };
 
   $scope.getValues = function () {
     var url = "/Translations/GetValues";
@@ -55,5 +51,4 @@
   };
 
   $scope.getValues();
-  $scope.PageSize = 20;
 }]);

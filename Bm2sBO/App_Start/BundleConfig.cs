@@ -36,7 +36,8 @@ namespace Bm2sBO
             "~/Areas/Users/Scripts/*.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/directives").Include(
-            "~/Scripts/Directives/*.js"));
+            "~/Scripts/Directives/Datatable/datatable.js",
+            "~/Scripts/Directives/Pagination/pagination.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/filters").Include(
             "~/Scripts/Filters/*.js"));

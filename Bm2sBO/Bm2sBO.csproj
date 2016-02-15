@@ -209,8 +209,8 @@
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Articles\Scripts\Article.js" />
-    <Content Include="Areas\Parameters\Scripts\Translation.js" />
+    <Content Include="Areas\Articles\Scripts\article.js" />
+    <Content Include="Areas\Parameters\Scripts\translation.js" />
     <Content Include="Content\AdminLTE\AdminLTE.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black-light.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black.min.css" />
@@ -242,9 +242,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Configurations\config.en-gb.js" />
-    <Content Include="Scripts\Controllers\Login.js" />
-    <Content Include="Scripts\Directives\pagination.html" />
-    <Content Include="Scripts\Directives\Pagination.js" />
+    <Content Include="Scripts\Controllers\login.js" />
+    <Content Include="Scripts\Directives\Datatable\datatable.js" />
+    <Content Include="Scripts\Directives\Datatable\template.html" />
+    <Content Include="Scripts\Directives\Pagination\template.html" />
+    <Content Include="Scripts\Directives\Pagination\pagination.js" />
     <Content Include="Scripts\Filters\ctime.js" />
     <Content Include="Scripts\Filters\startFrom.js" />
     <Content Include="Scripts\Lib\adminlte.js" />

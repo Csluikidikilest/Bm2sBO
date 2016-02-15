@@ -83,9 +83,14 @@ namespace Bm2sBO.Utils
       return TranslationUtils.Get(screen, key, lang, defaultValue, parameters);
     }
 
+    public static IHtmlString TranslationSpanFor(this HtmlHelper helper, string screen, string key, string defaultValue, params string[] parameters)
+    {
+      return string.Format("<span id=\"{0}{1}\">{2}</span>", screen, key, TranslationUtils.Get(screen, key, defaultValue)).ToHtmlString();
+    }
+
     public static IHtmlString TranslationFor(this HtmlHelper helper, string screen, string key, string defaultValue, params string[] parameters)
     {
-      return string.Format("<span id=\"{0}{1}\">{2}", screen, key, TranslationUtils.Get(screen, key, defaultValue)).ToHtmlString();
+      return TranslationUtils.Get(screen, key, defaultValue).ToHtmlString();
     }
   }
 }
