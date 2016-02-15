@@ -26,7 +26,7 @@ namespace Bm2sBO.Areas.Parameters.Controllers
       translation.Request.PageSize = 0;
       translation.Get();
 
-      var result = translation.Response.Translations.Where(tran => tran.Application == TranslationUtils.ApplicationName).Select(tran => new { Screen = tran.Screen, Key = tran.Key, Languages = language.Response.Languages.Select(lang => new { Code = lang.Code, Translation = TranslationUtils.Get(tran.Screen, tran.Key, lang, string.Empty) }) });
+      var result = translation.Response.Translations.Where(tran => tran.Application == TranslationUtils.ApplicationName).Select(tran=> new { Screen= tran.Screen, Key = tran.Key }).Distinct().Select(tran => new { Screen = tran.Screen, Key = tran.Key, Languages = language.Response.Languages.Select(lang => new { Code = lang.Code, Translation = TranslationUtils.Get(tran.Screen, tran.Key, lang, string.Empty) }) });
 
       return result.ToHtmlJson();
     }

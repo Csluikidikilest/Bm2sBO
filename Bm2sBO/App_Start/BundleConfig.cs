@@ -10,7 +10,7 @@ namespace Bm2sBO
     {
       bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                   "~/Scripts/Lib/jquery.js",
-                  "~/Scripts/Lib/jquery.select2.js"));
+                  "~/Scripts/Lib/jquery.slimscroll.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/Lib/bootstrap.js"));
@@ -20,6 +20,9 @@ namespace Bm2sBO
 
       bundles.Add(new ScriptBundle("~/bundles/angular").Include(
             "~/Scripts/Lib/angular.js"));
+
+      bundles.Add(new ScriptBundle("~/bundles/chart").Include(
+            "~/Scripts/Lib/chart.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/app").Include(
             "~/Scripts/App/bm2s.js"));

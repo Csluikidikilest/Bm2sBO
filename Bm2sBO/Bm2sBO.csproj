@@ -251,7 +251,9 @@
     <Content Include="Scripts\Lib\angular.js" />
     <Content Include="Scripts\App\bm2s.js" />
     <Content Include="Scripts\Lib\bootstrap.js" />
+    <Content Include="Scripts\Lib\chart.js" />
     <Content Include="Scripts\Lib\jquery.js" />
+    <Content Include="Scripts\Lib\jquery.slimscroll.js" />
     <Content Include="Scripts\Lib\npm.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
