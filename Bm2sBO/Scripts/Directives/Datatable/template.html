@@ -1,15 +1,15 @@
-﻿<div class="box" data-ng-controller="Datatable">
+﻿<div>
   <div class="box-header">
     <h3>{{Title}}</h3>
   </div>
   <div class="box-body">
     <div class="row">
-      <div class="col-sm-6" data-ng-show="ShowPagination">
+      <div class="col-sm-6">
         {{ShowText}}
         <select data-ng-model="PageSize" data-ng-change="refreshPageSize()" integer data-ng-options="value for value in AvailablePagesSize"></select>
         {{EntriesText}}
       </div>
-      <div data-ng-class="{col-sm-6: ShowPagination, col-sm-12: !ShowPagination}">
+      <div data-ng-class="col-sm-6">
         {{SearchText}}
         <input type="text" data-ng-model="SearchText" />
       </div>
@@ -25,7 +25,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-ng-repeat="item in Source | startFrom:CurrentPage*PageSize | limitTo:PageSize | filter:SearchText">
+            <tr data-ng-repeat="item in DataSource | startFrom:CurrentPage*PageSize | limitTo:PageSize | filter:SearchText">
               <td data-ng-repeat="ColumnHeader in ColumnsHeader">
                 {{item[ColumnHeader.Key]}}
               </td>
@@ -39,7 +39,7 @@
     <div class="col-sm-5">
       {{ShowingText}} {{FirstItem}} {{ToText}} {{LastItem}} {{OfText}} {{ItemsCount}} {{EntriesText}}
     </div>
-    <div class="col-sm-7" data-ng-show="ShowPagination">
+    <div class="col-sm-7">
       <div class="dataTables_paginate paging_simple_numbers">
         <ul class="pagination pagination-sm no-margin pull-right">
           <li class="paginate_button" data-ng-disabled="CurrentPage <= 0 || LargeStep <= 0" data-ng-click="jumpToPage(Math.max(CurrentPage - LargeStep , 0))">

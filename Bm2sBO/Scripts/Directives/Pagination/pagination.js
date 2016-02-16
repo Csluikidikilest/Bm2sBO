@@ -1,10 +1,8 @@
 ﻿app.directive('pagination', function () {
   return {
-    restrict: 'E',
-    controller: '/Scripts/Directives/Pagination/controller.js',
+    restrict: 'AE',
+    replace: 'true',
     templateUrl: '/Scripts/Directives/Pagination/template.html',
-    scope: {
-      PageSize: "="
-    }
+    scope: 'true'
   };
 });

@@ -6,53 +6,9 @@
   ViewBag.Title = "Translations";
 }
 
-@*<div class="box" data-ng-controller="Translation">
-  <div class="box-header">
-    <h3>@Html.TranslationSpanFor("listtranslations", "title", "Title")</h3>
-  </div>
-  <div class="box-body">
-    <div class="row">
-      <div class="col-sm-6">
-        @Html.TranslationSpanFor("listtranslations", "show", "Show")
-        <select data-ng-model="PageSize" data-ng-change="refreshPageSize()" integer data-ng-options="value for value in AvailablePagesSize"></select>
-        @Html.TranslationSpanFor("listtranslations", "entries", "entries")
-      </div>
-      <div class="col-sm-6">
-        @Html.TranslationSpanFor("listtranslations", "show", "Show")
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <table class="table table-striped table-condensed">
-          <thead>
-            <tr>
-              <th>@Html.TranslationSpanFor("listtranslations", "screen", "Screen")</th>
-              <th>@Html.TranslationSpanFor("listtranslations", "key", "Key")</th>
-              <th data-ng-repeat="Language in Languages">{{Language.Name}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="Translation in Translations | startFrom:CurrentPage*PageSize | limitTo:PageSize">
-              <td>{{Translation.Screen}}</td>
-              <td>{{Translation.Key}}</td>
-              <td data-ng-repeat="Language in Translation.Languages">{{Language.Translation}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-5">
-      @Html.TranslationSpanFor("listtranslations", "showing", "Showing") {{FirstItem}} @Html.TranslationSpanFor("listtranslations", "to", "to") {{LastItem}} @Html.TranslationSpanFor("listtranslations", "of", "of") {{ItemsCount}} @Html.TranslationSpanFor("listtranslations", "entries", "entries")
-    </div>
-    <div class="col-sm-7">
-      <div class="dataTables_paginate paging_simple_numbers">
-        <pagination data-page-size="PageSize"></pagination>
-      </div>
-    </div>
-  </div>
-</div>*@
+<div class="box" data-ng-controller="Translation">
+  <div datatable />
+</div>
 
 <script type="text/javascript">
   var languages = @Model.Language.Response.ToHtmlJson();
@@ -60,12 +16,4 @@
   var columnsHeader = [];
   columnsHeader.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")"});
   columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")"});
-
-  for(language in languages) {
-    columnsHeader.push({"Key": language.Code, "Value": language.Name});
-  }
 </script>
-
-<div data-ng-controller="Translation">
-  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-columns-header="ColumnsHeader" data-entries-text="@Html.TranslationSpanFor("listtranslations", "entries", "entries")" data-interval="Interval" data-large-step="LargeStep" data-of-text="@Html.TranslationSpanFor("listtranslations", "of", "of")" data-page-size="PageSize" data-search-text="@Html.TranslationSpanFor("listtranslations", "search", "Search")" data-show-text="@Html.TranslationSpanFor("listtranslations", "show", "Show")" data-showing-text="@Html.TranslationSpanFor("listtranslations", "showing", "Showing")" data-show-pagination="Translations" data-small-step="SmallStep" data-source="Translation" data-title="Title" data-to-text="@Html.TranslationSpanFor("listtranslations", "to", "to")"></datatable>
-</div>
