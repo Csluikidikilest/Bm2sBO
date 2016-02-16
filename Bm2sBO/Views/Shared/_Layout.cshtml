@@ -34,33 +34,33 @@
                   <li class="user-header">
                     <p>
                       @UserUtils.CurrentUser.FirstName @UserUtils.CurrentUser.LastName
-                      <small>@Html.TranslationSpanFor("homepage", "membersince", "Member since") @UserUtils.CurrentUser.StartingDate.ToString("MMMM yyyy", new CultureInfo(UserUtils.CurrentUser.DefaultLanguage.Code))</small>
+                      <small>@Html.TranslationLabelFor("homepage", "membersince", "Member since") @UserUtils.CurrentUser.StartingDate.ToString("MMMM yyyy", new CultureInfo(UserUtils.CurrentUser.DefaultLanguage.Code))</small>
                     </p>
                   </li>
                   <!-- Menu Body -->
                   <li class="user-body">
                     <div class="col-xs-6 text-center">
-                      <a href="#">@Html.TranslationSpanFor("homepage", "sales", "Sales")</a>
+                      <a href="#">@Html.TranslationLabelFor("homepage", "sales", "Sales")</a>
                     </div>
                     <div class="col-xs-6 text-center">
-                      <a href="#">@Html.TranslationSpanFor("homepage", "preferences", "Preferences")</a>
+                      <a href="#">@Html.TranslationLabelFor("homepage", "preferences", "Preferences")</a>
                     </div>
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">@Html.TranslationSpanFor("homepage", "profile", "Profile")</a>
+                      <a href="#" class="btn btn-default btn-flat">@Html.TranslationLabelFor("homepage", "profile", "Profile")</a>
                     </div>
                     <div class="pull-right">
                       @if (UserUtils.CurrentUser.IsAnonymous)
                       {
                         <button type="button" class="btn btn-default btn-flat" data-toggle="modal" data-target="#modalLogin">
-                          <i class="fa fa-sign-in"></i>@Html.TranslationSpanFor("homepage", "signin", "Sign in")
+                          <i class="fa fa-sign-in"></i>@Html.TranslationLabelFor("homepage", "signin", "Sign in")
                         </button>}
                       else
                       {
                         <button type="button" class="btn btn-default btn-flat" data-ng-click="closeSession()">
-                          <i class="fa fa-sign-out"></i>@Html.TranslationSpanFor("homepage", "signout", "Sign out")
+                          <i class="fa fa-sign-out"></i>@Html.TranslationLabelFor("homepage", "signout", "Sign out")
                         </button>}
                     </div>
                   </li>

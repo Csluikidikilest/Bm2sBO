@@ -8,6 +8,14 @@
   $scope.Interval = 2;
   $scope.SmallStep = 1;
 
+  $scope.EntriesText = entriesText;
+  $scope.OfText = ofText;
+  $scope.SearchText = searchText;
+  $scope.ShowingText = showingText;
+  $scope.ShowText = showText;
+  $scope.Title = title;
+  $scope.ToText = toText;
+
   $scope.jumpToPage = function (currentPage) {
     $scope.CurrentPage = currentPage;
     $scope.refreshPageSize();
@@ -15,10 +23,10 @@
 
   $scope.generateColumnsHeader = function () {
     $scope.ColumnsHeader = columnsHeader;
-    angular.forEach($scope.Languages, function(value, key){
-      $scope.ColumnsHeader.push({ "Key": value.Code, "Value": value.Name });
+    angular.forEach($scope.Languages, function (value, key) {
+      $scope.ColumnsHeader.push({ "Key": value.Code, "Value": value.Name, "Editable": true, Type: 'text' });
     });
-  }
+  };
 
   $scope.getValues = function () {
     var url = "/Translations/GetValues";

@@ -11,7 +11,7 @@
       </div>
       <div data-ng-class="col-sm-6">
         {{SearchText}}
-        <input type="text" data-ng-model="SearchText" />
+        <input type="text" data-ng-model="SearchFilter" />
       </div>
     </div>
     <div class="row">
@@ -25,7 +25,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-ng-repeat="item in DataSource | startFrom:CurrentPage*PageSize | limitTo:PageSize | filter:SearchText">
+            <tr data-ng-repeat="item in DataSource | startFrom:CurrentPage*PageSize | limitTo:PageSize | filter:SearchFilter">
               <td data-ng-repeat="ColumnHeader in ColumnsHeader">
                 {{item[ColumnHeader.Key]}}
               </td>

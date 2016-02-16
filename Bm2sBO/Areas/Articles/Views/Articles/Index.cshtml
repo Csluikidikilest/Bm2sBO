@@ -10,19 +10,19 @@
   <table class="table table-striped table-condensed">
     <thead>
       <tr>
-        <th>@Html.TranslationSpanFor("listarticles", "code", "Code")</th>
-        <th>@Html.TranslationSpanFor("listarticles", "designation", "Designation")</th>
-        <th>@Html.TranslationSpanFor("listarticles", "date", "Date")</th>
-        <th>@Html.TranslationSpanFor("listarticles", "family", "Family")</th>
-        <th>@Html.TranslationSpanFor("listarticles", "subfamily", "Sub family")</th>
-        <th>@Html.TranslationSpanFor("listarticles", "brand", "Brand")</th>
-        <th>@Html.TranslationSpanFor("listarticles", "unit", "Unit")</th>
+        <th>@Html.TranslationLabelFor("listarticles", "code", "Code")</th>
+        <th>@Html.TranslationLabelFor("listarticles", "designation", "Designation")</th>
+        <th>@Html.TranslationLabelFor("listarticles", "date", "Date")</th>
+        <th>@Html.TranslationLabelFor("listarticles", "family", "Family")</th>
+        <th>@Html.TranslationLabelFor("listarticles", "subfamily", "Sub family")</th>
+        <th>@Html.TranslationLabelFor("listarticles", "brand", "Brand")</th>
+        <th>@Html.TranslationLabelFor("listarticles", "unit", "Unit")</th>
         @if (UserUtils.CanEditArticles)
         {
-          <th>@Html.TranslationSpanFor("listarticles", "edit", "Edit")</th>}
+          <th>@Html.TranslationLabelFor("listarticles", "edit", "Edit")</th>}
         @if (UserUtils.CanDeleteArticles)
         {
-          <th>@Html.TranslationSpanFor("listarticles", "delete", "Delete")</th>}
+          <th>@Html.TranslationLabelFor("listarticles", "delete", "Delete")</th>}
       </tr>
     </thead>
     <tbody>

@@ -6,14 +6,28 @@
   ViewBag.Title = "Translations";
 }
 
-<div class="box" data-ng-controller="Translation">
-  <div datatable />
-</div>
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box" data-ng-controller="Translation">
+        <div datatable />
+      </div>
+    </div>
+  </div>
+</section>
 
 <script type="text/javascript">
   var languages = @Model.Language.Response.ToHtmlJson();
 
   var columnsHeader = [];
-  columnsHeader.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")"});
-  columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")"});
+  columnsHeader.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")", "Editable": false, "Type": ''});
+  columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": ''});
+
+  var title = '@Html.TranslationFor("listtranslations", "title", "Translations")';
+  var showText = '@Html.TranslationFor("listtranslations", "showtext", "Show")';
+  var entriesText = '@Html.TranslationFor("listtranslations", "entriestext", "entries")';
+  var searchText = '@Html.TranslationFor("listtranslations", "searchtext", "Search")';
+  var showingText = '@Html.TranslationFor("listtranslations", "showingtext", "Showing")';
+  var toText = '@Html.TranslationFor("listtranslations", "totext", "to")';
+  var ofText = '@Html.TranslationFor("listtranslations", "oftext", "of")';
 </script>
