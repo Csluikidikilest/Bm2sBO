@@ -245,6 +245,8 @@
     <Content Include="Scripts\Controllers\login.js" />
     <Content Include="Scripts\Directives\Datatable\datatable.js" />
     <Content Include="Scripts\Directives\Datatable\template.html" />
+    <Content Include="Scripts\Directives\Edition\edition.js" />
+    <Content Include="Scripts\Directives\Edition\template.html" />
     <Content Include="Scripts\Directives\Pagination\template.html" />
     <Content Include="Scripts\Directives\Pagination\pagination.js" />
     <Content Include="Scripts\Filters\ctime.js" />

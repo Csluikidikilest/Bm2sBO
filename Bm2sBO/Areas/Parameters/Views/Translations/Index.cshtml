@@ -7,7 +7,7 @@
 }
 
 <section class="content" data-ng-controller="Translation">
-  <div datatable />
+  <datatable />
 </section>
 
 <script type="text/javascript">
@@ -24,4 +24,6 @@
   var showingText = '@Html.TranslationFor("listtranslations", "showingtext", "Showing")';
   var toText = '@Html.TranslationFor("listtranslations", "totext", "to")';
   var ofText = '@Html.TranslationFor("listtranslations", "oftext", "of")';
+
+  var canEdit = @UserUtils.CanEditTranslations.ToString().ToLower();
 </script>

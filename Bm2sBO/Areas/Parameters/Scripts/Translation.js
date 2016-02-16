@@ -8,6 +8,9 @@
   $scope.Interval = 2;
   $scope.SmallStep = 1;
 
+  $scope.CanCreate = false;
+  $scope.CanEdit = canEdit;
+
   $scope.EntriesText = entriesText;
   $scope.OfText = ofText;
   $scope.SearchText = searchText;
@@ -16,9 +19,9 @@
   $scope.Title = title;
   $scope.ToText = toText;
 
-  $scope.jumpToPage = function (currentPage) {
-    $scope.CurrentPage = currentPage;
-    $scope.refreshPageSize();
+  $scope.edit = function (line) {
+    $scope.Edition = line;
+
   };
 
   $scope.generateColumnsHeader = function () {
@@ -50,6 +53,21 @@
     });
   };
 
+  $scope.jumpToPage = function (currentPage) {
+    $scope.CurrentPage = currentPage;
+    $scope.refreshPageSize();
+  };
+
+  $scope.refreshPageSize = function () {
+    $scope.FirstItem = ($scope.CurrentPage * $scope.PageSize) + 1;
+    $scope.LastItem = Math.min(($scope.CurrentPage + 1) * $scope.PageSize, $scope.ItemsCount);
+    $scope.PagesCount = Math.ceil($scope.ItemsCount / $scope.PageSize);
+    $scope.PagesList = [];
+    for (i = 1; i <= $scope.PagesCount - 2; i++) {
+      $scope.PagesList.push(i);
+    };
+  }
+
   $scope.setValue = function (screen, key, languageId, value) {
     var url = "/Translations/SetValue";
     var result = defaultValue;
@@ -66,16 +84,6 @@
 
     return result;
   };
-
-  $scope.refreshPageSize = function () {
-    $scope.FirstItem = ($scope.CurrentPage * $scope.PageSize) + 1;
-    $scope.LastItem = Math.min(($scope.CurrentPage + 1) * $scope.PageSize, $scope.ItemsCount);
-    $scope.PagesCount = Math.ceil($scope.ItemsCount / $scope.PageSize);
-    $scope.PagesList = [];
-    for (i = 1; i <= $scope.PagesCount - 2; i++) {
-      $scope.PagesList.push(i);
-    };
-  }
 
   $scope.getValues();
   $scope.generateColumnsHeader();

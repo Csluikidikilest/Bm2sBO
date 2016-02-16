@@ -1,18 +1,12 @@
-﻿@using Bm2sBO.Utils;
-
-@{
-  ViewBag.Title = "Index";
-}
-
-<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
+﻿<div id="modalEdition" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">@Html.TranslationLabelFor("homepage", "signin", "Sign in")</h4>
+        <h4 class="modal-title">{{Title}}</h4>
       </div>
       <div class="modal-body">
-        <div class="form-group" data-ng-class="{ 'has-error': loginForm.password.$invalid }">
+        <div class="form-group">
           <div class="input-group">
             <div class="input-group-addon">
               <span class="fa fa-user" />
