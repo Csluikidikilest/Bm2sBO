@@ -46,12 +46,7 @@
         $scope.DataSource.push(object);
       });
       $scope.ItemsCount = $scope.DataSource.length;
-      $scope.PagesCount = Math.ceil($scope.ItemsCount / $scope.PageSize);
       $scope.jumpToPage(0);
-      $scope.PagesList = [];
-      for (i = 1; i <= $scope.PagesCount - 2; i++) {
-        $scope.PagesList.push(i);
-      };
     });
   };
 
@@ -75,6 +70,11 @@
   $scope.refreshPageSize = function () {
     $scope.FirstItem = ($scope.CurrentPage * $scope.PageSize) + 1;
     $scope.LastItem = Math.min(($scope.CurrentPage + 1) * $scope.PageSize, $scope.ItemsCount);
+    $scope.PagesCount = Math.ceil($scope.ItemsCount / $scope.PageSize);
+    $scope.PagesList = [];
+    for (i = 1; i <= $scope.PagesCount - 2; i++) {
+      $scope.PagesList.push(i);
+    };
   }
 
   $scope.getValues();

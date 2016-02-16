@@ -1,75 +1,79 @@
-﻿<div>
-  <div class="box-header">
-    <h3>{{Title}}</h3>
-  </div>
-  <div class="box-body">
-    <div class="row">
-      <div class="col-sm-6">
-        {{ShowText}}
-        <select data-ng-model="PageSize" data-ng-change="refreshPageSize()" integer data-ng-options="value for value in AvailablePagesSize"></select>
-        {{EntriesText}}
+﻿<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3>{{Title}}</h3>
       </div>
-      <div data-ng-class="col-sm-6">
-        {{SearchText}}
-        <input type="text" data-ng-model="SearchFilter" />
+      <div class="box-body">
+        <div class="row">
+          <div class="col-sm-6">
+            {{ShowText}}
+            <select data-ng-model="PageSize" data-ng-change="refreshPageSize()" integer data-ng-options="value for value in AvailablePagesSize"></select>
+            {{EntriesText}}
+          </div>
+          <div data-ng-class="col-sm-6">
+            {{SearchText}}
+            <input type="text" data-ng-model="SearchFilter" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table table-striped table-condensed">
+              <thead>
+                <tr>
+                  <th data-ng-repeat="ColumnHeader in ColumnsHeader">
+                    {{ColumnHeader.Value}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-ng-repeat="item in DataSource | startFrom:CurrentPage*PageSize | limitTo:PageSize | filter:SearchFilter">
+                  <td data-ng-repeat="ColumnHeader in ColumnsHeader">
+                    {{item[ColumnHeader.Key]}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <table class="table table-striped table-condensed">
-          <thead>
-            <tr>
-              <th data-ng-repeat="ColumnHeader in ColumnsHeader">
-                {{ColumnHeader.Value}}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="item in DataSource | startFrom:CurrentPage*PageSize | limitTo:PageSize | filter:SearchFilter">
-              <td data-ng-repeat="ColumnHeader in ColumnsHeader">
-                {{item[ColumnHeader.Key]}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-5">
-      {{ShowingText}} {{FirstItem}} {{ToText}} {{LastItem}} {{OfText}} {{ItemsCount}} {{EntriesText}}
-    </div>
-    <div class="col-sm-7">
-      <div class="dataTables_paginate paging_simple_numbers">
-        <ul class="pagination pagination-sm no-margin pull-right">
-          <li class="paginate_button" data-ng-disabled="CurrentPage <= 0 || LargeStep <= 0" data-ng-click="jumpToPage(Math.max(CurrentPage - LargeStep , 0))">
-            <a href="#"><i class="fa fa-angle-double-left"></i></a>
-          </li>
-          <li class="paginate_button" data-ng-disabled="CurrentPage <= 0 || SmallStep <= 0" data-ng-click="jumpToPage(Math.max(CurrentPage - SmallStep , 0))">
-            <a href="#"><i class="fa fa-angle-left"></i></a>
-          </li>
-          <li class="paginate_button" data-ng-show="(AlwaysShowFirstLastButtons) || (CurrentPage >= 0 && CurrentPage <= Math.Min(CurrentPage + Interval, PagesCount - 1))" data-ng-click="jumpToPage(0)" data-ng-class="{'active': CurrentPage == 0}">
-            <a href="#">1</a>
-          </li>
-          <li class="paginate_button disabled" data-ng-show="CurrentPage - Interval > Interval">
-            <a href="#"><i class="fa fa-ellipsis-h"></i></a>
-          </li>
-          <li class="paginate_button" data-ng-show="CurrentPage >= Math.max(activePage - Interval, 0) && CurrentPage <= Math.min(activePage + Interval, PagesCount - 1)" data-ng-repeat="activePage in PagesList" data-ng-click="jumpToPage(activePage)" data-ng-class="{'active': CurrentPage == activePage}">
-            <a href="#">{{activePage + 1}}</a>
-          </li>
-          <li class="paginate_button disabled" data-ng-show="CurrentPage + Interval < PagesCount - Interval">
-            <a href="#"><i class="fa fa-ellipsis-h"></i></a>
-          </li>
-          <li class="paginate_button" data-ng-show="PagesCount > 1 && ((AlwaysShowFirstLastButtons) || (CurrentPage >= Math.Max(PagesCount - Interval - 1, 0) && CurrentPage <= PagesCount - 1))" data-ng-click="jumpToPage(PagesCount - 1)" data-ng-class="{'active': CurrentPage == PagesCount - 1 }">
-            <a href="#">{{PagesCount}}</a>
-          </li>
-          <li class="paginate_button" data-ng-disabled="PagesCount <= 1 || CurrentPage >= PagesCount - 1 || SmallStep <= 0" data-ng-click="jumpToPage(Math.min(CurrentPage + SmallStep, PagesCount - 1))">
-            <a href="#"><i class="fa fa-angle-right"></i></a>
-          </li>
-          <li class="paginate_button" data-ng-disabled="PagesCount <= 1 || CurrentPage >= PagesCount - 1 || LargeStep <= 0" data-ng-click="jumpToPage(Math.min(CurrentPage + LargeStep, PagesCount - 1))">
-            <a href="#"><i class="fa fa-angle-double-right"></i></a>
-          </li>
-        </ul>
+      <div class="row">
+        <div class="col-sm-5">
+          {{ShowingText}} {{FirstItem}} {{ToText}} {{LastItem}} {{OfText}} {{ItemsCount}} {{EntriesText}}
+        </div>
+        <div class="col-sm-7">
+          <div class="dataTables_paginate paging_simple_numbers" data-ng-show="PagesCount > 1">
+            <ul class="pagination pagination-sm no-margin pull-right">
+              <li class="paginate_button" data-ng-disabled="CurrentPage <= 0 || LargeStep <= 0" data-ng-click="jumpToPage(Math.max(CurrentPage - LargeStep , 0))">
+                <a href="#"><i class="fa fa-angle-double-left"></i></a>
+              </li>
+              <li class="paginate_button" data-ng-disabled="CurrentPage <= 0 || SmallStep <= 0" data-ng-click="jumpToPage(Math.max(CurrentPage - SmallStep , 0))">
+                <a href="#"><i class="fa fa-angle-left"></i></a>
+              </li>
+              <li class="paginate_button" data-ng-show="(AlwaysShowFirstLastButtons) || (CurrentPage >= 0 && CurrentPage <= Math.Min(CurrentPage + Interval, PagesCount - 1))" data-ng-click="jumpToPage(0)" data-ng-class="{'active': CurrentPage == 0}">
+                <a href="#">1</a>
+              </li>
+              <li class="paginate_button disabled" data-ng-show="CurrentPage - Interval > Interval">
+                <a href="#"><i class="fa fa-ellipsis-h"></i></a>
+              </li>
+              <li class="paginate_button" data-ng-show="CurrentPage >= Math.max(activePage - Interval, 0) && CurrentPage <= Math.min(activePage + Interval, PagesCount - 1)" data-ng-repeat="activePage in PagesList" data-ng-click="jumpToPage(activePage)" data-ng-class="{'active': CurrentPage == activePage}">
+                <a href="#">{{activePage + 1}}</a>
+              </li>
+              <li class="paginate_button disabled" data-ng-show="CurrentPage + Interval < PagesCount - Interval">
+                <a href="#"><i class="fa fa-ellipsis-h"></i></a>
+              </li>
+              <li class="paginate_button" data-ng-show="PagesCount > 1 && ((AlwaysShowFirstLastButtons) || (CurrentPage >= Math.Max(PagesCount - Interval - 1, 0) && CurrentPage <= PagesCount - 1))" data-ng-click="jumpToPage(PagesCount - 1)" data-ng-class="{'active': CurrentPage == PagesCount - 1 }">
+                <a href="#">{{PagesCount}}</a>
+              </li>
+              <li class="paginate_button" data-ng-disabled="PagesCount <= 1 || CurrentPage >= PagesCount - 1 || SmallStep <= 0" data-ng-click="jumpToPage(Math.min(CurrentPage + SmallStep, PagesCount - 1))">
+                <a href="#"><i class="fa fa-angle-right"></i></a>
+              </li>
+              <li class="paginate_button" data-ng-disabled="PagesCount <= 1 || CurrentPage >= PagesCount - 1 || LargeStep <= 0" data-ng-click="jumpToPage(Math.min(CurrentPage + LargeStep, PagesCount - 1))">
+                <a href="#"><i class="fa fa-angle-double-right"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
