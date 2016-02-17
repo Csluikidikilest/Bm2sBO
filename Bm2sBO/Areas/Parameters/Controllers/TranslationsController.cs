@@ -38,29 +38,7 @@ namespace Bm2sBO.Areas.Parameters.Controllers
       language.Request.Code = languageCode;
       language.Get();
 
-      Translation translation = new Translation();
-      translation.Request.Application = TranslationUtils.ApplicationName;
-      translation.Request.Screen = screen;
-      translation.Request.Key = key;
-      translation.Request.LanguageId = language.Response.Languages.FirstOrDefault().Id;
-      translation.Get();
-      Bm2s.Poco.Common.Parameter.Translation tran = translation.Response.Translations.FirstOrDefault();
-
-      translation.Request.Translation = new Bm2s.Poco.Common.Parameter.Translation();
-      translation.Request.Translation.Application = TranslationUtils.ApplicationName;
-      translation.Request.Translation.Screen = screen;
-      translation.Request.Translation.Key = key;
-      translation.Request.Translation.Language = language.Response.Languages.FirstOrDefault();
-      translation.Request.Translation.Value = value;
-      if (tran != null)
-      {
-        translation.Request.Translation.Id = tran.Id;
-      }
-      translation.Post();
-
-      System.Web.HttpContext.Current.Session[TranslationUtils.TranslationSessionKey + "_" + screen + "_" + key + "_" + translation.Request.LanguageId] = value;
-
-      return translation.Response.Translations.FirstOrDefault().Id;
+      TranslationUtils.Set(screen, key, language.Response.Languages.FirstOrDefault(), value);
     }
   }
 }

@@ -83,6 +83,34 @@ namespace Bm2sBO.Utils
       return TranslationUtils.Get(screen, key, lang, defaultValue, parameters);
     }
 
+    public static int Set(string screen, string key, Bm2s.Poco.Common.Parameter.Language language, string value)
+    {
+
+      Translation translation = new Translation();
+      translation.Request.Application = TranslationUtils.ApplicationName;
+      translation.Request.Screen = screen;
+      translation.Request.Key = key;
+      translation.Request.LanguageId = language.Id;
+      translation.Get();
+      Bm2s.Poco.Common.Parameter.Translation tran = translation.Response.Translations.FirstOrDefault();
+
+      translation.Request.Translation = new Bm2s.Poco.Common.Parameter.Translation();
+      translation.Request.Translation.Application = TranslationUtils.ApplicationName;
+      translation.Request.Translation.Screen = screen;
+      translation.Request.Translation.Key = key;
+      translation.Request.Translation.Language = language;
+      translation.Request.Translation.Value = value;
+      if (tran != null)
+      {
+        translation.Request.Translation.Id = tran.Id;
+      }
+      translation.Post();
+
+      HttpContext.Current.Session[TranslationUtils.TranslationSessionKey + "_" + screen + "_" + key + "_" + translation.Request.LanguageId] = value;
+
+      return translation.Response.Translations.FirstOrDefault().Id;
+    }
+
     public static IHtmlString TranslationLabelFor(this HtmlHelper helper, string screen, string key, string defaultValue, params string[] parameters)
     {
       return string.Format("<label id=\"{0}{1}\">{2}</label>", screen, key, TranslationUtils.Get(screen, key, defaultValue)).ToHtmlString();
