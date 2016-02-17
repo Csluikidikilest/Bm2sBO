@@ -14,8 +14,8 @@
   var languages = @Model.Language.Response.ToHtmlJson();
 
   var columnsHeader = [];
-  columnsHeader.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")", "Editable": false, "Type": ''});
-  columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": ''});
+  columnsHeader.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")", "Editable": false, "Type": '', "Required": false});
+  columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": '', "Required": false});
 
   var title = '@Html.TranslationFor("listtranslations", "title", "Translations")';
   var showText = '@Html.TranslationFor("listtranslations", "showtext", "Show")';

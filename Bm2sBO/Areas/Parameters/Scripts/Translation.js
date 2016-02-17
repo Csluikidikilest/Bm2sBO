@@ -21,13 +21,13 @@
 
   $scope.edit = function (line) {
     $scope.Edition = line;
-
+    $('#modalEdition').modal();
   };
 
   $scope.generateColumnsHeader = function () {
     $scope.ColumnsHeader = columnsHeader;
     angular.forEach($scope.Languages, function (value, key) {
-      $scope.ColumnsHeader.push({ "Key": value.Code, "Value": value.Name, "Editable": true, Type: 'text' });
+      $scope.ColumnsHeader.push({ "Key": value.Code, "Value": value.Name, "Editable": true, Type: 'text', "Required": false });
     });
   };
 
@@ -68,19 +68,20 @@
     };
   }
 
-  $scope.setValue = function (screen, key, languageId, value) {
+  $scope.setValue = function (item) {
     var url = "/Translations/SetValue";
-    var result = defaultValue;
-    var params = {
-      screen: screen,
-      key: key,
-      languageId: languageId,
-      value: value
-    };
+    angular.forEach($scope.Languages, function (language, languageKey) {
+      var params = {
+        screen: item.screen,
+        key: item.key,
+        languageCode: language.Code,
+        value: item[language.Code]
+      };
 
-    $http.post(url, params).success(function (data, status) {
-      result = data;
-    });
+      $http.post(url, params).success(function (data, status) {
+        result = data;
+      });
+    })
 
     return result;
   };
