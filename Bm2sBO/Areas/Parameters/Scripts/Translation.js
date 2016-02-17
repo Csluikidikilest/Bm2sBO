@@ -21,7 +21,7 @@
 
   $scope.edit = function (line) {
     $scope.Edition = line;
-    $('#modalEdition').modal();
+    $('#modalEdition').modal('show');
   };
 
   $scope.generateColumnsHeader = function () {
@@ -83,7 +83,7 @@
       });
     })
 
-    return result;
+    $('#modalEdition').modal('hide');
   };
 
   $scope.getValues();
