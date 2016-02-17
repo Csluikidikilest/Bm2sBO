@@ -7,13 +7,17 @@
       <div class="box-body">
         <div class="row">
           <div class="col-sm-6">
-            {{ShowText}}
-            <select data-ng-model="PageSize" data-ng-change="refreshPageSize()" integer data-ng-options="value for value in AvailablePagesSize"></select>
-            {{EntriesText}}
+            <div class="pull-left">
+              {{ShowText}}
+              <select data-ng-model="PageSize" data-ng-change="refreshPageSize()" integer data-ng-options="value for value in AvailablePagesSize"></select>
+              {{EntriesText}}
+            </div>
           </div>
-          <div data-ng-class="col-sm-6">
-            {{SearchText}}
-            <input type="text" data-ng-model="SearchFilter" />
+          <div class="col-sm-6">
+            <div class="pull-right">
+              {{SearchText}}
+              <input type="text" data-ng-model="SearchFilter" />
+            </div>
           </div>
         </div>
         <div class="row">
@@ -48,12 +52,16 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-5">
-          {{ShowingText}} {{FirstItem}} {{ToText}} {{LastItem}} {{OfText}} {{ItemsCount}} {{EntriesText}}
-        </div>
-        <div class="col-sm-7">
-          <pagination />
+      <div class="box-footer">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="pull-left">
+              {{ShowingText}} {{FirstItem}} {{ToText}} {{LastItem}} {{OfText}} {{ItemsCount}} {{EntriesText}}
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <pagination />
+          </div>
         </div>
       </div>
     </div>

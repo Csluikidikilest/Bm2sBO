@@ -38,7 +38,7 @@ namespace Bm2sBO.Areas.Parameters.Controllers
       language.Request.Code = languageCode;
       language.Get();
 
-      TranslationUtils.Set(screen, key, language.Response.Languages.FirstOrDefault(), value);
+      return TranslationUtils.Set(screen, key, language.Response.Languages.FirstOrDefault(), value);
     }
   }
 }
