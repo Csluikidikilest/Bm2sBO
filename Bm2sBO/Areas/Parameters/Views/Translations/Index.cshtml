@@ -18,12 +18,12 @@
   columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": '', "Required": false});
 
   var title = '@Html.TranslationFor("listtranslations", "title", "Translations")';
-  var showText = '@Html.TranslationFor("listtranslations", "showtext", "Show")';
-  var entriesText = '@Html.TranslationFor("listtranslations", "entriestext", "entries")';
-  var searchText = '@Html.TranslationFor("listtranslations", "searchtext", "Search")';
-  var showingText = '@Html.TranslationFor("listtranslations", "showingtext", "Showing")';
-  var toText = '@Html.TranslationFor("listtranslations", "totext", "to")';
-  var ofText = '@Html.TranslationFor("listtranslations", "oftext", "of")';
+  var showText = '@Html.TranslationFor("list", "showtext", "Show")';
+  var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
+  var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';
+  var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
+  var toText = '@Html.TranslationFor("list", "totext", "to")';
+  var ofText = '@Html.TranslationFor("list", "oftext", "of")';
 
   var canEdit = @UserUtils.CanEditTranslations.ToString().ToLower();
 </script>

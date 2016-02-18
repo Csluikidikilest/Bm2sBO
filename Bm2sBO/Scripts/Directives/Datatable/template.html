@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <div class="pull-left">
               {{ShowText}}
-              <select data-ng-model="PageSize" data-ng-change="refreshPageSize()" integer data-ng-options="value for value in AvailablePagesSize"></select>
+              <select data-ng-model="PageSize" data-ng-change="jumpToPage(0)" integer data-ng-options="value for value in AvailablePagesSize"></select>
               {{EntriesText}}
             </div>
           </div>
@@ -36,6 +36,11 @@
                       &nbsp;
                     </div>
                   </th>
+                  <th data-ng-show="CanDelete">
+                    <div>
+                      &nbsp;
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -45,6 +50,9 @@
                   </td>
                   <th data-ng-show="CanEdit">
                     <a href="#" data-ng-click="edit(item)"><i class="fa fa-pencil" /></a>
+                  </th>
+                  <th data-ng-show="CanDelete">
+                    <a href="#" data-ng-click="delete(item)"><i class="fa fa-trash" /></a>
                   </th>
                 </tr>
               </tbody>

@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using Bm2s.Poco.Common.Article;
 using Bm2sBO.Areas.Articles.Models;
 
 namespace Bm2sBO.Areas.Articles.Controllers
@@ -10,14 +12,26 @@ namespace Bm2sBO.Areas.Articles.Controllers
       return View(new ArticlesModel());
     }
 
-    public ActionResult Edit(int articleId)
+    [HttpPost]
+    public int SetValue(Article article)
     {
-      return View(new ArticlesModel(articleId));
+      Bm2s.Connectivity.Common.Article.Article connect = new Bm2s.Connectivity.Common.Article.Article();
+      connect.Request.Article = article;
+      connect.Post();
+
+      return connect.Request.Article.Id;
     }
 
-    public ActionResult Delete(int articleId)
+    [HttpPost]
+    public int DeleteValue(Article article)
     {
-      return View(new ArticlesModel(articleId));
+      article.EndingDate = DateTime.Now;
+
+      Bm2s.Connectivity.Common.Article.Article connect = new Bm2s.Connectivity.Common.Article.Article();
+      connect.Request.Article = article;
+      connect.Post();
+
+      return connect.Request.Article.Id;
     }
   }
 }

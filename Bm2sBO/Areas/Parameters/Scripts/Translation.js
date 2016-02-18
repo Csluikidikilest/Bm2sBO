@@ -9,6 +9,7 @@
   $scope.SmallStep = 1;
 
   $scope.CanCreate = false;
+  $scope.CanDelete = false;
   $scope.CanEdit = canEdit;
 
   $scope.EntriesText = entriesText;
@@ -66,7 +67,7 @@
     for (i = 1; i <= $scope.PagesCount - 2; i++) {
       $scope.PagesList.push(i);
     };
-  }
+  };
 
   $scope.setValue = function (item) {
     var url = "/Translations/SetValue";

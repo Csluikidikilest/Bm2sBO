@@ -10,23 +10,11 @@ namespace Bm2sBO.Areas.Articles.Models
       this.Get();
     }
 
-    public ArticlesModel(int id)
-    {
-      this.Article = new Article();
-      this.Article.Request.Ids.Add(id);
-      this.Get();
-    }
-
     public Article Article { get; set; }
 
     public void Get()
     {
       this.Article.Get();
-    }
-
-    public void Post()
-    {
-      this.Article.Post();
     }
   }
 }
