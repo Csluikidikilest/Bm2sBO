@@ -83,8 +83,6 @@
         result = data;
       });
     })
-
-    $('#modalEdition').modal('hide');
   };
 
   $scope.getValues();

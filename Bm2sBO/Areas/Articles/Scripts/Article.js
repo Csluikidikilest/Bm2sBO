@@ -3,7 +3,6 @@
   $scope.AlwaysShowFirstLastButtons = true;
   $scope.AvailablePagesSize = [20, 50, 100, 200];
   $scope.ColumnsHeader = columnsHeader;
-  $scope.DataSource = datasource.Articles;
   $scope.LargeStep = 3;
   $scope.PageSize = 20;
   $scope.Interval = 2;
@@ -24,6 +23,18 @@
   $scope.edit = function (line) {
     $scope.Edition = line;
     $('#modalEdition').modal('show');
+  };
+
+  $scope.getValues = function () {
+    var url = "/Articles/Articles/GetValues";
+    var params = {
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.DataSource = data;
+      $scope.ItemsCount = $scope.DataSource.length;
+      $scope.jumpToPage(0);
+    });
   };
 
   $scope.jumpToPage = function (currentPage) {
@@ -50,8 +61,6 @@
     $http.post(url, params).success(function (data, status) {
       result = data;
     });
-
-    $('#modalEdition').modal('hide');
   };
 
   $scope.deleteValue = function (item) {
@@ -64,4 +73,6 @@
       result = data;
     });
   };
+
+  $scope.getValues();
 }]);

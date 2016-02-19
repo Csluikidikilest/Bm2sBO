@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using Bm2s.Poco.Common.Article;
 using Bm2sBO.Areas.Articles.Models;
+using Bm2sBO.Utils;
 
 namespace Bm2sBO.Areas.Articles.Controllers
 {
@@ -10,6 +12,14 @@ namespace Bm2sBO.Areas.Articles.Controllers
     public ActionResult Index()
     {
       return View(new ArticlesModel());
+    }
+
+    [HttpPost]
+    public HtmlString GetValues()
+    {
+      Bm2s.Connectivity.Common.Article.Article article = new Bm2s.Connectivity.Common.Article.Article();
+      article.Get();
+      return article.Response.ToHtmlJson();
     }
 
     [HttpPost]

@@ -10,54 +10,16 @@
   <datatable />
 </div>
 
-@*<table class="table table-striped table-condensed">
-  <thead>
-    <tr>
-      <th>@Html.TranslationLabelFor("listarticles", "code", "Code")</th>
-      <th>@Html.TranslationLabelFor("listarticles", "designation", "Designation")</th>
-      <th>@Html.TranslationLabelFor("listarticles", "date", "Date")</th>
-      <th>@Html.TranslationLabelFor("listarticles", "family", "Family")</th>
-      <th>@Html.TranslationLabelFor("listarticles", "subfamily", "Sub family")</th>
-      <th>@Html.TranslationLabelFor("listarticles", "brand", "Brand")</th>
-      <th>@Html.TranslationLabelFor("listarticles", "unit", "Unit")</th>
-      @if (UserUtils.CanEditArticles)
-      {
-        <th>@Html.TranslationLabelFor("listarticles", "edit", "Edit")</th>}
-      @if (UserUtils.CanDeleteArticles)
-      {
-        <th>@Html.TranslationLabelFor("listarticles", "delete", "Delete")</th>}
-    </tr>
-  </thead>
-  <tbody>
-    <tr data-ng-repeat="Article in Articles">
-      <td>{{Article.Code}}</td>
-      <td>{{Article.Designation}}</td>
-      <td>{{Article.StartingDate|ctime}}</td>
-      <td>{{Article.ArticleFamily.Designation}}</td>
-      <td>{{Article.ArticleSubFamily.Designation}}</td>
-      <td>{{Article.Brand.Name}}</td>
-      <td>{{Article.Unit.Name}}</td>
-      @if (UserUtils.CanEditArticles)
-      {
-        <td><a href="/Article/Edit?articleId={{Article.Id}}"><span class="fa fa-pencil" /></a></td>}
-      @if (UserUtils.CanDeleteArticles)
-      {
-        <td><a href="/Article/Delete?articleId={{Article.Id}}"><span class="fa fa-trash" /></a></td>}
-    </tr>
-  </tbody>
-</table>*@
-
 <script type="text/javascript">
-  var datasource = @Model.Article.Response.ToHtmlJson();
-
   var columnsHeader = [];
-  columnsHeader.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'Date', "Value": "@Html.TranslationFor("listarticles", "date", "Date")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'ArticleFamily[Designation]', "Value": "@Html.TranslationFor("listarticles", "family", "Family")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'ArticleSubfamily[Designation]', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'Brand[Name]', "Value": "@Html.TranslationFor("listarticles", "brand", "Brand")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'Unit.[Name]', "Value": "@Html.TranslationFor("listarticles", "unit", "Unit")", "Editable": false, "Type": '', "Required": false});
+  //columnsHeader.push({"Key": 'Id', "Value": "@Html.TranslationFor("listarticles", "id", "Id")", "Editable": false, "Type": '', "Required": false});
+  columnsHeader.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")", "Editable": true, "Type": '', "Required": false});
+  columnsHeader.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")", "Editable": true, "Type": '', "Required": false});
+  columnsHeader.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticles", "date", "Date")", "Editable": false, "Type": 'Date', "Required": false});
+  columnsHeader.push({"Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "family", "Family")", "Editable": true, "Type": 'ArticleFamily', "Required": false});
+  columnsHeader.push({"Key": 'ArticleSubFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")", "Editable": true, "Type": 'ArticleSubFamily', "Required": false});
+  columnsHeader.push({"Key": 'Brand.Name', "Value": "@Html.TranslationFor("listarticles", "brand", "Brand")", "Editable": true, "Type": 'Brand', "Required": false});
+  columnsHeader.push({"Key": 'Unit.Name', "Value": "@Html.TranslationFor("listarticles", "unit", "Unit")", "Editable": true, "Type": 'Unit', "Required": false});
 
   var title = '@Html.TranslationFor("listarticles", "title", "Translations")';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';

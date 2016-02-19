@@ -46,7 +46,7 @@
               <tbody>
                 <tr data-ng-repeat="item in DataSource | startFrom:CurrentPage*PageSize | limitTo:PageSize | filter:SearchFilter">
                   <td data-ng-repeat="ColumnHeader in ColumnsHeader">
-                    {{item[ColumnHeader.Key]}}
+                    {{item | getValue: ColumnHeader}}
                   </td>
                   <th data-ng-show="CanEdit">
                     <a href="#" data-ng-click="edit(item)"><i class="fa fa-pencil" /></a>

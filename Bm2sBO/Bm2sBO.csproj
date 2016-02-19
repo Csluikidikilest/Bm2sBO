@@ -247,9 +247,11 @@
     <Content Include="Scripts\Directives\Datatable\template.html" />
     <Content Include="Scripts\Directives\Edition\edition.js" />
     <Content Include="Scripts\Directives\Edition\template.html" />
+    <Content Include="Scripts\Directives\InputFormat\inputFormat.js" />
     <Content Include="Scripts\Directives\Pagination\template.html" />
     <Content Include="Scripts\Directives\Pagination\pagination.js" />
     <Content Include="Scripts\Filters\ctime.js" />
+    <Content Include="Scripts\Filters\getValue.js" />
     <Content Include="Scripts\Filters\startFrom.js" />
     <Content Include="Scripts\Lib\adminlte.js" />
     <Content Include="Scripts\Lib\angular.js" />
