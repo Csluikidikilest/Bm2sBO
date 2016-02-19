@@ -17,54 +17,54 @@
         </li>}
       @if (UserUtils.CanListArticles || UserUtils.CanListFamilies || UserUtils.CanListSubFamilies || UserUtils.CanListBrands || UserUtils.CanListNomenclatures || UserUtils.CanListPrices || UserUtils.CanListSubscriptions)
       {
-        <li class="treeview">
+        <li class="treeview@(ViewBag.Section == "Articles" ? " active" : "")">
           <a href="#">
             <i class="fa fa-product-hunt"></i> <span>@Html.TranslationLabelFor("menu", "articles", "Articles")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             @if (UserUtils.CanListArticles)
             {
-              <li><a href="/Articles/Articles"><i class="fa fa-search"></i> @Html.TranslationLabelFor("menu", "articles", "Articles")</a></li>}
+              <li class="@(ViewBag.Page == "Articles" ? "active" : "")"><a href="/Articles/Articles"><i class="fa fa-search"></i> @Html.TranslationLabelFor("menu", "articles", "Articles")</a></li>}
             @if (UserUtils.CanListFamilies)
             {
-              <li><a href="/Articles/Families"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "families", "Families")</a></li>}
+              <li class="@(ViewBag.Page == "Families" ? "active" : "")"><a href="/Articles/Families"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "families", "Families")</a></li>}
             @if (UserUtils.CanListSubFamilies)
             {
-              <li><a href="/Articles/SubFamilies"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "subfamilies", "SubFamilies")</a></li>}
+              <li class="@(ViewBag.Page == "SubFamilies" ? "active" : "")"><a href="/Articles/SubFamilies"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "subfamilies", "SubFamilies")</a></li>}
             @if (UserUtils.CanListBrands)
             {
-              <li><a href="/Articles/Brand"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "brand", "Brand")</a></li>}
+              <li class="@(ViewBag.Page == "Brand" ? "active" : "")"><a href="/Articles/Brand"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "brand", "Brand")</a></li>}
             @if (UserUtils.CanListNomenclatures)
             {
-              <li><a href="/Articles/Nomenclature"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "nomenclature", "Nomenclature")</a></li>}
+              <li class="@(ViewBag.Page == "Nomenclature" ? "active" : "")"><a href="/Articles/Nomenclature"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "nomenclature", "Nomenclature")</a></li>}
             @if (UserUtils.CanListPrices)
             {
-              <li><a href="/Articles/Prices"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "prices", "Prices")</a></li>}
+              <li class="@(ViewBag.Page == "Prices" ? "active" : "")"><a href="/Articles/Prices"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "prices", "Prices")</a></li>}
             @if (UserUtils.CanListSubscriptions)
             {
-              <li><a href="/Articles/Subscriptions"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "subscriptions", "Subscriptions")</a></li>}
+              <li class="@(ViewBag.Page == "Subscriptions" ? "active" : "")"><a href="/Articles/Subscriptions"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "subscriptions", "Subscriptions")</a></li>}
           </ul>
         </li>}
       @if (UserUtils.CanListPartners)
       {
-        <li class="treeview">
+        <li class="treeview@(ViewBag.Section == "Partners" ? " active" : "")">
           <a href="#">
             <i class="fa fa-user-secret"></i> <span>@Html.TranslationLabelFor("menu", "partners", "Partners")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/Partners/Partners"><i class="fa fa-user-secret"></i> @Html.TranslationLabelFor("menu", "partners", "Partners")</a></li>
+            <li class="@(ViewBag.Page == "Partners" ? "active" : "")"><a href="/Partners/Partners"><i class="fa fa-user-secret"></i> @Html.TranslationLabelFor("menu", "partners", "Partners")</a></li>
           </ul>
         </li>}
       @if (UserUtils.CanListSales || UserUtils.CanListPurchases)
       {
-        <li class="treeview">
+        <li class="treeview@(ViewBag.Section == "Trades" ? " active" : "")">
           <a href="#">
             <i class="fa fa-money"></i> <span>@Html.TranslationLabelFor("menu", "trades", "Trades")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             @if (UserUtils.CanListSales)
             {
-              <li>
+              <li class="@(ViewBag.Page == "Sales" ? "active" : "")">
                 <a href="/Trades/Sales">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-shopping-cart"></i>
@@ -75,7 +75,7 @@
               </li>}
             @if (UserUtils.CanListPurchases)
             {
-              <li>
+              <li class="@(ViewBag.Page == "Purchases" ? "active" : "")">
                 <a href="/Trades/Purchases">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-caret-right"></i>
@@ -88,35 +88,35 @@
         </li>}
       @if (UserUtils.CanListGroups || UserUtils.CanListUsers || UserUtils.CanListModules)
       {
-        <li class="treeview">
+        <li class="treeview@(ViewBag.Section == "Users" ? " active" : "")">
           <a href="#">
             <i class="fa fa-users"></i> <span>@Html.TranslationLabelFor("menu", "users", "Users")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             @if (UserUtils.CanListGroups)
             {
-              <li><a href="/Users/Groups"><i class="fa fa-users"></i> @Html.TranslationLabelFor("menu", "groups", "Groups")</a></li>}
+              <li class="@(ViewBag.Page == "Groups" ? "active" : "")"><a href="/Users/Groups"><i class="fa fa-users"></i> @Html.TranslationLabelFor("menu", "groups", "Groups")</a></li>}
             @if (UserUtils.CanListUsers)
             {
-              <li><a href="/Users/Users"><i class="fa fa-user"></i> @Html.TranslationLabelFor("menu", "users", "Users")</a></li>}
+              <li class="@(ViewBag.Page == "Users" ? "active" : "")"><a href="/Users/Users"><i class="fa fa-user"></i> @Html.TranslationLabelFor("menu", "users", "Users")</a></li>}
             @if (UserUtils.CanListModules)
             {
-              <li><a href="/Users/Modules"><i class="fa fa-desktop"></i> @Html.TranslationLabelFor("menu", "modules", "Modules")</a></li>}
+              <li class="@(ViewBag.Page == "Modules" ? "active" : "")"><a href="/Users/Modules"><i class="fa fa-desktop"></i> @Html.TranslationLabelFor("menu", "modules", "Modules")</a></li>}
           </ul>
         </li>}
       @if (UserUtils.CanListParameters || UserUtils.CanListTranslations)
       {
-        <li class="treeview">
+        <li class="treeview@(ViewBag.Section == "Parameters" ? " active" : "")">
           <a href="#">
             <i class="fa fa-cog"></i> <span>@Html.TranslationLabelFor("menu", "parameters", "Parameters")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             @if (UserUtils.CanListParameters)
             {
-              <li><a href="/Parameters/Parameters"><i class="fa fa-cog"></i> @Html.TranslationLabelFor("menu", "parameters", "Parameters")</a></li>}
+              <li class="@(ViewBag.Page == "Parameters" ? "active" : "")"><a href="/Parameters/Parameters"><i class="fa fa-cog"></i> @Html.TranslationLabelFor("menu", "parameters", "Parameters")</a></li>}
             @if (UserUtils.CanListTranslations)
             {
-              <li><a href="/Parameters/Translations"><i class="fa fa-flag"></i> @Html.TranslationLabelFor("menu", "translations", "Translations")</a></li>}
+              <li class="@(ViewBag.Page == "Translations" ? "active" : "")"><a href="/Parameters/Translations"><i class="fa fa-flag"></i> @Html.TranslationLabelFor("menu", "translations", "Translations")</a></li>}
           </ul>
         </li>}
     </ul>

@@ -3,25 +3,103 @@
 @using Bm2sBO.Utils;
 
 @{
-  ViewBag.Title = "Articles";
+  ViewBag.Title = @Html.TranslationFor("listarticles", "title", "Articles");
+  ViewBag.Page = "Articles";
+  ViewBag.Section = "Articles";
 }
 
-<div class="content" data-ng-controller="Article">
-  <datatable />
+<div data-ng-controller="Article">
+  <section class="content">
+    <datatable />
+  </section>
+
+  <div id="modalEdition" class="modal fade" tabindex="-1" role="dialog">
+    <form data-ng-submit="setValue(Edition)">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{Title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "code", "Code")</label>
+                <div class="col-xs-9">
+                  <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "designation", "Designation")</label>
+                <div class="col-xs-9">
+                  <input name="editionDesignation" type="text" class="form-control" data-ng-model="Edition.Designation" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "date", "Date")</label>
+                <div class="col-xs-9">
+                  <input name="editionDate" type="text" class="form-control" data-ng-model="Edition.Date" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "family", "Family")</label>
+                <div class="col-xs-9">
+                  <input name="editionFamily" type="text" class="form-control" data-ng-model="Edition.ArticleFamily.Id" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "subfamily", "Sub family")</label>
+                <div class="col-xs-9">
+                  <input name="editionSubFamily" type="text" class="form-control" data-ng-model="Edition.ArticleSubFamily.Id" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "brand", "Brand")</label>
+                <div class="col-xs-9">
+                  <input name="editionBrand" type="text" class="form-control" data-ng-model="Edition.Brand.Id" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "unit", "Unit")</label>
+                <div class="col-xs-9">
+                  <input name="editionUnit" type="text" class="form-control" data-ng-model="Edition.Unit.Id" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group pull-right">
+              <div class="input-group">
+                <button class="btn btn-default" data-ng-click="setValue(Edition)" data-dismiss="modal" tabindex="0">
+                  <i class="fa fa-check"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group pull-left">
+              <button class="btn btn-default" data-dismiss="modal" tabindex="0">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <script type="text/javascript">
-  var columnsHeader = [];
-  //columnsHeader.push({"Key": 'Id', "Value": "@Html.TranslationFor("listarticles", "id", "Id")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")", "Editable": true, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")", "Editable": true, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticles", "date", "Date")", "Editable": false, "Type": 'Date', "Required": false});
-  columnsHeader.push({"Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "family", "Family")", "Editable": true, "Type": 'ArticleFamily', "Required": false});
-  columnsHeader.push({"Key": 'ArticleSubFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")", "Editable": true, "Type": 'ArticleSubFamily', "Required": false});
-  columnsHeader.push({"Key": 'Brand.Name', "Value": "@Html.TranslationFor("listarticles", "brand", "Brand")", "Editable": true, "Type": 'Brand', "Required": false});
-  columnsHeader.push({"Key": 'Unit.Name', "Value": "@Html.TranslationFor("listarticles", "unit", "Unit")", "Editable": true, "Type": 'Unit', "Required": false});
+  var dataSource = @Model.Article.Response.ToHtmlJson();
 
-  var title = '@Html.TranslationFor("listarticles", "title", "Translations")';
+  var columnsHeader = [];
+  columnsHeader.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")"});
+  columnsHeader.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")"});
+  columnsHeader.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticles", "date", "Date")"});
+  columnsHeader.push({"Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "family", "Family")"});
+  columnsHeader.push({"Key": 'ArticleSubFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")"});
+  columnsHeader.push({"Key": 'Brand.Name', "Value": "@Html.TranslationFor("listarticles", "brand", "Brand")"});
+  columnsHeader.push({"Key": 'Unit.Name', "Value": "@Html.TranslationFor("listarticles", "unit", "Unit")"});
+
+  var title = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';
   var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
   var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';

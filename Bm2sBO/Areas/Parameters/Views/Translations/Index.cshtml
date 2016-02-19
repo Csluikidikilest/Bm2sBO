@@ -3,12 +3,54 @@
 @using Bm2sBO.Utils;
 
 @{
-  ViewBag.Title = "Translations";
+  ViewBag.Title = Html.TranslationFor("listtranslations", "title", "Translations");
+  ViewBag.Page = "Translations";
+  ViewBag.Section = "Parameters";
 }
 
-<section class="content" data-ng-controller="Translation">
-  <datatable />
-</section>
+<div data-ng-controller="Translation">
+  <section class="content">
+    <datatable />
+  </section>
+
+  <div id="modalEdition" class="modal fade" tabindex="-1" role="dialog">
+    <form data-ng-submit="setValue(Edition)">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{Title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group row" data-ng-repeat="ColumnHeader in ColumnsHeader">
+                <label class="col-xs-3 control-label text-right">{{ColumnHeader.Value}}</label>
+                <div class="col-xs-9">
+                  <input name="edition{{ColumnHeader.Key}}" type="{{ColumnHeader.Type}}" class="form-control" data-ng-model="Edition[ColumnHeader.Key]" data-ng-required="ColumnHeader.Required && ColumnHeader.Editable" data-ng-show="ColumnHeader.Editable" tabindex="0" />
+                  <label class="control-label" data-ng-show="!ColumnHeader.Editable">{{Edition | getValue: ColumnHeader}}</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group pull-right">
+              <div class="input-group">
+                <button class="btn btn-default" data-ng-click="setValue(Edition)" data-dismiss="modal" tabindex="0">
+                  <i class="fa fa-check"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group pull-left">
+              <button class="btn btn-default" data-dismiss="modal" tabindex="0">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
 <script type="text/javascript">
   var languages = @Model.Language.Response.ToHtmlJson();
@@ -17,7 +59,7 @@
   columnsHeader.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")", "Editable": false, "Type": '', "Required": false});
   columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": '', "Required": false});
 
-  var title = '@Html.TranslationFor("listtranslations", "title", "Translations")';
+  var title = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';
   var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
   var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';

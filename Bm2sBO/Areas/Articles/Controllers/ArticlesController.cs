@@ -15,14 +15,6 @@ namespace Bm2sBO.Areas.Articles.Controllers
     }
 
     [HttpPost]
-    public HtmlString GetValues()
-    {
-      Bm2s.Connectivity.Common.Article.Article article = new Bm2s.Connectivity.Common.Article.Article();
-      article.Get();
-      return article.Response.ToHtmlJson();
-    }
-
-    [HttpPost]
     public int SetValue(Article article)
     {
       Bm2s.Connectivity.Common.Article.Article connect = new Bm2s.Connectivity.Common.Article.Article();

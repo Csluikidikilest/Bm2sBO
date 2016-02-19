@@ -8,6 +8,8 @@
   $scope.Interval = 2;
   $scope.SmallStep = 1;
 
+  $scope.DataSource = dataSource.Articles;
+  $scope.ItemsCount = $scope.DataSource.length;
   $scope.CanCreate = canCreate;
   $scope.CanDelete = canDelete;
   $scope.CanEdit = canEdit;
@@ -23,18 +25,6 @@
   $scope.edit = function (line) {
     $scope.Edition = line;
     $('#modalEdition').modal('show');
-  };
-
-  $scope.getValues = function () {
-    var url = "/Articles/Articles/GetValues";
-    var params = {
-    };
-
-    $http.post(url, params).success(function (data, status) {
-      $scope.DataSource = data;
-      $scope.ItemsCount = $scope.DataSource.length;
-      $scope.jumpToPage(0);
-    });
   };
 
   $scope.jumpToPage = function (currentPage) {
@@ -74,5 +64,5 @@
     });
   };
 
-  $scope.getValues();
+  $scope.jumpToPage(0);
 }]);
