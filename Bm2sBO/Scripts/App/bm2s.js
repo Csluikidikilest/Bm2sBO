@@ -1,6 +1,7 @@
-﻿var app = angular.module('bm2s', []);
+﻿var app = angular.module('bm2s', ['ngStorage']);
 
-var regexIso8601 = /^(\d{4}|\+\d{6})(?:-(\d{2})(?:-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2})\.(\d{1,})(Z|([\-+])(\d{2}):(\d{2}))?)?)?)?$/;
+//var regexIso8601 = /^(\d{4}|\+\d{6})(?:-(\d{2})(?:-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2})\.(\d{1,})(Z|([\-+])(\d{2}):(\d{2}))?)?)?)?$/;
+var regexIso8601 = /Date\((\d{13})[\+\-](\d{4})\)/;
 
 function convertDateStringsToDates(input) {
   // Ignore things that aren't objects.
@@ -13,7 +14,7 @@ function convertDateStringsToDates(input) {
     var match;
     // Check for string properties which look like dates.
     if (typeof value === "string" && (match = value.match(regexIso8601))) {
-      var milliseconds = Date.parse(match[0])
+      var milliseconds = parseInt(match[1]);
       if (!isNaN(milliseconds)) {
         input[key] = new Date(milliseconds);
       }
@@ -30,4 +31,3 @@ app.config(["$httpProvider", function ($httpProvider) {
     return responseData;
   });
 }]);
-

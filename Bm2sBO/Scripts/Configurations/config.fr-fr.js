@@ -1,4 +1,5 @@
 ﻿var configuration = {
   defaultLocale: 'fr-fr',
-  dateTimeOptions: { day: "numeric", month: "long", year: "numeric" }
+  dateFormat: 'dd/mm/yyyy',
+  dateTimeOptions: { weekday: "long", day: "numeric", month: "long", year: "numeric" }
 }

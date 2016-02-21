@@ -1,4 +1,4 @@
-﻿app.controller('Translation', ['$scope', '$http', '$compile', '$filter', function ($scope, $http, $compile, $filter) {
+﻿app.controller('Translation', ['$scope', '$http', '$compile', '$filter', '$localStorage', '$sessionStorage', function ($scope, $http, $compile, $filter, $localStorage, $sessionStorage) {
   $scope.Math = window.Math;
   $scope.Languages = languages.Languages;
   $scope.AlwaysShowFirstLastButtons = true;
@@ -21,8 +21,33 @@
   $scope.ToText = toText;
 
   $scope.edit = function (line) {
-    $scope.Edition = line;
+    $scope.Edition = angular.copy(line);
     $('#modalEdition').modal('show');
+  };
+
+  $scope.dismissValues = function () {
+  };
+
+  $scope.saveValues = function (line) {
+    var url = "/Translations/SetValue";
+    angular.forEach($scope.Languages, function (language, languageKey) {
+      var params = {
+        screen: line.screen,
+        key: line.key,
+        languageCode: language.Code,
+        value: line[language.Code]
+      };
+
+      $http.post(url, params).success(function (data, status) {
+        result = data;
+      });
+    })
+
+    var currentLine = $filter('find')($scope.DataSource, [{ Key: 'screen', Value: line.screen }, { Key: 'key', Value: line.key }]);
+
+    angular.forEach($scope.Languages, function (value, key) {
+      currentLine[value.Code] = line[value.Code];
+    });
   };
 
   $scope.generateColumnsHeader = function () {
@@ -67,22 +92,6 @@
     for (i = 1; i <= $scope.PagesCount - 2; i++) {
       $scope.PagesList.push(i);
     };
-  };
-
-  $scope.setValue = function (item) {
-    var url = "/Translations/SetValue";
-    angular.forEach($scope.Languages, function (language, languageKey) {
-      var params = {
-        screen: item.screen,
-        key: item.key,
-        languageCode: language.Code,
-        value: item[language.Code]
-      };
-
-      $http.post(url, params).success(function (data, status) {
-        result = data;
-      });
-    })
   };
 
   $scope.getValues();

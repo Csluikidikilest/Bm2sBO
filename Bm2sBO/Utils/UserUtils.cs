@@ -538,17 +538,26 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        User currentUser = (User)HttpContext.Current.Session[UserUtils.UserSessionKey];
+        User currentUser = null;
+        if (HttpContext.Current != null && HttpContext.Current.Session != null)
+        {
+          currentUser = (User)HttpContext.Current.Session[UserUtils.UserSessionKey];
+        }
+
         if (currentUser == null)
         {
           Bm2s.Connectivity.Common.User.User user = new Bm2s.Connectivity.Common.User.User();
           user.Request.IsAnonymous = true;
           user.Get();
           currentUser = user.Response.Users.First();
-          HttpContext.Current.Session[UserUtils.UserSessionKey] = currentUser;
+
+          if (HttpContext.Current != null && HttpContext.Current.Session != null)
+          {
+            HttpContext.Current.Session[UserUtils.UserSessionKey] = currentUser;
+          }
         }
 
-        return (User)currentUser;
+        return currentUser;
       }
     }
 
@@ -556,17 +565,34 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        List<UserGroup> currentUserGroups = (List<UserGroup>)HttpContext.Current.Session[UserUtils.UserGroupSessionKey];
+        List<UserGroup> currentUserGroups = null;
+        if (HttpContext.Current != null && HttpContext.Current.Session != null)
+        {
+          currentUserGroups = (List<UserGroup>)HttpContext.Current.Session[UserUtils.UserGroupSessionKey];
+        }
+
         if (currentUserGroups == null)
         {
           Bm2s.Connectivity.Common.User.UserGroup userGroup = new Bm2s.Connectivity.Common.User.UserGroup();
           userGroup.Request.UserId = UserUtils.CurrentUser.Id;
           userGroup.Get();
           currentUserGroups = userGroup.Response.UserGroups;
-          HttpContext.Current.Session[UserUtils.UserGroupSessionKey] = currentUserGroups;
+
+          if (HttpContext.Current != null && HttpContext.Current.Session != null)
+          {
+            HttpContext.Current.Session[UserUtils.UserGroupSessionKey] = currentUserGroups;
+          }
         }
 
-        return (List<UserGroup>)currentUserGroups;
+        return currentUserGroups;
+      }
+    }
+
+    public static string CurrentUserLanguageCode
+    {
+      get
+      {
+        return (UserUtils.CurrentUser != null ? UserUtils.CurrentUser.DefaultLanguage.Code : System.Globalization.CultureInfo.CurrentCulture.Name).ToLower();
       }
     }
 

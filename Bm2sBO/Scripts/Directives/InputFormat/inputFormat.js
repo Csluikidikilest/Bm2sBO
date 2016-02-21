@@ -1,6 +1,7 @@
-﻿app.directive('inputFormat', function () {
+﻿app.directive('inputDateFormat', function () {
   return {
     require: 'ngModel',
+    restrict: 'A',
     link: function (scope, element, attrs, ngModelController) {
       ngModelController.$parsers.push(function (data) {
         console.log(scope);

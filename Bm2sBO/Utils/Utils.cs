@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Web;
-using System.Web.Mvc;
-using Bm2s.Response;
+﻿using System.Web;
 using ServiceStack.Text;
 
 namespace Bm2sBO.Utils

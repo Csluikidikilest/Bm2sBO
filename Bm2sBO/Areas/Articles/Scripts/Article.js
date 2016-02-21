@@ -7,12 +7,16 @@
   $scope.PageSize = 20;
   $scope.Interval = 2;
   $scope.SmallStep = 1;
+  $scope.Configuration = configuration;
 
-  $scope.DataSource = dataSource.Articles;
-  $scope.ItemsCount = $scope.DataSource.length;
   $scope.CanCreate = canCreate;
   $scope.CanDelete = canDelete;
   $scope.CanEdit = canEdit;
+
+  $scope.SelectListBrands = selectListBrands;
+  $scope.SelectListFamilies = selectListFamilies;
+  $scope.SelectListSubFamilies = selectListSubFamilies;
+  $scope.SelectListUnits = selectListUnits;
 
   $scope.EntriesText = entriesText;
   $scope.OfText = ofText;
@@ -23,8 +27,62 @@
   $scope.ToText = toText;
 
   $scope.edit = function (line) {
-    $scope.Edition = line;
+    $scope.Edition = angular.copy(line);
     $('#modalEdition').modal('show');
+  };
+
+  $scope.findSubFamilies = function () {
+    var result = null;
+    if ($scope.Edition) {
+      result = $filter('find')($scope.SelectListSubFamilies.ArticleFamilies, [{ Key: 'FamilyId', Value: $scope.Edition.ArticleFamily.Id }]).ArticleSubFamilies;
+    }
+    return result;
+  }
+
+  $scope.dismissValues = function () {
+  };
+
+  $scope.saveValues = function (line) {
+    var url = "/Articles/Articles/SetValue";
+    var params = {
+      article: line
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      result = data;
+
+      var currentLine = $filter('find')($scope.DataSource, [{ Key: 'Id', Value: data.Id }]);
+      currentLine.Code = data.Code;
+      currentLine.Designation = data.Designation;
+      currentLine.StartingDate = data.StartingDate;
+      currentLine.ArticleFamily = data.ArticleFamily;
+      currentLine.ArticleSubFamily = data.ArticleSubFamily;
+      currentLine.Brand = data.Brand;
+      currentLine.Unit = data.Unit;
+    });
+  };
+
+  $scope.deleteValue = function (item) {
+    var url = "/Articles/Articles/DeleteValue";
+    var params = {
+      article: item
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      result = data;
+    });
+  };
+
+  $scope.getValues = function () {
+    var url = "/Articles/Articles/GetValues";
+    var params = {
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.DataSource = data;
+      $scope.ItemsCount = $scope.DataSource.length;
+      $scope.jumpToPage(0);
+    });
   };
 
   $scope.jumpToPage = function (currentPage) {
@@ -42,27 +100,5 @@
     };
   };
 
-  $scope.setValue = function (item) {
-    var url = "/Articles/SetValue";
-    var params = {
-      article: item
-    };
-
-    $http.post(url, params).success(function (data, status) {
-      result = data;
-    });
-  };
-
-  $scope.deleteValue = function (item) {
-    var url = "/Articles/DeleteValue";
-    var params = {
-      article: item
-    };
-
-    $http.post(url, params).success(function (data, status) {
-      result = data;
-    });
-  };
-
-  $scope.jumpToPage(0);
+  $scope.getValues();
 }]);

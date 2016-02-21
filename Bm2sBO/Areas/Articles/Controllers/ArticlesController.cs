@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bm2s.Poco.Common.Article;
@@ -15,13 +16,22 @@ namespace Bm2sBO.Areas.Articles.Controllers
     }
 
     [HttpPost]
-    public int SetValue(Article article)
+    public HtmlString GetValues()
+    {
+      Bm2s.Connectivity.Common.Article.Article connect = new Bm2s.Connectivity.Common.Article.Article();
+      connect.Get();
+
+      return connect.Response.Articles.ToHtmlJson();
+    }
+
+    [HttpPost]
+    public HtmlString SetValue(Article article)
     {
       Bm2s.Connectivity.Common.Article.Article connect = new Bm2s.Connectivity.Common.Article.Article();
       connect.Request.Article = article;
       connect.Post();
 
-      return connect.Request.Article.Id;
+      return connect.Response.Articles.FirstOrDefault().ToHtmlJson();
     }
 
     [HttpPost]

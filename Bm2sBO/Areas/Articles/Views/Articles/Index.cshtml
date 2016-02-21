@@ -14,11 +14,11 @@
   </section>
 
   <div id="modalEdition" class="modal fade" tabindex="-1" role="dialog">
-    <form data-ng-submit="setValue(Edition)">
+    <form data-ng-submit="saveValues(Edition)">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">{{Title}}</h4>
           </div>
           <div class="modal-body">
@@ -36,33 +36,34 @@
                 </div>
               </div>
               <div class="form-group row">
+                {{Edition.StartingDate | ctime}}
                 <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "date", "Date")</label>
                 <div class="col-xs-9">
-                  <input name="editionDate" type="text" class="form-control" data-ng-model="Edition.Date" data-ng-required="true" tabindex="0" />
+                  <input name="editionDate" type="text" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "family", "Family")</label>
                 <div class="col-xs-9">
-                  <input name="editionFamily" type="text" class="form-control" data-ng-model="Edition.ArticleFamily.Id" data-ng-required="true" tabindex="0" />
+                  <select name="editionFamily" type="text" class="form-control" data-ng-model="Edition.ArticleFamily.Id" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListFamilies.ArticleFamilies"></select>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "subfamily", "Sub family")</label>
                 <div class="col-xs-9">
-                  <input name="editionSubFamily" type="text" class="form-control" data-ng-model="Edition.ArticleSubFamily.Id" data-ng-required="true" tabindex="0" />
+                  <select name="editionSubFamily" type="text" class="form-control" data-ng-model="Edition.ArticleSubFamily.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in findSubFamilies()"></select>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "brand", "Brand")</label>
                 <div class="col-xs-9">
-                  <input name="editionBrand" type="text" class="form-control" data-ng-model="Edition.Brand.Id" data-ng-required="true" tabindex="0" />
+                  <select name="editionBrand" type="text" class="form-control" data-ng-model="Edition.Brand.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListBrands.Brands"></select>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "unit", "Unit")</label>
                 <div class="col-xs-9">
-                  <input name="editionUnit" type="text" class="form-control" data-ng-model="Edition.Unit.Id" data-ng-required="true" tabindex="0" />
+                  <select name="editionUnit" type="text" class="form-control" data-ng-model="Edition.Unit.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListUnits.Units"></select>
                 </div>
               </div>
             </form>
@@ -70,13 +71,13 @@
           <div class="modal-footer">
             <div class="form-group pull-right">
               <div class="input-group">
-                <button class="btn btn-default" data-ng-click="setValue(Edition)" data-dismiss="modal" tabindex="0">
+                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0">
                   <i class="fa fa-check"></i>
                 </button>
               </div>
             </div>
             <div class="form-group pull-left">
-              <button class="btn btn-default" data-dismiss="modal" tabindex="0">
+              <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
                 <i class="fa fa-times"></i>
               </button>
             </div>
@@ -90,14 +91,19 @@
 <script type="text/javascript">
   var dataSource = @Model.Article.Response.ToHtmlJson();
 
+  var selectListBrands = @SelectListUtils.SelectListBrand;
+  var selectListFamilies = @SelectListUtils.SelectListFamily;
+  var selectListSubFamilies = @SelectListUtils.SelectListSubFamily;
+  var selectListUnits = @SelectListUtils.SelectListUnit;
+
   var columnsHeader = [];
-  columnsHeader.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")"});
-  columnsHeader.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")"});
-  columnsHeader.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticles", "date", "Date")"});
-  columnsHeader.push({"Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "family", "Family")"});
-  columnsHeader.push({"Key": 'ArticleSubFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")"});
-  columnsHeader.push({"Key": 'Brand.Name', "Value": "@Html.TranslationFor("listarticles", "brand", "Brand")"});
-  columnsHeader.push({"Key": 'Unit.Name', "Value": "@Html.TranslationFor("listarticles", "unit", "Unit")"});
+  columnsHeader.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")", "Type" : "Text"});
+  columnsHeader.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")", "Type" : "Text"});
+  columnsHeader.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticles", "date", "Date")", "Type" : "Date"});
+  columnsHeader.push({"Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "family", "Family")", "Type" : "Text"});
+  columnsHeader.push({"Key": 'ArticleSubFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")", "Type" : "Text"});
+  columnsHeader.push({"Key": 'Brand.Name', "Value": "@Html.TranslationFor("listarticles", "brand", "Brand")", "Type" : "Text"});
+  columnsHeader.push({"Key": 'Unit.Name', "Value": "@Html.TranslationFor("listarticles", "unit", "Unit")", "Type" : "Text"});
 
   var title = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';
@@ -111,4 +117,7 @@
   var canDelete = @UserUtils.CanDeleteArticles.ToString().ToLower();
   var canEdit = @UserUtils.CanEditArticles.ToString().ToLower();
 
+  $(function () {
+    $('.datepicker').datepicker({ format: configuration.dateformat })
+  });
 </script>
