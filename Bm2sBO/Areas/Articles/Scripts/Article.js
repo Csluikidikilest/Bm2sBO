@@ -29,6 +29,9 @@
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
     $('#modalEdition').modal('show');
+    setTimeout(function () {
+      $('.datepicker').datepicker()
+    }, 1000);
   };
 
   $scope.findSubFamilies = function () {

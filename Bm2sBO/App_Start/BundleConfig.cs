@@ -9,15 +9,13 @@ namespace Bm2sBO
     // Pour plus d'informations sur le regroupement, visitez http://go.microsoft.com/fwlink/?LinkId=301862
     public static void RegisterBundles(BundleCollection bundles)
     {
-      bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/Lib/jquery.js", "~/Scripts/Lib/jquery.slimscroll.js"));
+      bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/Lib/jquery.js", "~/Scripts/Lib/jquery-ui.js", "~/Scripts/Lib/jquery.slimscroll.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/Lib/bootstrap.js"));
 
-      bundles.Add(new ScriptBundle("~/bundles/datepicker").Include("~/Scripts/Lib/bootstrap-datepicker.js"));
-
       bundles.Add(new ScriptBundle("~/bundles/adminlte").Include("~/Scripts/Lib/adminlte.js"));
 
-      bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/Lib/angular.js", "~/Scripts/Lib/ngStorage.js"));
+      bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/Lib/angular.js", "~/Scripts/Lib/angular-ui-date.js", "~/Scripts/Lib/ngStorage.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/chart").Include("~/Scripts/Lib/chart.js"));
 
@@ -31,7 +29,7 @@ namespace Bm2sBO
 
       bundles.Add(new ScriptBundle("~/bundles/configurations").Include("~/Scripts/Configurations/config." + UserUtils.CurrentUserLanguageCode.ToLower() + ".js"));
 
-      bundles.Add(new StyleBundle("~/Content/csslib").Include("~/Content/Bootstrap/bootstrap.min.css", "~/Content/Bootstrap/bootstrap-datepicker.css", "~/Content/FontAwesome/font-awesome.min.css", "~/Content/AdminLTE/AdminLTE.min.css", "~/Content/AdminLTE/skins/skin-blue.min.css"));
+      bundles.Add(new StyleBundle("~/Content/csslib").Include("~/Content/Bootstrap/bootstrap.min.css", "~/Content/jQueryUi/*.css", "~/Content/FontAwesome/font-awesome.min.css", "~/Content/AdminLTE/AdminLTE.min.css", "~/Content/AdminLTE/skins/skin-blue.min.css"));
 
       bundles.Add(new LessBundle("~/Content/lessbm2s").Include("~/Content/bm2s.less"));
     }
