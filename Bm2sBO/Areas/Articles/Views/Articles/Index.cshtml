@@ -1,18 +1,14 @@
-﻿﻿@model Bm2sBO.Areas.Articles.Models.ArticlesModel
-
+﻿@model Bm2sBO.Areas.Articles.Models.ArticlesModel
 @using Bm2sBO.Utils;
-
 @{
   ViewBag.Title = @Html.TranslationFor("listarticles", "title", "Articles");
   ViewBag.Page = "Articles";
   ViewBag.Section = "Articles";
 }
-
 <div data-ng-controller="Article">
   <section class="content">
     <datatable />
   </section>
-
   <div id="modalEdition" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
       <div class="modal-dialog">
@@ -36,10 +32,9 @@
                 </div>
               </div>
               <div class="form-group row">
-                {{Edition.StartingDate | ctime}}
                 <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listarticles", "date", "Date")</label>
                 <div class="col-xs-9">
-                  <input name="editionDate" type="text" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
+                  <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
                 </div>
               </div>
               <div class="form-group row">
@@ -87,7 +82,6 @@
     </form>
   </div>
 </div>
-
 <script type="text/javascript">
   var dataSource = @Model.Article.Response.ToHtmlJson();
 

@@ -1,13 +1,10 @@
 ﻿@model Bm2sBO.Areas.Parameters.Models.TranslationsModel
-
 @using Bm2sBO.Utils;
-
 @{
   ViewBag.Title = Html.TranslationFor("listtranslations", "title", "Translations");
   ViewBag.Page = "Translations";
   ViewBag.Section = "Parameters";
 }
-
 <div data-ng-controller="Translation">
   <section class="content">
     <datatable />

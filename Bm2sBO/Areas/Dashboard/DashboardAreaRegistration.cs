@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Bm2sBO.Areas.Articles
+namespace Bm2sBO.Areas.Dashboard
 {
-  public class ArticlesAreaRegistration : AreaRegistration
+  public class DashboardAreaRegistration : AreaRegistration
   {
     public override string AreaName
     {
       get
       {
-        return "Articles";
+        return "Dashboard";
       }
     }
 
     public override void RegisterArea(AreaRegistrationContext context)
     {
       context.MapRoute(
-          "Articles_default",
-          "Articles/{controller}/{action}/{id}",
+          "Dashboard_default",
+          "Dashboard/{controller}/{action}/{id}",
           new { action = "Index", id = UrlParameter.Optional }
       );
     }

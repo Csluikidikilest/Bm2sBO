@@ -186,7 +186,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Articles\ArticlesAreaRegistration.cs" />
     <Compile Include="Areas\Articles\Controllers\ArticlesController.cs" />
+    <Compile Include="Areas\Articles\Controllers\BrandsController.cs" />
+    <Compile Include="Areas\Articles\Controllers\SubFamiliesController.cs" />
+    <Compile Include="Areas\Articles\Controllers\FamiliesController.cs" />
     <Compile Include="Areas\Articles\Models\ArticlesModel.cs" />
+    <Compile Include="Areas\Articles\Models\BrandsModel.cs" />
+    <Compile Include="Areas\Articles\Models\SubFamiliesModel.cs" />
+    <Compile Include="Areas\Articles\Models\FamiliesModel.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\Dashboard\Models\DashboardModel.cs" />
     <Compile Include="Areas\Parameters\Controllers\TranslationsController.cs" />
     <Compile Include="Areas\Parameters\Models\TranslationsModel.cs" />
     <Compile Include="Areas\Parameters\ParametersAreaRegistration.cs" />
@@ -212,6 +221,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Articles\Scripts\article.js" />
+    <Content Include="Areas\Articles\Scripts\brand.js" />
+    <Content Include="Areas\Articles\Scripts\subfamily.js" />
+    <Content Include="Areas\Articles\Scripts\family.js" />
     <Content Include="Areas\Parameters\Scripts\translation.js" />
     <Content Include="Content\AdminLTE\AdminLTE.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black-light.min.css" />
@@ -240,6 +252,7 @@
     <Content Include="Content\jQueryUi\jquery-ui.css" />
     <Content Include="Content\jQueryUi\jquery-ui.structure.css" />
     <Content Include="Content\jQueryUi\jquery-ui.theme.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="ExternalLib\Bm2s.Connectivity.Common.dll" />
     <Content Include="ExternalLib\Bm2s.Connectivity.Utils.dll" />
     <Content Include="ExternalLib\Bm2s.Poco.Common.dll" />
@@ -330,6 +343,12 @@
     <Content Include="Areas\Trades\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Parameters\Views\Translations\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\web.config" />
+    <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\Families\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\SubFamilies\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\Brands\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

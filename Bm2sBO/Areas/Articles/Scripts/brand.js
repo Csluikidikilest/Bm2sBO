@@ -1,4 +1,4 @@
-﻿app.controller('Article', ['$scope', '$http', '$compile', '$filter', function ($scope, $http, $compile, $filter) {
+﻿app.controller('Brand', ['$scope', '$http', '$compile', '$filter', function ($scope, $http, $compile, $filter) {
   $scope.Math = window.Math;
   $scope.AlwaysShowFirstLastButtons = true;
   $scope.AvailablePagesSize = [20, 50, 100, 200];
@@ -13,11 +13,6 @@
   $scope.CanDelete = canDelete;
   $scope.CanEdit = canEdit;
 
-  $scope.SelectListBrands = selectListBrands;
-  $scope.SelectListFamilies = selectListFamilies;
-  $scope.SelectListSubFamilies = selectListSubFamilies;
-  $scope.SelectListUnits = selectListUnits;
-
   $scope.EntriesText = entriesText;
   $scope.OfText = ofText;
   $scope.SearchText = searchText;
@@ -31,21 +26,13 @@
     $('#modalEdition').modal('show');
   };
 
-  $scope.findSubFamilies = function () {
-    var result = null;
-    if ($scope.Edition) {
-      result = $filter('find')($scope.SelectListSubFamilies.ArticleFamilies, [{ Key: 'FamilyId', Value: $scope.Edition.ArticleFamily.Id }]).ArticleSubFamilies;
-    }
-    return result;
-  }
-
   $scope.dismissValues = function () {
   };
 
   $scope.saveValues = function (line) {
-    var url = "/Articles/Articles/SetValue";
+    var url = "/Articles/Brands/SetValue";
     var params = {
-      article: line
+      articleFamily: line
     };
 
     $http.post(url, params).success(function (data, status) {
@@ -53,19 +40,15 @@
 
       var currentLine = $filter('find')($scope.DataSource, [{ Key: 'Id', Value: data.Id }]);
       currentLine.Code = data.Code;
-      currentLine.Designation = data.Designation;
+      currentLine.Name = data.Name;
       currentLine.StartingDate = data.StartingDate;
-      currentLine.ArticleFamily = data.ArticleFamily;
-      currentLine.ArticleSubFamily = data.ArticleSubFamily;
-      currentLine.Brand = data.Brand;
-      currentLine.Unit = data.Unit;
     });
   };
 
   $scope.deleteValue = function (item) {
-    var url = "/Articles/Articles/DeleteValue";
+    var url = "/Articles/Brands/DeleteValue";
     var params = {
-      article: item
+      articleFamily: item
     };
 
     $http.post(url, params).success(function (data, status) {
@@ -74,7 +57,7 @@
   };
 
   $scope.getValues = function () {
-    var url = "/Articles/Articles/GetValues";
+    var url = "/Articles/Brands/GetValues";
     var params = {
     };
 

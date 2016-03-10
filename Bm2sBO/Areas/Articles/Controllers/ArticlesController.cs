@@ -31,6 +31,9 @@ namespace Bm2sBO.Areas.Articles.Controllers
       connect.Request.Article = article;
       connect.Post();
 
+      connect = new Bm2s.Connectivity.Common.Article.Article();
+      connect.Request.Ids.Add(article.Id);
+      connect.Get();
       return connect.Response.Articles.FirstOrDefault().ToHtmlJson();
     }
 

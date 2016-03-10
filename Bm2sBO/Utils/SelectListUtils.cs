@@ -174,5 +174,35 @@ namespace Bm2sBO.Utils
         return selectListUnit;
       }
     }
+
+    public static void ForceRefreshListBrand()
+    {
+      HttpContext.Current.Session[SelectListUtils.SelectListBrandSessionKey] = null;
+    }
+
+    public static void ForceRefreshListCurrency()
+    {
+      HttpContext.Current.Session[SelectListUtils.SelectListCurrencySessionKey] = null;
+    }
+
+    public static void ForceRefreshListFamily()
+    {
+      HttpContext.Current.Session[SelectListUtils.SelectListFamilySessionKey] = null;
+    }
+
+    public static void ForceRefreshListPeriod()
+    {
+      HttpContext.Current.Session[SelectListUtils.SelectListPeriodSessionKey] = null;
+    }
+
+    public static void ForceRefreshListSubFamily()
+    {
+      HttpContext.Current.Session[SelectListUtils.SelectListSubFamilySessionKey] = null;
+    }
+
+    public static void ForceRefreshListUnit()
+    {
+      HttpContext.Current.Session[SelectListUtils.SelectListUnitSessionKey] = null;
+    }
   }
 }
