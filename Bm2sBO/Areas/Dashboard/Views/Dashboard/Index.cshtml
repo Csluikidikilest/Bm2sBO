@@ -2,6 +2,10 @@
 
 @using Bm2sBO.Utils;
 
+<div class="col-md-6">
+  @{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }
+</div>
+
 @{
   ViewBag.Title = @Html.TranslationFor("dashboard", "title", "Dashboard");
   ViewBag.Page = "Dashboard";

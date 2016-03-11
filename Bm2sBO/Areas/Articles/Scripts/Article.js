@@ -23,12 +23,12 @@
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
   $scope.ShowText = showText;
-  $scope.Title = title;
+  $scope.Title = titleArticle;
   $scope.ToText = toText;
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
-    $('#modalEdition').modal('show');
+    $('#modalEditionArticle').modal('show');
   };
 
   $scope.findSubFamilies = function () {

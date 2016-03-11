@@ -23,7 +23,7 @@
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
-    $('#modalEdition').modal('show');
+    $('#modalEditionBrand').modal('show');
   };
 
   $scope.dismissValues = function () {

@@ -7,12 +7,12 @@
     <ul class="sidebar-menu">
       @if (UserUtils.CanViewDashboard)
       {
-        <li class="treeview">
+        <li class="treeview@(MenuUtils.Section == "Dashboard" ? " active" : "")">
           <a href="#">
             <i class="fa fa-tachometer"></i> <span>@Html.TranslationLabelFor("menu", "dashboard", "Dashboard")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/Dashboard/Dashboard"><i class="fa fa-tachometer"></i> @Html.TranslationLabelFor("menu", "dashboard", "Dashboard")</a></li>
+            <li class="@(MenuUtils.Page == "Dashboard" ? "active" : "")"><a href="/Dashboard/Dashboard"><i class="fa fa-tachometer"></i> @Html.TranslationLabelFor("menu", "dashboard", "Dashboard")</a></li>
           </ul>
         </li>}
       @if (UserUtils.CanListArticles || UserUtils.CanListFamilies || UserUtils.CanListSubFamilies || UserUtils.CanListBrands || UserUtils.CanListNomenclatures || UserUtils.CanListPrices || UserUtils.CanListSubscriptions)

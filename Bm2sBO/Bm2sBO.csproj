@@ -349,6 +349,7 @@
     <Content Include="Areas\Articles\Views\Families\Index.cshtml" />
     <Content Include="Areas\Articles\Views\SubFamilies\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\Articles\List.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />
