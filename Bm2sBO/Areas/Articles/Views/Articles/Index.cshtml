@@ -1,7 +1,8 @@
-﻿@using Bm2sBO.Utils;
-@{
+﻿@{
   ViewBag.Page = "Articles";
   ViewBag.Section = "Articles";
 }
 
-@{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }
+<section class="content">
+  @{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }
+</section>

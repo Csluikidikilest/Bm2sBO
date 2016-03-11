@@ -2,7 +2,7 @@
   $scope.Math = window.Math;
   $scope.AlwaysShowFirstLastButtons = true;
   $scope.AvailablePagesSize = [20, 50, 100, 200];
-  $scope.ColumnsHeader = columnsHeader;
+  $scope.ColumnsHeader = columnsHeaderSubFamily;
   $scope.LargeStep = 3;
   $scope.PageSize = 20;
   $scope.Interval = 2;
@@ -20,7 +20,7 @@
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
   $scope.ShowText = showText;
-  $scope.Title = title;
+  $scope.Title = titleSubFamily;
   $scope.ToText = toText;
 
   $scope.edit = function (line) {

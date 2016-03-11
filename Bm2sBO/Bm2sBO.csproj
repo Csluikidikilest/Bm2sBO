@@ -187,10 +187,14 @@
     <Compile Include="Areas\Articles\ArticlesAreaRegistration.cs" />
     <Compile Include="Areas\Articles\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Articles\Controllers\BrandsController.cs" />
+    <Compile Include="Areas\Articles\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Articles\Controllers\NomenclatureController.cs" />
     <Compile Include="Areas\Articles\Controllers\SubFamiliesController.cs" />
     <Compile Include="Areas\Articles\Controllers\FamiliesController.cs" />
     <Compile Include="Areas\Articles\Models\ArticlesModel.cs" />
     <Compile Include="Areas\Articles\Models\BrandsModel.cs" />
+    <Compile Include="Areas\Articles\Models\DashboardModel.cs" />
+    <Compile Include="Areas\Articles\Models\NomenclatureModel.cs" />
     <Compile Include="Areas\Articles\Models\SubFamiliesModel.cs" />
     <Compile Include="Areas\Articles\Models\FamiliesModel.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
@@ -350,6 +354,12 @@
     <Content Include="Areas\Articles\Views\SubFamilies\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Articles\List.cshtml" />
+    <Content Include="Areas\Articles\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\Brands\List.cshtml" />
+    <Content Include="Areas\Articles\Views\Families\List.cshtml" />
+    <Content Include="Areas\Articles\Views\SubFamilies\List.cshtml" />
+    <Content Include="Areas\Articles\Views\Nomenclature\List.cshtml" />
+    <Content Include="Areas\Articles\Views\Nomenclature\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

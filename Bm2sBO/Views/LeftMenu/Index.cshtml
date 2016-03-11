@@ -22,6 +22,7 @@
             <i class="fa fa-product-hunt"></i> <span>@Html.TranslationLabelFor("menu", "articles", "Articles")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
+            <li class="@(MenuUtils.Page == "Dashboard" ? "active" : "")"><a href="/Articles/Dashboard"><i class="fa fa-tachometer"></i> @Html.TranslationLabelFor("menu", "dashboard", "Dashboard")</a></li>
             @if (UserUtils.CanListArticles)
             {
               <li class="@(MenuUtils.Page == "Articles" ? "active" : "")"><a href="/Articles/Articles"><i class="fa fa-search"></i> @Html.TranslationLabelFor("menu", "articles", "Articles")</a></li>}
@@ -33,7 +34,7 @@
               <li class="@(MenuUtils.Page == "SubFamilies" ? "active" : "")"><a href="/Articles/SubFamilies"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "subfamilies", "SubFamilies")</a></li>}
             @if (UserUtils.CanListBrands)
             {
-              <li class="@(MenuUtils.Page == "Brand" ? "active" : "")"><a href="/Articles/Brands"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "brands", "Brands")</a></li>}
+              <li class="@(MenuUtils.Page == "Brands" ? "active" : "")"><a href="/Articles/Brands"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "brands", "Brands")</a></li>}
             @if (UserUtils.CanListNomenclatures)
             {
               <li class="@(MenuUtils.Page == "Nomenclature" ? "active" : "")"><a href="/Articles/Nomenclature"><i class="fa fa-plus-circle"></i> @Html.TranslationLabelFor("menu", "nomenclature", "Nomenclature")</a></li>}

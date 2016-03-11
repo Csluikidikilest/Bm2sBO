@@ -1,0 +1,77 @@
+﻿@model Bm2sBO.Areas.Articles.Models.BrandsModel
+@using Bm2sBO.Utils;
+@{
+  ViewBag.Title = @Html.TranslationFor("listbrands", "title", "Brands");
+}
+
+<div data-ng-controller="Brand">
+  <datatable />
+  <div id="modalEditionBrand" class="modal fade" tabindex="-1" role="dialog">
+    <form data-ng-submit="saveValues(Edition)">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{Title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listbrands", "code", "Code")</label>
+                <div class="col-xs-9">
+                  <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listbrands", "name", "Name")</label>
+                <div class="col-xs-9">
+                  <input name="editionName" type="text" class="form-control" data-ng-model="Edition.Name" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listbrands", "date", "Date")</label>
+                <div class="col-xs-9">
+                  <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group pull-right">
+              <div class="input-group">
+                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0">
+                  <i class="fa fa-check"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group pull-left">
+              <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  var dataSourceBrand = @Model.Brand.Response.ToHtmlJson();
+
+  var columnsHeaderBrand = [];
+  columnsHeaderBrand.push({"Key": 'Code', "Value": "@Html.TranslationFor("listbrands", "code", "Code")", "Type" : "Text"});
+  columnsHeaderBrand.push({"Key": 'Name', "Value": "@Html.TranslationFor("listbrands", "name", "Name")", "Type" : "Text"});
+  columnsHeaderBrand.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listbrands", "date", "Date")", "Type" : "Date"});
+
+  var titleBrand = '@ViewBag.Title';
+  var showText = '@Html.TranslationFor("list", "showtext", "Show")';
+  var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
+  var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';
+  var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
+  var toText = '@Html.TranslationFor("list", "totext", "to")';
+  var ofText = '@Html.TranslationFor("list", "oftext", "of")';
+
+  var canCreate = @UserUtils.CanCreateBrands.ToString().ToLower();
+  var canDelete = @UserUtils.CanDeleteBrands.ToString().ToLower();
+  var canEdit = @UserUtils.CanEditBrands.ToString().ToLower();
+</script>

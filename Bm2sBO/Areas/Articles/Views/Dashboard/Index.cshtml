@@ -1,0 +1,26 @@
+﻿@model Bm2sBO.Areas.Articles.Models.DashboardModel
+
+@using Bm2sBO.Utils;
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      @{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }
+      @{ Html.RenderAction("List", "Brands", new { area = "Articles" }); }
+    </div>
+    <div class="col-md-6">
+      @{ Html.RenderAction("List", "Families", new { area = "Articles" }); }
+      @{ Html.RenderAction("List", "SubFamilies", new { area = "Articles" }); }
+    </div>
+  </div>
+</section>
+@{
+  ViewBag.Title = @Html.TranslationFor("dashboard", "title", "Dashboard");
+  ViewBag.Page = "Dashboard";
+  ViewBag.Section = "Dashboard";
+}
+<script type="text/javascript">
+  var canCreate = false;
+  var canDelete = false;
+  var canEdit = false;
+</script>

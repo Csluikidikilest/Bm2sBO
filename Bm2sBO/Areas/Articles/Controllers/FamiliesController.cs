@@ -10,9 +10,16 @@ namespace Bm2sBO.Areas.Articles.Controllers
 {
   public class FamiliesController : Controller
   {
+    [HttpGet]
     public ActionResult Index()
     {
       return View(new FamiliesModel());
+    }
+
+    [HttpGet]
+    public PartialViewResult List()
+    {
+      return PartialView(new FamiliesModel());
     }
 
     [HttpPost]
