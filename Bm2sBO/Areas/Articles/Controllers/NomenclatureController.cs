@@ -25,10 +25,10 @@ namespace Bm2sBO.Areas.Articles.Controllers
     [HttpPost]
     public HtmlString GetValues()
     {
-      Bm2s.Connectivity.Common.Article.Article connect = new Bm2s.Connectivity.Common.Article.Article();
+      Bm2s.Connectivity.Common.Article.Nomenclature connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
       connect.Get();
 
-      return connect.Response.Articles.ToHtmlJson();
+      return connect.Response.Nomenclatures.ToHtmlJson();
     }
 
     [HttpPost]
@@ -41,6 +41,15 @@ namespace Bm2sBO.Areas.Articles.Controllers
       connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
       connect.Request.Ids.Add(nomenclature.Id);
       connect.Get();
+      return connect.Response.Nomenclatures.FirstOrDefault().ToHtmlJson();
+    }
+
+    [HttpPost]
+    public HtmlString DeleteValue(Nomenclature nomenclature)
+    {
+      Bm2s.Connectivity.Common.Article.Nomenclature connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
+      connect.Request.Nomenclature = nomenclature;
+      connect.Delete();
       return connect.Response.Nomenclatures.FirstOrDefault().ToHtmlJson();
     }
   }

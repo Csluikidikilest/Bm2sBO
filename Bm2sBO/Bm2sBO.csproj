@@ -200,7 +200,16 @@
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Dashboard\Models\DashboardModel.cs" />
+    <Compile Include="Areas\Parameters\Controllers\ActivitiesController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\AffairsController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\CountriesController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\InventoriesController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\LanguagesController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\ParametersController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\PeriodsController.cs" />
     <Compile Include="Areas\Parameters\Controllers\TranslationsController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\UnitsController.cs" />
+    <Compile Include="Areas\Parameters\Controllers\VatsController.cs" />
     <Compile Include="Areas\Parameters\Models\TranslationsModel.cs" />
     <Compile Include="Areas\Parameters\ParametersAreaRegistration.cs" />
     <Compile Include="Areas\Partners\PartnersAreaRegistration.cs" />
@@ -224,10 +233,13 @@
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Articles\Scripts\article.js" />
-    <Content Include="Areas\Articles\Scripts\brand.js" />
-    <Content Include="Areas\Articles\Scripts\subfamily.js" />
-    <Content Include="Areas\Articles\Scripts\family.js" />
+    <Content Include="Areas\Articles\Scripts\articleList.js" />
+    <Content Include="Areas\Articles\Scripts\articleSelection.js" />
+    <Content Include="Areas\Articles\Scripts\brandList.js" />
+    <Content Include="Areas\Articles\Scripts\nomenclatureList.js" />
+    <Content Include="Areas\Articles\Scripts\subfamilyList.js" />
+    <Content Include="Areas\Articles\Scripts\familyList.js" />
+    <Content Include="Areas\Dashboard\Scripts\dashboard.js" />
     <Content Include="Areas\Parameters\Scripts\translation.js" />
     <Content Include="Content\AdminLTE\AdminLTE.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black-light.min.css" />
@@ -256,7 +268,6 @@
     <Content Include="Content\jQueryUi\jquery-ui.css" />
     <Content Include="Content\jQueryUi\jquery-ui.structure.css" />
     <Content Include="Content\jQueryUi\jquery-ui.theme.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="ExternalLib\Bm2s.Connectivity.Common.dll" />
     <Content Include="ExternalLib\Bm2s.Connectivity.Utils.dll" />
     <Content Include="ExternalLib\Bm2s.Poco.Common.dll" />
@@ -277,8 +288,10 @@
     <Content Include="Scripts\Directives\Edition\edition.js" />
     <Content Include="Scripts\Directives\Edition\template.html" />
     <Content Include="Scripts\Directives\InputFormat\inputFormat.js" />
-    <Content Include="Scripts\Directives\Pagination\template.html" />
     <Content Include="Scripts\Directives\Pagination\pagination.js" />
+    <Content Include="Scripts\Directives\Pagination\template.html" />
+    <Content Include="Scripts\Directives\Selection\selection.js" />
+    <Content Include="Scripts\Directives\Selection\template.html" />
     <Content Include="Scripts\Filters\ctime.js" />
     <Content Include="Scripts\Filters\find.js" />
     <Content Include="Scripts\Filters\getValue.js" />
@@ -312,6 +325,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Parameters\Views\Activities\" />
+    <Folder Include="Areas\Parameters\Views\Affairs\" />
+    <Folder Include="Areas\Parameters\Views\Countries\" />
+    <Folder Include="Areas\Parameters\Views\Inventories\" />
+    <Folder Include="Areas\Parameters\Views\Languages\" />
+    <Folder Include="Areas\Parameters\Views\Parameters\" />
+    <Folder Include="Areas\Parameters\Views\Periods\" />
+    <Folder Include="Areas\Parameters\Views\Units\" />
+    <Folder Include="Areas\Parameters\Views\Vats\" />
     <Folder Include="Areas\Partners\Controllers\" />
     <Folder Include="Areas\Partners\Models\" />
     <Folder Include="Areas\Partners\Scripts\" />
@@ -360,6 +382,8 @@
     <Content Include="Areas\Articles\Views\SubFamilies\List.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclature\List.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclature\Index.cshtml" />
+    <Content Include="Areas\Parameters\Views\Translations\List.cshtml" />
+    <Content Include="Areas\Articles\Views\Articles\Select.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

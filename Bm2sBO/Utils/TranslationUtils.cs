@@ -39,7 +39,7 @@ namespace Bm2sBO.Utils
             Key = key,
             Language = language,
             Screen = screen,
-            Value = "[" + language.Code + "_" + defaultValue + "]"
+            Value = defaultValue
           };
           translation.Post();
         }
@@ -85,7 +85,6 @@ namespace Bm2sBO.Utils
 
     public static int Set(string screen, string key, Bm2s.Poco.Common.Parameter.Language language, string value)
     {
-
       Translation translation = new Translation();
       translation.Request.Application = TranslationUtils.ApplicationName;
       translation.Request.Screen = screen;

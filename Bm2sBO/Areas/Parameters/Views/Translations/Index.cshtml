@@ -7,7 +7,7 @@
 }
 <div data-ng-controller="Translation">
   <section class="content">
-    <datatable />
+    <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-line="CurrentLine" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="addItem()" data-on-delete-item="deleteItem()" data-on-edit-item="edit()" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText" />
   </section>
   <edition />
 </div>
@@ -15,11 +15,11 @@
 <script type="text/javascript">
   var languages = @Model.Language.Response.ToHtmlJson();
 
-  var columnsHeader = [];
-  columnsHeader.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")", "Editable": false, "Type": '', "Required": false});
-  columnsHeader.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": '', "Required": false});
+  var columnsHeaderTranslations = [];
+  columnsHeaderTranslations.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")", "Editable": false, "Type": '', "Required": false});
+  columnsHeaderTranslations.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": '', "Required": false});
 
-  var title = '@ViewBag.Title';
+  var titleTranslation = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';
   var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
   var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';

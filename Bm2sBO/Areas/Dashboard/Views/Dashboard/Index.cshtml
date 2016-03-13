@@ -2,8 +2,8 @@
 
 @using Bm2sBO.Utils;
 
-<div class="col-md-6">
-  @{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }
+<div data-ng-controller="Dashboard">
+  <selection data-source="DataSource" />
 </div>
 
 @{

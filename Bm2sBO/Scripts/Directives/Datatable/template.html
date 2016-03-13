@@ -2,20 +2,20 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3>{{Title}}</h3>
+        <h3>{{title}}</h3>
       </div>
       <div class="box-body">
         <div class="row">
           <div class="col-sm-6">
             <div class="pull-left">
-              {{ShowText}}
-              <select data-ng-model="PageSize" data-ng-change="jumpToPage(0)" integer data-ng-options="value for value in AvailablePagesSize"></select>
-              {{EntriesText}}
+              {{showText}}
+              <select data-ng-model="pageSize" data-ng-change="jumpToPage(0)" integer data-ng-options="value for value in availablePagesSize"></select>
+              {{entriesText}}
             </div>
           </div>
           <div class="col-sm-6">
             <div class="pull-right">
-              {{SearchText}}
+              {{searchText}}
               <input type="text" data-ng-model="SearchFilter" />
             </div>
           </div>
@@ -25,18 +25,18 @@
             <table class="table table-striped table-condensed">
               <thead>
                 <tr>
-                  <th data-ng-repeat="ColumnHeader in ColumnsHeader track by ColumnHeader.Key">
-                    {{ColumnHeader.Value}}
+                  <th data-ng-repeat="columnHeader in columnsHeader track by columnHeader.Key">
+                    {{columnHeader.Value}}
                   </th>
-                  <th data-ng-show="CanCreate || CanEdit">
-                    <div data-ng-show="CanCreate">
-                      <i class="fa fa-plus" />
+                  <th data-ng-show="canCreate || canEdit">
+                    <div data-ng-show="canCreate">
+                      <a href="#" data-ng-click="add()"><i class="fa fa-plus" /></a>
                     </div>
-                    <div data-ng-show="!CanCreate">
+                    <div data-ng-show="!canCreate">
                       &nbsp;
                     </div>
                   </th>
-                  <th data-ng-show="CanDelete">
+                  <th data-ng-show="canDelete">
                     <div>
                       &nbsp;
                     </div>
@@ -44,16 +44,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-ng-repeat="item in DataSource | filter:SearchFilter | startFrom:CurrentPage*PageSize | limitTo:PageSize">
-                  <td data-ng-repeat="ColumnHeader in ColumnsHeader">
-                    {{item | getValue: ColumnHeader}}
+                <tr data-ng-repeat="item in filteredSource = (source | filter:SearchFilter) | startFrom:CurrentPage*pageSize | limitTo:pageSize">
+                  <td data-ng-repeat="columnHeader in columnsHeader">
+                    {{item | getValue: columnHeader}}
                   </td>
-                  <th data-ng-show="CanEdit">
+                  <td data-ng-show="canEdit">
                     <a href="#" data-ng-click="edit(item)"><i class="fa fa-pencil" /></a>
-                  </th>
-                  <th data-ng-show="CanDelete">
+                  </td>
+                  <td data-ng-show="canDelete">
                     <a href="#" data-ng-click="delete(item)"><i class="fa fa-trash" /></a>
-                  </th>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -64,12 +64,17 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="pull-left">
-              {{ShowingText}} {{FirstItem}} {{ToText}} {{LastItem}} {{OfText}} {{ItemsCount}} {{EntriesText}}
+              {{showingText}} {{FirstItem}} {{toText}} {{LastItem}} {{ofText}} {{filteredSource.length}} {{entriesText}}
             </div>
           </div>
           <div class="col-sm-6">
-            <pagination />
+            <pagination data-always-show-first-last-buttons="alwaysShowFirstLastButtons" data-current-page="CurrentPage" data-interval="interval" data-items-count="filteredSource.length" data-large-step="largeStep" data-page-size="pageSize" data-small-step="smallStep" />
           </div>
+        </div>
+      </div>
+      <div class="loading-panel" data-ng-show="loading">
+        <div class="center">
+          <i class="fa fa-4x fa-circle-o-notch fa-spin" />
         </div>
       </div>
     </div>

@@ -4,8 +4,8 @@
   ViewBag.Title = @Html.TranslationFor("listbrands", "title", "Brands");
 }
 
-<div data-ng-controller="Brand">
-  <datatable />
+<div data-ng-controller="BrandList">
+  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-line="CurrentLine" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="addItem()" data-on-delete-item="deleteItem()" data-on-edit-item="edit()" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
   <div id="modalEditionBrand" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
       <div class="modal-dialog">
@@ -16,23 +16,17 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listbrands", "code", "Code")</label>
-                <div class="col-xs-9">
-                  <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
-                </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listbrands", "code", "Code")</label>
+                <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
               </div>
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listbrands", "name", "Name")</label>
-                <div class="col-xs-9">
-                  <input name="editionName" type="text" class="form-control" data-ng-model="Edition.Name" data-ng-required="true" tabindex="0" />
-                </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listbrands", "name", "Name")</label>
+                <input name="editionName" type="text" class="form-control" data-ng-model="Edition.Name" data-ng-required="true" tabindex="0" />
               </div>
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listbrands", "date", "Date")</label>
-                <div class="col-xs-9">
-                  <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
-                </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listbrands", "date", "Date")</label>
+                <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
               </div>
             </form>
           </div>
@@ -56,8 +50,6 @@
   </div>
 </div>
 <script type="text/javascript">
-  var dataSourceBrand = @Model.Brand.Response.ToHtmlJson();
-
   var columnsHeaderBrand = [];
   columnsHeaderBrand.push({"Key": 'Code', "Value": "@Html.TranslationFor("listbrands", "code", "Code")", "Type" : "Text"});
   columnsHeaderBrand.push({"Key": 'Name', "Value": "@Html.TranslationFor("listbrands", "name", "Name")", "Type" : "Text"});

@@ -4,11 +4,11 @@
   ViewBag.Title = @Html.TranslationFor("listnomenclatures", "title", "Nomenclatures");
 }
 
-<div data-ng-controller="Nomenclature">
-  <datatable />
+<div data-ng-controller="NomenclatureList">
+  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-line="CurrentLine" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="addItem()" data-on-delete-item="deleteItem()" data-on-edit-item="edit()" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
   <div id="modalEditionNomenclature" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -16,35 +16,21 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listnomenclatures", "code", "Code")</label>
-                <div class="col-xs-9">
-                  <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
-                </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "quantityparent", "Quantity Source")</label>
+                <input type="number" class="form-control" data-ng-model="Edition.QuantityParent" data-ng-required="true" tabindex="0" />
               </div>
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listnomenclatures", "designation", "Designation")</label>
-                <div class="col-xs-9">
-                  <input name="editionDesignation" type="text" class="form-control" data-ng-model="Edition.Designation" data-ng-required="true" tabindex="0" />
-                </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "articleparent", "Article Source")</label>
+                <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeArticle" data-columns-header="ColumnsHeaderArticle" data-current-page="CurrentPage" data-current-selection="CurrentSelectionArticleParent" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingArticle" data-of-text="OfText" data-page-size="PageSizeArticleParent" data-search-text="SearchText" data-selection-mode="SelectionModeArticle" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceArticle" data-to-text="ToText" />
               </div>
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listnomenclatures", "description", "Description")</label>
-                <div class="col-xs-9">
-                  <input name="editionDescription" type="text" class="form-control" data-ng-model="Edition.Description" data-ng-required="true" tabindex="0" />
-                </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "quantitychild", "Quantity Destination")</label>
+                <input type="number" class="form-control" data-ng-model="Edition.QuantityChild" data-ng-required="true" tabindex="0" />
               </div>
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listnomenclatures", "date", "Date")</label>
-                <div class="col-xs-9">
-                  <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-xs-3 control-label text-right">@Html.TranslationFor("listnomenclatures", "accountingentry", "Accounting Entry")</label>
-                <div class="col-xs-9">
-                  <input name="editionAccountingEntry" type="text" class="form-control" data-ng-model="Edition.AccountingEntry" data-ng-required="true" tabindex="0" />
-                </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "articlechild", "Article Destination")</label>
+                <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeArticle" data-columns-header="ColumnsHeaderArticle" data-current-page="CurrentPage" data-current-selection="CurrentSelectionArticleChild" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingArticle" data-of-text="OfText" data-page-size="PageSizeArticleChild" data-search-text="SearchText" data-selection-mode="SelectionModeArticle" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceArticle" data-to-text="ToText" />
               </div>
             </form>
           </div>
@@ -68,14 +54,19 @@
   </div>
 </div>
 <script type="text/javascript">
-  var dataSourceNomenclature = @Model.Nomenclature.Response.ToHtmlJson();
-
   var columnsHeaderNomenclature = [];
-  columnsHeaderNomenclature.push({"Key": 'Code', "Value": "@Html.TranslationFor("listnomenclatures", "code", "Code")", "Type" : "Text"});
-  columnsHeaderNomenclature.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listnomenclatures", "designation", "Designation")", "Type" : "Text"});
-  columnsHeaderNomenclature.push({"Key": 'Description', "Value": "@Html.TranslationFor("listnomenclatures", "description", "Description")", "Type" : "Text"});
-  columnsHeaderNomenclature.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listnomenclatures", "date", "Date")", "Type" : "Date"});
-  columnsHeaderNomenclature.push({"Key": 'AccountingEntry', "Value": "@Html.TranslationFor("listnomenclatures", "accountingentry", "Accounting Entry")", "Type" : "Text"});
+  columnsHeaderNomenclature.push({"Key": 'QuantityParent', "Value": "@Html.TranslationFor("listnomenclatures", "quantity", "Quantity")", "Type" : "Text"});
+  columnsHeaderNomenclature.push({"Key": 'ArticleParent.Unit.Name', "Value": "@Html.TranslationFor("listnomenclatures", "unit", "Unit")", "Type" : "Text"});
+  columnsHeaderNomenclature.push({"Key": 'ArticleParent.Designation', "Value": "@Html.TranslationFor("listnomenclatures", "articleparent", "Article Source")", "Type" : "Text"});
+  columnsHeaderNomenclature.push({"Key": 'QuantityChild', "Value": "@Html.TranslationFor("listnomenclatures", "quantity", "Quantity")", "Type" : "Text"});
+  columnsHeaderNomenclature.push({"Key": 'ArticleChild.Unit.Name', "Value": "@Html.TranslationFor("listnomenclatures", "unit", "Unit")", "Type" : "Text"});
+  columnsHeaderNomenclature.push({"Key": 'ArticleChild.Designation', "Value": "@Html.TranslationFor("listnomenclatures", "articlechild", "Article Destination")", "Type" : "Text"});
+
+  var columnsHeaderArticle = [];
+  columnsHeaderArticle.push({ "Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")", "Type": "Text" });
+  columnsHeaderArticle.push({ "Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")", "Type": "Text" });
+  columnsHeaderArticle.push({ "Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "family", "Family")", "Type": "Text" });
+  columnsHeaderArticle.push({ "Key": 'ArticleSubFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")", "Type": "Text" });
 
   var titleNomenclature = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';

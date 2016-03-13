@@ -1,20 +1,6 @@
-﻿app.directive('datatable', function () {
+﻿app.directive('selection', function () {
   function link($scope, element, attrs) {
     $scope.Math = window.Math;
-
-    $scope.add = function () {
-      $scope.onAddItem();
-    }
-
-    $scope.delete = function (item) {
-      $scope.currentLine = item;
-      $scope.onDeleteItem();
-    }
-
-    $scope.edit = function (item) {
-      $scope.currentLine = item;
-      $scope.onEditItem();
-    }
 
     $scope.$watch('CurrentPage', function (newValue, oldValue) {
       if (newValue != oldValue) {
@@ -41,6 +27,40 @@
       }
     }, true);
 
+    $scope.inputMode = function () {
+      if ($scope.selectionMode == 'multi') {
+        return 'checkbox';
+      }
+
+      if ($scope.selectionMode == 'single') {
+        return 'radio';
+      }
+    }
+
+    $scope.toggleSelection = function (item) {
+      if ($scope.selectionMode == 'multi') {
+        var index = $scope.currentSelection.indexOf(item);
+        if (index > -1) {
+          $scope.currentSelection.splice(index, 1);
+        } else {
+          $scope.currentSelection.push(item);
+        }
+      }
+
+      if ($scope.selectionMode == 'single') {
+        $scope.currentSelection = [];
+        $scope.currentSelection.push(item.Id);
+      }
+    }
+
+    $scope.containsSelection = function (item) {
+      if ($scope.currentSelection) {
+        return ($scope.currentSelection.indexOf(item) > -1);
+      } else {
+        return false;
+      }
+    }
+
     $scope.jumpToPage = function (currentPage) {
       $scope.CurrentPage = currentPage;
       $scope.refreshPageSize();
@@ -55,31 +75,25 @@
   return {
     restrict: 'AE',
     replace: 'true',
-    templateUrl: '/Scripts/Directives/Datatable/template.html',
+    templateUrl: '/Scripts/Directives/Selection/template.html',
     scope: {
       alwaysShowFirstLastButtons: '=',
       availablePagesSize: '=',
-      canCreate: '=',
-      canDelete: '=',
-      canEdit: '=',
       columnsHeader: '=',
-      currentLine: '=',
       currentPage: '=',
+      currentSelection: '=',
       entriesText: '=',
       interval: '=',
       largeStep: '=',
       loading: '=',
       ofText: '=',
-      onAddItem: '&',
-      onDeleteItem: '&',
-      onEditItem: '&',
       pageSize: '=',
       searchText: '=',
+      selectionMode: '=',
       showingText: '=',
       showText: '=',
       smallStep: '=',
       source: '=',
-      title: '=',
       toText: '=',
     },
     link: link,

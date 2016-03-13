@@ -1,23 +1,24 @@
 ﻿app.controller('Translation', ['$scope', '$http', '$compile', '$filter', '$localStorage', '$sessionStorage', function ($scope, $http, $compile, $filter, $localStorage, $sessionStorage) {
   $scope.Math = window.Math;
   $scope.Languages = languages.Languages;
+
   $scope.AlwaysShowFirstLastButtons = true;
   $scope.AvailablePagesSize = [20, 50, 100, 200];
-  $scope.LargeStep = 3;
-  $scope.PageSize = 20;
-  $scope.Interval = 2;
-  $scope.SmallStep = 1;
-
   $scope.CanCreate = false;
   $scope.CanDelete = false;
   $scope.CanEdit = canEdit;
-
+  $scope.CurrentPage = 0;
   $scope.EntriesText = entriesText;
+  $scope.Interval = 2;
+  $scope.LargeStep = 3;
+  $scope.Loading = false;
   $scope.OfText = ofText;
+  $scope.PageSize = 20;
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
   $scope.ShowText = showText;
-  $scope.Title = title;
+  $scope.SmallStep = 1;
+  $scope.Title = titleTranslation;
   $scope.ToText = toText;
 
   $scope.edit = function (line) {
@@ -51,13 +52,14 @@
   };
 
   $scope.generateColumnsHeader = function () {
-    $scope.ColumnsHeader = columnsHeader;
+    $scope.ColumnsHeader = columnsHeaderTranslations;
     angular.forEach($scope.Languages, function (value, key) {
       $scope.ColumnsHeader.push({ "Key": value.Code, "Value": value.Name, "Editable": true, Type: 'text', "Required": false });
     });
   };
 
   $scope.getValues = function () {
+    $scope.Loading = true;
     var url = "/Translations/GetValues";
     var result;
     var params = {
@@ -74,24 +76,9 @@
         });
         $scope.DataSource.push(object);
       });
-      $scope.ItemsCount = $scope.DataSource.length;
-      $scope.jumpToPage(0);
+    }).then(function () {
+      $scope.Loading = false;
     });
-  };
-
-  $scope.jumpToPage = function (currentPage) {
-    $scope.CurrentPage = currentPage;
-    $scope.refreshPageSize();
-  };
-
-  $scope.refreshPageSize = function () {
-    $scope.FirstItem = ($scope.CurrentPage * $scope.PageSize) + 1;
-    $scope.LastItem = Math.min(($scope.CurrentPage + 1) * $scope.PageSize, $scope.ItemsCount);
-    $scope.PagesCount = Math.ceil($scope.ItemsCount / $scope.PageSize);
-    $scope.PagesList = [];
-    for (i = 1; i <= $scope.PagesCount - 2; i++) {
-      $scope.PagesList.push(i);
-    };
   };
 
   $scope.getValues();

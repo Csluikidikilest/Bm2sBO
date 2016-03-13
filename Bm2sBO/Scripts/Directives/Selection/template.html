@@ -1,0 +1,59 @@
+﻿<div class="row">
+  <div class="col-xs-12">
+    <div class="col-sm-6">
+      <div class="pull-left">
+        {{showText}}
+        <select data-ng-model="pageSize" data-ng-change="jumpToPage(0)" integer data-ng-options="value for value in availablePagesSize"></select>
+        {{entriesText}}
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="pull-right">
+        {{searchText}}
+        <input type="text" data-ng-model="SearchFilter" />
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>
+            <div>
+              &nbsp;
+            </div>
+          </th>
+          <th data-ng-repeat="columnHeader in columnsHeader track by columnHeader.Key">
+            {{columnHeader.Value}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-ng-repeat="item in filteredSource = (source | filter:SearchFilter) | startFrom:CurrentPage*pageSize | limitTo:pageSize" data-ng-class="{success: containsSelection(item.Id)}" data-ng-click="toggleSelection(item.Id)" class="cursor-arrow">
+          <td>
+            {{inputMode}}
+            <input type="{{inputMode()}}" data-ng-checked="containsSelection(item.Id)" data-ng-click="toggleSelection(item.Id)" />
+          </td>
+          <td data-ng-repeat="columnHeader in columnsHeader">
+            {{item | getValue: columnHeader}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="pull-left">
+          {{showingText}} {{FirstItem}} {{toText}} {{LastItem}} {{ofText}} {{filteredSource.length}} {{entriesText}}
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <pagination data-always-show-first-last-buttons="alwaysShowFirstLastButtons" data-current-page="CurrentPage" data-interval="interval" data-items-count="filteredSource.length" data-large-step="largeStep" data-page-size="pageSize" data-small-step="smallStep" />
+      </div>
+    </div>
+  </div>
+  <div class="loading-panel" data-ng-show="loading">
+    <div class="center">
+      <i class="fa fa-4x fa-circle-o-notch fa-spin" />
+    </div>
+  </div>
+</div>
