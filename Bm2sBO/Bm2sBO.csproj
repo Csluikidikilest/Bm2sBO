@@ -227,6 +227,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AuthorizationUtils.cs" />
     <Compile Include="Utils\MenuUtils.cs" />
+    <Compile Include="Utils\ParameterUtils.cs" />
     <Compile Include="Utils\SelectListUtils.cs" />
     <Compile Include="Utils\TranslationUtils.cs" />
     <Compile Include="Utils\UserUtils.cs" />
@@ -234,7 +235,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Articles\Scripts\articleList.js" />
-    <Content Include="Areas\Articles\Scripts\articleSelection.js" />
     <Content Include="Areas\Articles\Scripts\brandList.js" />
     <Content Include="Areas\Articles\Scripts\nomenclatureList.js" />
     <Content Include="Areas\Articles\Scripts\subfamilyList.js" />
@@ -382,8 +382,6 @@
     <Content Include="Areas\Articles\Views\SubFamilies\List.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclature\List.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclature\Index.cshtml" />
-    <Content Include="Areas\Parameters\Views\Translations\List.cshtml" />
-    <Content Include="Areas\Articles\Views\Articles\Select.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />
