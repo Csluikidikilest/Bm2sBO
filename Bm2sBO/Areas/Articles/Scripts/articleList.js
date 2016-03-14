@@ -27,13 +27,8 @@
   $scope.SelectListSubFamilies = selectListSubFamilies;
   $scope.SelectListUnits = selectListUnits;
 
-  $scope.$watch('CurrentLine', function (newValue, oldValue) {
-    if (newValue != oldValue) {
-      $scope.Edition = angular.copy($scope.CurrentLine);
-    }
-  }, true);
-
-  $scope.edit = function () {
+  $scope.edit = function (line) {
+    $scope.Edition = angular.copy(line);
     $('#modalEditionArticle').modal('show');
   };
 
@@ -68,10 +63,10 @@
     });
   };
 
-  $scope.deleteValue = function (item) {
+  $scope.deleteValue = function (line) {
     var url = "/Articles/Articles/DeleteValue";
     var params = {
-      article: item
+      article: line
     };
 
     $http.post(url, params).success(function (data, status) {

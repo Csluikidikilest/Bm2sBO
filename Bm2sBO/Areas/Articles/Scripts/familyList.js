@@ -22,13 +22,8 @@
   $scope.Title = titleFamily;
   $scope.ToText = toText;
 
-  $scope.$watch('CurrentLine', function (newValue, oldValue) {
-    if (newValue != oldValue) {
-      $scope.Edition = angular.copy($scope.CurrentLine);
-    }
-  }, true);
-
-  $scope.edit = function () {
+  $scope.edit = function (line) {
+    $scope.Edition = angular.copy(line);
     $('#modalEditionFamily').modal('show');
   };
 
@@ -53,10 +48,10 @@
     });
   };
 
-  $scope.deleteValue = function (item) {
+  $scope.deleteValue = function (line) {
     var url = "/Articles/Families/DeleteValue";
     var params = {
-      articleFamily: item
+      articleFamily: line
     };
 
     $http.post(url, params).success(function (data, status) {

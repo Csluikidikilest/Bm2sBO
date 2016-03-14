@@ -31,17 +31,12 @@
   $scope.PageSizeArticleChild = 3;
   $scope.SelectionModeArticle = 'single';
 
-  $scope.$watch('CurrentLine', function (newValue, oldValue) {
-    if (newValue != oldValue) {
-      $scope.Edition = angular.copy($scope.CurrentLine);
-      $scope.CurrentSelectionArticleParent = [];
-      $scope.CurrentSelectionArticleChild = [];
-      $scope.CurrentSelectionArticleParent.push($scope.Edition.ArticleParent.Id);
-      $scope.CurrentSelectionArticleChild.push($scope.Edition.ArticleChild.Id);
-    }
-  }, true);
-
-  $scope.edit = function () {
+  $scope.edit = function (line) {
+    $scope.Edition = angular.copy(line);
+    $scope.CurrentSelectionArticleParent = [];
+    $scope.CurrentSelectionArticleChild = [];
+    $scope.CurrentSelectionArticleParent.push($scope.Edition.ArticleParent.Id);
+    $scope.CurrentSelectionArticleChild.push($scope.Edition.ArticleChild.Id);
     $('#modalEditionNomenclature').modal('show');
   };
 
@@ -64,10 +59,10 @@
     });
   };
 
-  $scope.deleteValue = function (item) {
+  $scope.deleteValue = function (line) {
     var url = "/Articles/Nomenclature/DeleteValue";
     var params = {
-      nomenclature: item
+      nomenclature: line
     };
 
     $http.post(url, params).success(function (data, status) {

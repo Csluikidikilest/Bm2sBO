@@ -44,15 +44,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-ng-repeat="item in filteredSource = (source | filter:SearchFilter) | startFrom:CurrentPage*pageSize | limitTo:pageSize">
+                <tr data-ng-repeat="line in filteredSource = (source | filter:SearchFilter) | startFrom:CurrentPage*pageSize | limitTo:pageSize">
                   <td data-ng-repeat="columnHeader in columnsHeader">
-                    {{item | getValue: columnHeader}}
+                    {{line | getValue: columnHeader}}
                   </td>
                   <td data-ng-show="canEdit">
-                    <a href="#" data-ng-click="edit(item)"><i class="fa fa-pencil" /></a>
+                    <a href="#" data-ng-click="edit(line)"><i class="fa fa-pencil" /></a>
                   </td>
                   <td data-ng-show="canDelete">
-                    <a href="#" data-ng-click="delete(item)"><i class="fa fa-trash" /></a>
+                    <a href="#" data-ng-click="delete(line)"><i class="fa fa-trash" /></a>
                   </td>
                 </tr>
               </tbody>

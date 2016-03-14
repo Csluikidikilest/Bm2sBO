@@ -49,7 +49,7 @@
 
       if ($scope.selectionMode == 'single') {
         $scope.currentSelection = [];
-        $scope.currentSelection.push(item.Id);
+        $scope.currentSelection.push(item);
       }
     }
 

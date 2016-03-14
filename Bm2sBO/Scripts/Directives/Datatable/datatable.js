@@ -6,14 +6,12 @@
       $scope.onAddItem();
     }
 
-    $scope.delete = function (item) {
-      $scope.currentLine = item;
-      $scope.onDeleteItem();
+    $scope.delete = function (line) {
+      $scope.onDeleteItem({ line: line });
     }
 
-    $scope.edit = function (item) {
-      $scope.currentLine = item;
-      $scope.onEditItem();
+    $scope.edit = function (line) {
+      $scope.onEditItem({ line: line });
     }
 
     $scope.$watch('CurrentPage', function (newValue, oldValue) {
@@ -63,7 +61,6 @@
       canDelete: '=',
       canEdit: '=',
       columnsHeader: '=',
-      currentLine: '=',
       currentPage: '=',
       entriesText: '=',
       interval: '=',
