@@ -59,7 +59,7 @@
     });
   };
 
-  $scope.deleteValue = function (line) {
+  $scope.delete = function (line) {
     var url = "/Articles/Nomenclature/DeleteValue";
     var params = {
       nomenclature: line
