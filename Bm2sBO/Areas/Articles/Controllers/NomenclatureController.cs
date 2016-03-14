@@ -50,7 +50,7 @@ namespace Bm2sBO.Areas.Articles.Controllers
       Bm2s.Connectivity.Common.Article.Nomenclature connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
       connect.Request.Nomenclature = nomenclature;
       connect.Delete();
-      return connect.Response.Nomenclatures.FirstOrDefault().ToHtmlJson();
+      return true.ToHtmlJson();
     }
   }
 }
