@@ -60,11 +60,11 @@
     </Reference>
     <Reference Include="Bm2s.Response, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Bm2sServer\Bm2s.Server\bin\Debug\Bm2s.Response.dll</HintPath>
+      <HintPath>ExternalLib\Bm2s.Response.dll</HintPath>
     </Reference>
     <Reference Include="Bm2s.Response.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Bm2sServer\Bm2s.Server\bin\Debug\Bm2s.Response.Common.dll</HintPath>
+      <HintPath>ExternalLib\Bm2s.Response.Common.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
@@ -271,6 +271,8 @@
     <Content Include="ExternalLib\Bm2s.Connectivity.Common.dll" />
     <Content Include="ExternalLib\Bm2s.Connectivity.Utils.dll" />
     <Content Include="ExternalLib\Bm2s.Poco.Common.dll" />
+    <Content Include="ExternalLib\Bm2s.Response.Common.dll" />
+    <Content Include="ExternalLib\Bm2s.Response.dll" />
     <Content Include="ExternalLib\ServiceStack.Common.dll" />
     <Content Include="ExternalLib\ServiceStack.dll" />
     <Content Include="ExternalLib\ServiceStack.Text.dll" />
