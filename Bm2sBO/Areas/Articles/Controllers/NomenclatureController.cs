@@ -11,7 +11,7 @@ namespace Bm2sBO.Areas.Articles.Controllers
   public class NomenclatureController : Controller
   {
     [HttpGet]
-    public ActionResult Index()
+    public ViewResult Index()
     {
       return View(new NomenclatureModel());
     }

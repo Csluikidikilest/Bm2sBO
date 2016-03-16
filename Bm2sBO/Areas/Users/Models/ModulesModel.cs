@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bm2sBO.Areas.Users.Models
 {
-  class ModulesModel
+  public class ModulesModel
   {
   }
 }

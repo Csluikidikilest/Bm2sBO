@@ -8,7 +8,8 @@ namespace Bm2sBO.Areas.Articles.Controllers
 {
   public class DashboardController : Controller
   {
-    public ActionResult Index()
+    [HttpGet]
+    public ViewResult Index()
     {
       return View();
     }

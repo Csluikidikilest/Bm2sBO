@@ -1,0 +1,8 @@
+﻿@{
+  ViewBag.Page = "Groups";
+  ViewBag.Section = "Users";
+}
+
+<section class="content">
+  @{ Html.RenderAction("List", "Groups", new { area = "Users" }); }
+</section>

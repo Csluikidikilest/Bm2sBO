@@ -349,7 +349,6 @@
     <Folder Include="Areas\Trades\Models\" />
     <Folder Include="Areas\Trades\Scripts\" />
     <Folder Include="Areas\Users\Scripts\" />
-    <Folder Include="Areas\Users\Views\Groups\" />
     <Folder Include="Areas\Users\Views\Modules\" />
     <Folder Include="Areas\Users\Views\Users\" />
     <Folder Include="Views\Logout\" />
@@ -391,6 +390,8 @@
     <Content Include="Areas\Articles\Views\Families\List.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclature\List.cshtml" />
     <Content Include="Areas\Articles\Views\SubFamilies\List.cshtml" />
+    <Content Include="Areas\Users\Views\Groups\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Groups\List.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />
