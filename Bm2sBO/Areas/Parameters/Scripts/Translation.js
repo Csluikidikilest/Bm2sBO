@@ -1,6 +1,5 @@
 ﻿app.controller('Translation', ['$scope', '$http', '$compile', '$filter', '$localStorage', '$sessionStorage', function ($scope, $http, $compile, $filter, $localStorage, $sessionStorage) {
   $scope.Math = window.Math;
-  $scope.Languages = languages.Languages;
 
   $scope.AlwaysShowFirstLastButtons = true;
   $scope.AvailablePagesSize = [20, 50, 100, 200];
@@ -58,8 +57,21 @@
     });
   };
 
-  $scope.getValues = function () {
+  $scope.getLanguagesValues = function () {
     $scope.Loading = true;
+    var url = "Translations/GetLanguagesValues";
+    var result;
+    var params = {
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.Languages = data;
+      $scope.generateColumnsHeader();
+      $scope.getValues();
+    });
+  };
+
+  $scope.getValues = function () {
     var url = "/Translations/GetValues";
     var result;
     var params = {
@@ -81,6 +93,5 @@
     });
   };
 
-  $scope.getValues();
-  $scope.generateColumnsHeader();
+  $scope.getLanguagesValues();
 }]);

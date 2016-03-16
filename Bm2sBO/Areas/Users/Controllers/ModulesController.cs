@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bm2s.Poco.Common.User;
-using Bm2sBO.Areas.Users.Models;
 using Bm2sBO.Utils;
 
 namespace Bm2sBO.Areas.Users.Controllers
@@ -14,13 +12,13 @@ namespace Bm2sBO.Areas.Users.Controllers
     [HttpGet]
     public ViewResult Index()
     {
-      return View(new ModulesModel());
+      return View();
     }
 
     [HttpGet]
     public PartialViewResult List()
     {
-      return PartialView(new ModulesModel());
+      return PartialView();
     }
 
     [HttpPost]

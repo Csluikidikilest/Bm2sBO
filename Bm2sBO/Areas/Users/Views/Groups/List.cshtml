@@ -1,11 +1,10 @@
-﻿@model Bm2sBO.Areas.Users.Models.GroupsModel
-@using Bm2sBO.Utils;
+﻿@using Bm2sBO.Utils;
 @{
   ViewBag.Title = @Html.TranslationFor("listgroups", "title", "Groups");
 }
 <div data-ng-controller="GroupList">
   <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
-  <div id="modalEditionBrand" class="modal fade" tabindex="-1" role="dialog">
+  <div id="modalEditionGroup" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -26,6 +25,10 @@
               <div class="form-group col-xs-12">
                 <label class="control-label text-right">@Html.TranslationFor("listgroups", "date", "Date")</label>
                 <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listgroups", "users", "Users")</label>
+                <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeUser" data-columns-header="ColumnsHeaderUser" data-current-page="CurrentPage" data-current-selection="CurrentSelectionUser" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingUser" data-of-text="OfText" data-page-size="PageSizeUser" data-search-text="SearchText" data-selection-mode="SelectionModeUser" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceUser" data-to-text="ToText" />
               </div>
             </form>
           </div>
@@ -49,10 +52,14 @@
   </div>
 </div>
 <script type="text/javascript">
-  var columnsHeaderBrand = [];
-  columnsHeaderBrand.push({"Key": 'Code', "Value": "@Html.TranslationFor("listgroups", "code", "Code")", "Type" : "Text"});
-  columnsHeaderBrand.push({"Key": 'Name', "Value": "@Html.TranslationFor("listgroups", "name", "Name")", "Type" : "Text"});
-  columnsHeaderBrand.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listgroups", "date", "Date")", "Type" : "Date"});
+  var columnsHeaderGroup = [];
+  columnsHeaderGroup.push({"Key": 'Code', "Value": "@Html.TranslationFor("listgroups", "code", "Code")", "Type" : "Text"});
+  columnsHeaderGroup.push({"Key": 'Name', "Value": "@Html.TranslationFor("listgroups", "name", "Name")", "Type" : "Text"});
+  columnsHeaderGroup.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listgroups", "date", "Date")", "Type" : "Date"});
+
+  var columnsHeaderUser = [];
+  columnsHeaderUser.push({ "Key": 'FirstName', "Value": "@Html.TranslationFor("listusers", "firstname", "First name")", "Type": "Text" });
+  columnsHeaderUser.push({ "Key": 'LastName', "Value": "@Html.TranslationFor("listusers", "lastname", "Last name")", "Type": "Text" });
 
   var titleBrand = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';

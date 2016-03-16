@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bm2s.Poco.Common.Article;
-using Bm2sBO.Areas.Articles.Models;
 using Bm2sBO.Utils;
 
 namespace Bm2sBO.Areas.Articles.Controllers
@@ -13,13 +12,13 @@ namespace Bm2sBO.Areas.Articles.Controllers
     [HttpGet]
     public ViewResult Index()
     {
-      return View(new SubFamiliesModel());
+      return View();
     }
 
     [HttpGet]
     public PartialViewResult List()
     {
-      return PartialView(new SubFamiliesModel());
+      return PartialView();
     }
 
     [HttpPost]

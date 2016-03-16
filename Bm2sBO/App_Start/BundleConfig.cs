@@ -31,7 +31,7 @@ namespace Bm2sBO
 
       bundles.Add(new StyleBundle("~/Content/csslib").Include("~/Content/Bootstrap/bootstrap.min.css", "~/Content/jQueryUi/*.css", "~/Content/FontAwesome/font-awesome.min.css", "~/Content/AdminLTE/AdminLTE.min.css", "~/Content/AdminLTE/skins/skin-blue.min.css"));
 
-      bundles.Add(new LessBundle("~/Content/lessbm2s").Include("~/Content/bm2s.less"));
+      bundles.Add(new LessBundle("~/Content/cssbm2s").Include("~/Content/bm2s.css"));
     }
   }
 }

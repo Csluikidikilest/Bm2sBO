@@ -191,15 +191,8 @@
     <Compile Include="Areas\Articles\Controllers\NomenclatureController.cs" />
     <Compile Include="Areas\Articles\Controllers\SubFamiliesController.cs" />
     <Compile Include="Areas\Articles\Controllers\FamiliesController.cs" />
-    <Compile Include="Areas\Articles\Models\ArticlesModel.cs" />
-    <Compile Include="Areas\Articles\Models\BrandsModel.cs" />
-    <Compile Include="Areas\Articles\Models\DashboardModel.cs" />
-    <Compile Include="Areas\Articles\Models\NomenclatureModel.cs" />
-    <Compile Include="Areas\Articles\Models\SubFamiliesModel.cs" />
-    <Compile Include="Areas\Articles\Models\FamiliesModel.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
-    <Compile Include="Areas\Dashboard\Models\DashboardModel.cs" />
     <Compile Include="Areas\Parameters\Controllers\ActivitiesController.cs" />
     <Compile Include="Areas\Parameters\Controllers\AffairsController.cs" />
     <Compile Include="Areas\Parameters\Controllers\CountriesController.cs" />
@@ -210,16 +203,12 @@
     <Compile Include="Areas\Parameters\Controllers\TranslationsController.cs" />
     <Compile Include="Areas\Parameters\Controllers\UnitsController.cs" />
     <Compile Include="Areas\Parameters\Controllers\VatsController.cs" />
-    <Compile Include="Areas\Parameters\Models\TranslationsModel.cs" />
     <Compile Include="Areas\Parameters\ParametersAreaRegistration.cs" />
     <Compile Include="Areas\Partners\PartnersAreaRegistration.cs" />
     <Compile Include="Areas\Trades\TradesAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\GroupsController.cs" />
     <Compile Include="Areas\Users\Controllers\ModulesController.cs" />
     <Compile Include="Areas\Users\Controllers\UsersController.cs" />
-    <Compile Include="Areas\Users\Models\GroupsModel.cs" />
-    <Compile Include="Areas\Users\Models\ModulesModel.cs" />
-    <Compile Include="Areas\Users\Models\UsersModel.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -247,6 +236,9 @@
     <Content Include="Areas\Articles\Scripts\familyList.js" />
     <Content Include="Areas\Dashboard\Scripts\dashboard.js" />
     <Content Include="Areas\Parameters\Scripts\translation.js" />
+    <Content Include="Areas\Users\Scripts\groupList.js" />
+    <Content Include="Areas\Users\Scripts\moduleList.js" />
+    <Content Include="Areas\Users\Scripts\userList.js" />
     <Content Include="Content\AdminLTE\AdminLTE.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black-light.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-black.min.css" />
@@ -261,6 +253,12 @@
     <Content Include="Content\AdminLTE\skins\skin-yellow-light.min.css" />
     <Content Include="Content\AdminLTE\skins\skin-yellow.min.css" />
     <Content Include="Content\AdminLTE\skins\_all-skins.min.css" />
+    <Content Include="Content\bm2s.css">
+      <DependentUpon>bm2s.less</DependentUpon>
+    </Content>
+    <Content Include="Content\bm2s.min.css">
+      <DependentUpon>bm2s.css</DependentUpon>
+    </Content>
     <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\Bootstrap\bootstrap.min.css" />
     <Content Include="Content\Bootstrap\bootstrap-datepicker.css" />
@@ -333,6 +331,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Articles\Models\" />
+    <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="Areas\Parameters\Models\" />
     <Folder Include="Areas\Parameters\Views\Activities\" />
     <Folder Include="Areas\Parameters\Views\Affairs\" />
     <Folder Include="Areas\Parameters\Views\Countries\" />
@@ -348,7 +349,7 @@
     <Folder Include="Areas\Trades\Controllers\" />
     <Folder Include="Areas\Trades\Models\" />
     <Folder Include="Areas\Trades\Scripts\" />
-    <Folder Include="Areas\Users\Scripts\" />
+    <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Views\Modules\" />
     <Folder Include="Areas\Users\Views\Users\" />
     <Folder Include="Views\Logout\" />
@@ -392,6 +393,9 @@
     <Content Include="Areas\Articles\Views\SubFamilies\List.cshtml" />
     <Content Include="Areas\Users\Views\Groups\Index.cshtml" />
     <Content Include="Areas\Users\Views\Groups\List.cshtml" />
+    <Content Include="Content\bm2s.css.map">
+      <DependentUpon>bm2s.css</DependentUpon>
+    </Content>
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

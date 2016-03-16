@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bm2s.Connectivity.Common.Parameter;
-using Bm2sBO.Areas.Parameters.Models;
 using Bm2sBO.Utils;
 
 namespace Bm2sBO.Areas.Parameters.Controllers
@@ -14,7 +11,15 @@ namespace Bm2sBO.Areas.Parameters.Controllers
     [HttpGet]
     public ActionResult Index()
     {
-      return View(new TranslationsModel());
+      return View();
+    }
+
+    [HttpPost]
+    public HtmlString GetLanguagesValues()
+    {
+      Language language = new Language();
+      language.Get();
+      return language.Response.Languages.ToHtmlJson();
     }
 
     [HttpPost]

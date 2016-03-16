@@ -1,5 +1,4 @@
-﻿@model Bm2sBO.Areas.Parameters.Models.TranslationsModel
-@using Bm2sBO.Utils;
+﻿@using Bm2sBO.Utils;
 @{
   ViewBag.Title = Html.TranslationFor("listtranslations", "title", "Translations");
   ViewBag.Page = "Translations";
@@ -13,8 +12,6 @@
 </div>
 
 <script type="text/javascript">
-  var languages = @Model.Language.Response.ToHtmlJson();
-
   var columnsHeaderTranslations = [];
   columnsHeaderTranslations.push({"Key": 'screen', "Value": "@Html.TranslationFor("listtranslations", "screen", "Screen")", "Editable": false, "Type": '', "Required": false});
   columnsHeaderTranslations.push({"Key": 'key', "Value": "@Html.TranslationFor("listtranslations", "key", "Key")", "Editable": false, "Type": '', "Required": false});
