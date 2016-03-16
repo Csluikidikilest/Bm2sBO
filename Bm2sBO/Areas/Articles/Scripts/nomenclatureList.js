@@ -68,7 +68,7 @@
     $http.post(url, params).success(function (data, status) {
       var index = $scope.DataSource.indexOf(line);
       if (index > -1) {
-        $scope.DataSource.splice(index, 1);
+        $scope.getValues();
       }
     });
   };

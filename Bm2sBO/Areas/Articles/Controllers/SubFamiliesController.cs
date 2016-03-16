@@ -26,6 +26,11 @@ namespace Bm2sBO.Areas.Articles.Controllers
     public HtmlString GetValues()
     {
       Bm2s.Connectivity.Common.Article.ArticleSubFamily connect = new Bm2s.Connectivity.Common.Article.ArticleSubFamily();
+      if (!UserUtils.CurrentUser.IsAdministrator)
+      {
+        connect.Request.Date = DateTime.Now;
+      }
+
       connect.Get();
 
       return connect.Response.ArticleSubFamilies.ToHtmlJson();
@@ -49,11 +54,9 @@ namespace Bm2sBO.Areas.Articles.Controllers
     [HttpPost]
     public int DeleteValue(ArticleSubFamily articleSubFamily)
     {
-      articleSubFamily.EndingDate = DateTime.Now;
-
       Bm2s.Connectivity.Common.Article.ArticleSubFamily connect = new Bm2s.Connectivity.Common.Article.ArticleSubFamily();
       connect.Request.ArticleSubFamily = articleSubFamily;
-      connect.Post();
+      connect.Delete();
 
       return connect.Request.ArticleSubFamily.Id;
     }

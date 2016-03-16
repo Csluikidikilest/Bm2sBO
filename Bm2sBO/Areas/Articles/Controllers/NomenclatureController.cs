@@ -26,6 +26,11 @@ namespace Bm2sBO.Areas.Articles.Controllers
     public HtmlString GetValues()
     {
       Bm2s.Connectivity.Common.Article.Nomenclature connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
+      if (!UserUtils.CurrentUser.IsAdministrator)
+      {
+        connect.Request.Date = DateTime.Now;
+      }
+
       connect.Get();
 
       return connect.Response.Nomenclatures.ToHtmlJson();
