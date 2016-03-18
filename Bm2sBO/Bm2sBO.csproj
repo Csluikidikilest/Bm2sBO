@@ -351,7 +351,6 @@
     <Folder Include="Areas\Trades\Scripts\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Views\Modules\" />
-    <Folder Include="Areas\Users\Views\Users\" />
     <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
@@ -396,6 +395,8 @@
     <Content Include="Content\bm2s.css.map">
       <DependentUpon>bm2s.css</DependentUpon>
     </Content>
+    <Content Include="Areas\Users\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Users\List.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

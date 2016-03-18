@@ -2,7 +2,6 @@
 using System.Linq;
 using Bm2s.Poco.Common.User;
 using Bm2sBO.Utils;
-using static Bm2sBO.Utils.Utils;
 
 namespace Bm2sBO.Models
 {
@@ -15,7 +14,7 @@ namespace Bm2sBO.Models
       this._modules = AuthorizationUtils.ModulesAuthorization();
     }
 
-    public string ModuleName(Modules moduleCode)
+    public string ModuleName(Bm2sBO.Utils.Utils.Modules moduleCode)
     {
       string result = string.Empty;
       Module module = this._modules.FirstOrDefault(item => item.Code.ToLower() == moduleCode.ToString().ToLower());

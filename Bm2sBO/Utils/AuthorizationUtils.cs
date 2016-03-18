@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Bm2s.Poco.Common.User;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Bm2s.Poco.Common.User;
-using static Bm2sBO.Utils.Utils;
 
 namespace Bm2sBO.Utils
 {
@@ -10,12 +10,12 @@ namespace Bm2sBO.Utils
   {
     public const string ModulesAuthorizationSessionKey = "modulesAuthorization";
 
-    public static bool HaveAuthorization(Authorizations authorization, Modules module)
+    public static bool HaveAuthorization(Authorizations authorization, Bm2sBO.Utils.Utils.Modules module)
     {
       return AuthorizationUtils.HaveAuthorization(UserUtils.CurrentUser.Id, authorization, module);
     }
 
-    public static bool HaveAuthorization(int userId, Authorizations authorization, Modules module)
+    public static bool HaveAuthorization(int userId, Authorizations authorization, Bm2sBO.Utils.Utils.Modules module)
     {
       Bm2s.Connectivity.Common.User.User user = new Bm2s.Connectivity.Common.User.User();
       user.Request.Ids.Add(userId);
@@ -23,7 +23,7 @@ namespace Bm2sBO.Utils
       return AuthorizationUtils.HaveAuthorization(user.Response.Users.FirstOrDefault(), authorization, module);
     }
 
-    public static bool HaveAuthorization(User user, Authorizations authorization, Modules module)
+    public static bool HaveAuthorization(User user, Authorizations authorization, Bm2sBO.Utils.Utils.Modules module)
     {
       return user != null && (user.IsAdministrator || AuthorizationUtils.ModulesAuthorization(user.Id).Any(item => item.Code.ToLower() == (authorization.ToString() + module.ToString()).ToLower()));
     }
@@ -44,7 +44,7 @@ namespace Bm2sBO.Utils
         userGroup.Get();
 
         Bm2s.Connectivity.Common.User.GroupModule groupModule = new Bm2s.Connectivity.Common.User.GroupModule();
-        foreach (UserGroup itemUserGroup in userGroup.Response.UserGroups)
+        foreach (UserGroup itemUserGroup in userGroup.Response.UserGroups.Where(group => !group.Group.EndingDate.HasValue || group.Group.EndingDate.Value > DateTime.Now))
         {
           groupModule.Request.GroupId = itemUserGroup.Id;
           groupModule.Get();

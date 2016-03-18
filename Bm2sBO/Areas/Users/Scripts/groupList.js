@@ -31,6 +31,7 @@
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
+    $scope.getUsersGroup($scope.Edition.Id);
     $('#modalEditionGroup').modal('show');
   };
 
@@ -40,7 +41,8 @@
   $scope.saveValues = function (line) {
     var url = "/Users/Groups/SetValue";
     var params = {
-      articleFamily: line
+      group: line,
+      usersId: $scope.CurrentSelectionUser
     };
 
     $http.post(url, params).success(function (data, status) {
@@ -56,7 +58,7 @@
   $scope.deleteValue = function (line) {
     var url = "/Users/Groups/DeleteValue";
     var params = {
-      articleFamily: line
+      group: line
     };
 
     $http.post(url, params).success(function (data, status) {
@@ -81,7 +83,7 @@
     });
   };
 
-  $scope.getValuesUser = function () {
+  $scope.getUsers = function () {
     $scope.LoadingUser = true;
     var url = "/Users/Users/GetValues";
     var params = {
@@ -94,6 +96,20 @@
     });
   };
 
+  $scope.getUsersGroup = function (groupId) {
+    $scope.LoadingUser = true;
+    var url = "/Users/Groups/GetUsersGroup";
+    var params = {
+      groupId: groupId
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.CurrentSelectionUser = data;
+    }).then(function () {
+      $scope.LoadingUser = false;
+    });
+  };
+
   $scope.getValues();
-  $scope.getValuesUser();
+  $scope.getUsers();
 }]);

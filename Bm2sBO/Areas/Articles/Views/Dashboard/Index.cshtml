@@ -2,11 +2,11 @@
 
 <section class="content">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-6 col-md-12">
       @{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }
       @{ Html.RenderAction("List", "Brands", new { area = "Articles" }); }
     </div>
-    <div class="col-md-6">
+    <div class="col-lg-6 col-md-12">
       @{ Html.RenderAction("List", "Families", new { area = "Articles" }); }
       @{ Html.RenderAction("List", "SubFamilies", new { area = "Articles" }); }
     </div>

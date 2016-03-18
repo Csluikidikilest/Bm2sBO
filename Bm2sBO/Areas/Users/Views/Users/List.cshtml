@@ -1,0 +1,89 @@
+﻿@using Bm2sBO.Utils;
+@{
+  ViewBag.Title = @Html.TranslationFor("listusers", "title", "Groups");
+}
+<div data-ng-controller="UserList">
+  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
+  <div id="modalEditionUser" class="modal fade" tabindex="-1" role="dialog">
+    <form data-ng-submit="saveValues(Edition)">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{Title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listusers", "firstname", "First name")</label>
+                <input name="editionFirstName" type="text" class="form-control" data-ng-model="Edition.FirstName" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listusers", "lastname", "Last name")</label>
+                <input name="editionLastName" type="text" class="form-control" data-ng-model="Edition.LastName" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listusers", "login", "Login")</label>
+                <input name="editionLogin" type="text" class="form-control" data-ng-model="Edition.Login" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listusers", "startingdate", "Starting date")</label>
+                <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-6">
+                <label class="control-label text-right">@Html.TranslationFor("listusers", "isadministrator", "Is Administrator")</label>
+                <input name="editionAdministrator" type="checkbox" class="form-control datepicker" data-ng-model="Edition.IsAdministrator" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-6">
+                <label class="control-label text-right">@Html.TranslationFor("listusers", "isanonymous", "Is Anonymous")</label>
+                <input name="editionAdministrator" type="checkbox" class="form-control datepicker" data-ng-model="Edition.IsAnonymous" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listusers", "groups", "Groups")</label>
+                <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeGroup" data-columns-header="ColumnsHeaderGroup" data-current-page="CurrentPage" data-current-selection="CurrentSelectionGroup" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingGroup" data-of-text="OfText" data-page-size="PageSizeGroup" data-search-text="SearchText" data-selection-mode="SelectionModeGroup" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceGroup" data-to-text="ToText" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group pull-right">
+              <div class="input-group">
+                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0">
+                  <i class="fa fa-check"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group pull-left">
+              <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
+                <i class="fa fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  var columnsHeaderUser = [];
+  columnsHeaderUser.push({"Key": 'FirstName', "Value": "@Html.TranslationFor("listusers", "firstname", "First name")", "Type" : "Text"});
+  columnsHeaderUser.push({"Key": 'LastName', "Value": "@Html.TranslationFor("listusers", "lastname", "Last name")", "Type" : "Text"});
+  columnsHeaderUser.push({"Key": 'Login', "Value": "@Html.TranslationFor("listusers", "login", "Login")", "Type" : "Text"});
+  columnsHeaderUser.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listusers", "startingdate", "Starting date")", "Type" : "Date"});
+  columnsHeaderUser.push({"Key": 'IsAdministrator', "Value": "@Html.TranslationFor("listusers", "isadministrator", "Is Administrator")", "Type" : "CheckBox"});
+  columnsHeaderUser.push({"Key": 'IsAnonymous', "Value": "@Html.TranslationFor("listusers", "isanonymous", "Is Anonymous")", "Type" : "CheckBox"});
+
+  var columnsHeaderGroup = [];
+  columnsHeaderGroup.push({ "Key": 'Name', "Value": "@Html.TranslationFor("listgroups", "name", "Name")", "Type": "Text" });
+
+  var titleBrand = '@ViewBag.Title';
+  var showText = '@Html.TranslationFor("list", "showtext", "Show")';
+  var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
+  var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';
+  var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
+  var toText = '@Html.TranslationFor("list", "totext", "to")';
+  var ofText = '@Html.TranslationFor("list", "oftext", "of")';
+
+  var canCreate = @UserUtils.CanCreateGroups.ToString().ToLower();
+  var canDelete = @UserUtils.CanDeleteGroups.ToString().ToLower();
+  var canEdit = @UserUtils.CanEditGroups.ToString().ToLower();
+</script>
