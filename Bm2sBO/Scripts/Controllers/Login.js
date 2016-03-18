@@ -2,8 +2,8 @@
 
   $scope.invalidLogin = true;
 
-  $scope.testForm = function () {
-    $scope.invalidLogin = !$scope.UserLogin || $scope.UserLogin.length <= 0 || !$scope.Password || $scope.Password.length <= 0;
+  $scope.formValid = function () {
+    return $scope.UserLogin !== undefined && $scope.UserLogin.length != '' && $scope.Password !== undefined && $scope.Password != '';
   }
 
   $scope.openSession = function () {

@@ -71,9 +71,9 @@ namespace Bm2sBO.Areas.Users.Controllers
         addUserGroup = new Bm2s.Connectivity.Common.User.UserGroup();
         addUserGroup.Request.UserGroup = new Bm2s.Poco.Common.User.UserGroup();
         addUserGroup.Request.UserGroup.Group = new Bm2s.Poco.Common.User.Group();
-        addUserGroup.Request.UserGroup.Group.Id = user.Id;
+        addUserGroup.Request.UserGroup.Group.Id = groupId;
         addUserGroup.Request.UserGroup.User = new Bm2s.Poco.Common.User.User();
-        addUserGroup.Request.UserGroup.User.Id = groupId;
+        addUserGroup.Request.UserGroup.User.Id = user.Id;
         addUserGroup.Post();
       }
 
