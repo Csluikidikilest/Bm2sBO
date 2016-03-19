@@ -59,7 +59,7 @@
   };
 
   $scope.saveValues = function (line) {
-    var url = "/Articles/Nomenclature/SetValue";
+    var url = "/Articles/Nomenclatures/SetValue";
     line.ArticleParent = { Id: $scope.CurrentSelectionArticleParent[0] };
     line.ArticleChild = { Id: $scope.CurrentSelectionArticleChild[0] };
     var params = {
@@ -72,7 +72,7 @@
   };
 
   $scope.delete = function (line) {
-    var url = "/Articles/Nomenclature/DeleteValue";
+    var url = "/Articles/Nomenclatures/DeleteValue";
     var params = {
       nomenclature: line
     };
@@ -86,7 +86,7 @@
 
   $scope.getValues = function () {
     $scope.Loading = true;
-    var url = "/Articles/Nomenclature/GetValues";
+    var url = "/Articles/Nomenclatures/GetValues";
     var params = {
     };
 

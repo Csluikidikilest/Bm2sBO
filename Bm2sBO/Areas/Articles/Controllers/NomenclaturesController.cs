@@ -7,7 +7,7 @@ using Bm2sBO.Utils;
 
 namespace Bm2sBO.Areas.Articles.Controllers
 {
-  public class NomenclatureController : Controller
+  public class NomenclaturesController : Controller
   {
     [HttpGet]
     public ViewResult Index()

@@ -189,8 +189,10 @@
     <Compile Include="Areas\Articles\Controllers\BrandsController.cs" />
     <Compile Include="Areas\Articles\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Articles\Controllers\NomenclatureController.cs" />
+    <Compile Include="Areas\Articles\Controllers\PricesController.cs" />
     <Compile Include="Areas\Articles\Controllers\SubFamiliesController.cs" />
     <Compile Include="Areas\Articles\Controllers\FamiliesController.cs" />
+    <Compile Include="Areas\Articles\Controllers\SubscriptionsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Parameters\Controllers\ActivitiesController.cs" />
@@ -337,6 +339,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Articles\Models\" />
+    <Folder Include="Areas\Articles\Views\Prices\" />
+    <Folder Include="Areas\Articles\Views\Subscriptions\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Parameters\Models\" />
     <Folder Include="Areas\Parameters\Views\Activities\" />
