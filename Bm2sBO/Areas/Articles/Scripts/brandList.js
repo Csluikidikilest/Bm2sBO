@@ -27,34 +27,40 @@
     $('#modalEditionBrand').modal('show');
   };
 
+  $scope.add = function () {
+    $scope.Edition = {};
+    $('#modalEditionBrand').modal('show');
+  };
+
+  $scope.formValid = function () {
+    $scope.ValidCode = $scope.Edition !== undefined && $scope.Edition.Code !== undefined && $scope.Edition.Code != '';
+    $scope.ValidName = $scope.Edition !== undefined && $scope.Edition.Name !== undefined && $scope.Edition.Name != '';
+    $scope.ValidStartingDate = $scope.Edition !== undefined && $scope.Edition.StartingDate !== undefined && $scope.Edition.StartingDate != '';
+    return $scope.ValidCode && $scope.ValidName && $scope.ValidStartingDate;
+  };
+
   $scope.dismissValues = function () {
   };
 
   $scope.saveValues = function (line) {
     var url = "/Articles/Brands/SetValue";
     var params = {
-      articleFamily: line
+      brand: line
     };
 
     $http.post(url, params).success(function (data, status) {
-      result = data;
-
-      var currentLine = $filter('find')($scope.DataSource, [{ Key: 'Id', Value: data.Id }]);
-      currentLine.Code = data.Code;
-      currentLine.Name = data.Name;
-      currentLine.StartingDate = data.StartingDate;
+      $scope.getValues();
     });
   };
 
   $scope.deleteValue = function (line) {
     var url = "/Articles/Brands/DeleteValue";
     var params = {
-      articleFamily: line
+      brand: line
     };
 
     $http.post(url, params).success(function (data, status) {
-      var index = $scope.DataSource.indexOf(line);
-      if (index > -1) {
+      if ($scope.DataSource.indexOf(line) > -1) {
         $scope.getValues();
       }
     });

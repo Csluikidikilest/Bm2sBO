@@ -3,7 +3,9 @@
   $scope.invalidLogin = true;
 
   $scope.formValid = function () {
-    return $scope.UserLogin !== undefined && $scope.UserLogin.length != '' && $scope.Password !== undefined && $scope.Password != '';
+    $scope.ValidLogin = $scope.UserLogin !== undefined && $scope.UserLogin != '';
+    $scope.ValidPassword = $scope.Password !== undefined && $scope.Password != '';
+    return $scope.ValidLogin && $scope.ValidPassword;
   }
 
   $scope.openSession = function () {

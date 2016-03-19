@@ -42,9 +42,6 @@ namespace Bm2sBO.Areas.Articles.Controllers
       connect.Request.Nomenclature = nomenclature;
       connect.Post();
 
-      connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
-      connect.Request.Ids.Add(nomenclature.Id);
-      connect.Get();
       return connect.Response.Nomenclatures.FirstOrDefault().ToHtmlJson();
     }
 

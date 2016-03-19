@@ -14,6 +14,10 @@
       $scope.onEditItem({ line: line });
     }
 
+    $scope.refresh = function () {
+      $scope.onRefresh();
+    }
+
     $scope.$watch('CurrentPage', function (newValue, oldValue) {
       if (newValue != oldValue) {
         $scope.refreshPageSize();
@@ -70,6 +74,7 @@
       onAddItem: '&',
       onDeleteItem: '&',
       onEditItem: '&',
+      onRefresh: '&',
       pageSize: '=',
       searchText: '=',
       showingText: '=',

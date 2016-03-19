@@ -8,6 +8,16 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Favorite Icon -->
+  <link rel="icon" type="image/png" href="~/Pictures/icon.png" />
+
+  <!-- iOs Icons -->
+  <link rel="apple-touch-icon" href="~/Pictures/iOs/icon114.png" />
+  <link rel="apple-touch-icon" sizes="57×57" href="~/Pictures/iOs/icon57.png" />
+  <link rel="apple-touch-icon" sizes="72×72" href="~/Pictures/iOs/icon72.png" />
+  <link rel="apple-touch-icon" sizes="114×114" href="~/Pictures/iOs/icon114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="~/Pictures/iOs/icon144.png" />
+
   <title>Bm2s - @ViewBag.Title</title>
   @Styles.Render("~/Content/csslib")
   @Styles.Render("~/Content/cssbm2s")
@@ -31,7 +41,12 @@
     <div data-ng-controller="Login">
       <header id="TopBar" class="main-header">
         <a href="/" class="logo">
-          Bm2s
+          <span class="logo-mini">
+            <i class="fa fa-line-chart"></i>
+          </span>
+          <span class="logo-lg">
+            Bm2s
+          </span>
         </a>
         <nav class="navbar navbar-static-top" role="navigation">
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">

@@ -32,10 +32,35 @@
     $('#modalEditionArticle').modal('show');
   };
 
+  $scope.add = function () {
+    $scope.Edition = {};
+    $('#modalEditionArticle').modal('show');
+  };
+
+  $scope.formValid = function () {
+    $scope.ValidCode = $scope.Edition !== undefined && $scope.Edition.Code !== undefined && $scope.Edition.Code != '';
+    $scope.ValidDesignation = $scope.Edition !== undefined && $scope.Edition.Designation !== undefined && $scope.Edition.Designation != '';
+    $scope.ValidStartingDate = $scope.Edition !== undefined && $scope.Edition.StartingDate !== undefined && $scope.Edition.StartingDate != '';
+    $scope.ValidArticleFamily = $scope.Edition !== undefined && $scope.Edition.ArticleFamily !== undefined && $scope.Edition.ArticleFamily != '';
+    $scope.ValidArticleSubFamily = $scope.Edition !== undefined && $scope.Edition.ArticleSubFamily !== undefined && $scope.Edition.ArticleSubFamily != '';
+    $scope.ValidBrand = $scope.Edition !== undefined && $scope.Edition.Brand !== undefined && $scope.Edition.Brand != '';
+    $scope.ValidUnit = $scope.Edition !== undefined && $scope.Edition.Unit !== undefined && $scope.Edition.Unit != '';
+    return $scope.ValidCode && $scope.ValidDesignation && $scope.ValidStartingDate && $scope.ValidArticleFamily && $scope.ValidArticleSubFamily && $scope.ValidBrand && $scope.ValidUnit;
+  };
+
   $scope.findSubFamilies = function () {
     var result = null;
-    if ($scope.Edition) {
-      result = $filter('find')($scope.SelectListSubFamilies.ArticleFamilies, [{ Key: 'FamilyId', Value: $scope.Edition.ArticleFamily.Id }]).ArticleSubFamilies;
+    if ($scope.Edition !== undefined && $scope.Edition.ArticleFamily !== undefined) {
+      result = $filter('find')($scope.SelectListSubFamilies.ArticleFamilies, [{ Key: 'FamilyId', Value: $scope.Edition.ArticleFamily.Id }]);
+      if (result != null) {
+        result = result.ArticleSubFamilies;
+        var selectedSubfamily = $filter('find')(result, [{ Key: 'Id', Value: $scope.Edition.ArticleSubFamily.Id }]);
+        if (selectedSubfamily !== undefined && selectedSubfamily != null) {
+          $scope.Edition.ArticleSubFamily.Id = selectedSubfamily.Id;
+        } else {
+          $scope.Edition.ArticleSubFamily.Id = result[0].Id;
+        }
+      }
     }
     return result;
   }
@@ -50,16 +75,7 @@
     };
 
     $http.post(url, params).success(function (data, status) {
-      result = data;
-
-      var currentLine = $filter('find')($scope.DataSource, [{ Key: 'Id', Value: data.Id }]);
-      currentLine.Code = data.Code;
-      currentLine.Designation = data.Designation;
-      currentLine.StartingDate = data.StartingDate;
-      currentLine.ArticleFamily = data.ArticleFamily;
-      currentLine.ArticleSubFamily = data.ArticleSubFamily;
-      currentLine.Brand = data.Brand;
-      currentLine.Unit = data.Unit;
+      $scope.getValues();
     });
   };
 
@@ -70,8 +86,7 @@
     };
 
     $http.post(url, params).success(function (data, status) {
-      var index = $scope.DataSource.indexOf(line);
-      if (index > -1) {
+      if ($scope.DataSource.indexOf(line) > -1) {
         $scope.getValues();
       }
     });

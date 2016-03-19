@@ -3,8 +3,15 @@
   ViewBag.Title = @Html.TranslationFor("listnomenclatures", "title", "Nomenclatures");
 }
 
+@if (!UserUtils.CanListNomenclatures)
+{
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
+}
+
 <div data-ng-controller="NomenclatureList">
-  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
+  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-on-refresh="getValues()" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
   <div id="modalEditionNomenclature" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
       <div class="modal-dialog modal-lg">
@@ -15,35 +22,35 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
-              <div class="form-group col-xs-12">
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidQuantityParent }">
                 <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "quantityparent", "Quantity Source")</label>
                 <input type="number" class="form-control" data-ng-model="Edition.QuantityParent" data-ng-required="true" tabindex="0" />
               </div>
-              <div class="form-group col-xs-12">
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidCurrentSelectionArticleParent }">
                 <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "articleparent", "Article Source")</label>
-                <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeArticle" data-columns-header="ColumnsHeaderArticle" data-current-page="CurrentPage" data-current-selection="CurrentSelectionArticleParent" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingArticle" data-of-text="OfText" data-page-size="PageSizeArticleParent" data-search-text="SearchText" data-selection-mode="SelectionModeArticle" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceArticle" data-to-text="ToText" />
+                <selection class="form-control" data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeArticle" data-columns-header="ColumnsHeaderArticle" data-current-page="CurrentPage" data-current-selection="CurrentSelectionArticleParent" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingArticle" data-of-text="OfText" data-page-size="PageSizeArticleParent" data-search-text="SearchText" data-selection-mode="SelectionModeArticle" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceArticle" data-to-text="ToText" />
               </div>
-              <div class="form-group col-xs-12">
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidQuantityChild }">
                 <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "quantitychild", "Quantity Destination")</label>
                 <input type="number" class="form-control" data-ng-model="Edition.QuantityChild" data-ng-required="true" tabindex="0" />
               </div>
-              <div class="form-group col-xs-12">
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidCurrentSelectionArticleChild }">
                 <label class="control-label text-right">@Html.TranslationFor("listnomenclatures", "articlechild", "Article Destination")</label>
-                <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeArticle" data-columns-header="ColumnsHeaderArticle" data-current-page="CurrentPage" data-current-selection="CurrentSelectionArticleChild" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingArticle" data-of-text="OfText" data-page-size="PageSizeArticleChild" data-search-text="SearchText" data-selection-mode="SelectionModeArticle" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceArticle" data-to-text="ToText" />
+                <selection class="form-control" data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeArticle" data-columns-header="ColumnsHeaderArticle" data-current-page="CurrentPage" data-current-selection="CurrentSelectionArticleChild" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingArticle" data-of-text="OfText" data-page-size="PageSizeArticleChild" data-search-text="SearchText" data-selection-mode="SelectionModeArticle" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceArticle" data-to-text="ToText" />
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <div class="form-group pull-right">
               <div class="input-group">
-                <button class="btn btn-default" data-ng-click="saveValues()" data-dismiss="modal" tabindex="0">
-                  <i class="fa fa-check"></i>
+                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
+                  <i class="fa fa-check"></i> @Html.TranslationLabelFor("listnomenclatures", "save", "Save")
                 </button>
               </div>
             </div>
             <div class="form-group pull-left">
               <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listnomenclatures", "cancel", "Cancel")
               </button>
             </div>
           </div>

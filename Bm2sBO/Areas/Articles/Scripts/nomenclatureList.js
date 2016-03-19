@@ -40,22 +40,34 @@
     $('#modalEditionNomenclature').modal('show');
   };
 
+  $scope.add = function () {
+    $scope.Edition = {};
+    $scope.CurrentSelectionArticleParent = [];
+    $scope.CurrentSelectionArticleChild = [];
+    $('#modalEditionNomenclature').modal('show');
+  };
+
+  $scope.formValid = function () {
+    $scope.ValidQuantityParent = $scope.Edition !== undefined && $scope.Edition.QuantityParent !== undefined && $scope.Edition.QuantityParent != '';
+    $scope.ValidCurrentSelectionArticleParent = $scope.Edition !== undefined && $scope.CurrentSelectionArticleParent !== undefined && $scope.CurrentSelectionArticleParent != '';
+    $scope.ValidQuantityChild = $scope.Edition !== undefined && $scope.Edition.QuantityChild !== undefined && $scope.Edition.QuantityChild != '';
+    $scope.ValidCurrentSelectionArticleChild = $scope.Edition !== undefined && $scope.CurrentSelectionArticleChild !== undefined && $scope.CurrentSelectionArticleChild != '';
+    return $scope.ValidQuantityParent && $scope.ValidCurrentSelectionArticleParent && $scope.ValidQuantityChild && $scope.ValidCurrentSelectionArticleChild;
+  };
+
   $scope.dismissValues = function () {
   };
 
   $scope.saveValues = function (line) {
     var url = "/Articles/Nomenclature/SetValue";
+    line.ArticleParent = { Id: $scope.CurrentSelectionArticleParent[0] };
+    line.ArticleChild = { Id: $scope.CurrentSelectionArticleChild[0] };
     var params = {
       nomenclature: line
     };
 
     $http.post(url, params).success(function (data, status) {
-      result = data;
-
-      var currentLine = $filter('find')($scope.DataSource, [{ Key: 'Id', Value: data.Id }]);
-      currentLine.Code = data.Code;
-      currentLine.Name = data.Name;
-      currentLine.StartingDate = data.StartingDate;
+      $scope.getValues();
     });
   };
 
@@ -66,8 +78,7 @@
     };
 
     $http.post(url, params).success(function (data, status) {
-      var index = $scope.DataSource.indexOf(line);
-      if (index > -1) {
+      if ($scope.DataSource.indexOf(line) > -1) {
         $scope.getValues();
       }
     });

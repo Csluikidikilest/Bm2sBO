@@ -44,9 +44,6 @@ namespace Bm2sBO.Areas.Articles.Controllers
 
       SelectListUtils.ForceRefreshListSubFamily();
 
-      connect = new Bm2s.Connectivity.Common.Article.ArticleSubFamily();
-      connect.Request.Ids.Add(articleSubFamily.Id);
-      connect.Get();
       return connect.Response.ArticleSubFamilies.FirstOrDefault().ToHtmlJson();
     }
 

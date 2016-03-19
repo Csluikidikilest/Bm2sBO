@@ -27,6 +27,18 @@
     $('#modalEditionFamily').modal('show');
   };
 
+  $scope.add = function () {
+    $scope.Edition = {};
+    $('#modalEditionFamily').modal('show');
+  };
+
+  $scope.formValid = function () {
+    $scope.ValidCode = $scope.Edition !== undefined && $scope.Edition.Code !== undefined && $scope.Edition.Code != '';
+    $scope.ValidDesignation = $scope.Edition !== undefined && $scope.Edition.Designation !== undefined && $scope.Edition.Designation != '';
+    $scope.ValidStartingDate = $scope.Edition !== undefined && $scope.Edition.StartingDate !== undefined && $scope.Edition.StartingDate != '';
+    return $scope.ValidCode && $scope.ValidDesignation && $scope.ValidStartingDate;
+  };
+
   $scope.dismissValues = function () {
   };
 
@@ -37,14 +49,7 @@
     };
 
     $http.post(url, params).success(function (data, status) {
-      result = data;
-
-      var currentLine = $filter('find')($scope.DataSource, [{ Key: 'Id', Value: data.Id }]);
-      currentLine.Code = data.Code;
-      currentLine.Designation = data.Designation;
-      currentLine.Description = data.Description;
-      currentLine.StartingDate = data.StartingDate;
-      currentLine.AccountingEntry = data.AccountingEntry;
+      $scope.getValues();
     });
   };
 
@@ -55,8 +60,7 @@
     };
 
     $http.post(url, params).success(function (data, status) {
-      var index = $scope.DataSource.indexOf(line);
-      if (index > -1) {
+      if ($scope.DataSource.indexOf(line) > -1) {
         $scope.getValues();
       }
     });
