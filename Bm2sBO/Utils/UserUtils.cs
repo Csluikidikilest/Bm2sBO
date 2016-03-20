@@ -599,7 +599,7 @@ namespace Bm2sBO.Utils
     {
       HttpContext.Current.Session[UserUtils.UserSessionKey] = null;
       HttpContext.Current.Session[UserUtils.UserGroupSessionKey] = null;
-      HttpContext.Current.Session[AuthorizationUtils.ModulesAuthorizationSessionKey] = null;
+      HttpContext.Current.Session[AuthorizationUtils.ModulesAuthorizationSessionKey + "_" + CurrentUser.Id.ToString()] = null;
     }
 
     public static int OpenSession(string userLogin, string userPassword)

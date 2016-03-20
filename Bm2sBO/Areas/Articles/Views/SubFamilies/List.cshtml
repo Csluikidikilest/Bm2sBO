@@ -89,6 +89,8 @@
   var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
   var toText = '@Html.TranslationFor("list", "totext", "to")';
   var ofText = '@Html.TranslationFor("list", "oftext", "of")';
+  var subFamilyListAvailablePagesSize = [@ParameterUtils.Get("subfamilylistavailablepagessize", "List of available pages size for the list of sub families", true, "20, 50, 100, 200")];
+  var subFamilyListPageSize = @ParameterUtils.Get("subfamilylistpagesize", "Default page size for the list of sub families", true, 20);
 
   var canCreate = @UserUtils.CanCreateFamilies.ToString().ToLower();
   var canDelete = @UserUtils.CanDeleteFamilies.ToString().ToLower();

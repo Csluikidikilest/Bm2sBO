@@ -13,6 +13,8 @@ namespace Bm2sBO.Utils
 
     public const string SelectListFamilySessionKey = "selectListFamily";
 
+    public const string SelectListLanguageSessionKey = "selectListLanguage";
+
     public const string SelectListPeriodSessionKey = "selectListPeriod";
 
     public const string SelectListSubFamilySessionKey = "selectListSubFamily";
@@ -94,6 +96,32 @@ namespace Bm2sBO.Utils
         }
 
         return selectListFamily;
+      }
+    }
+
+    public static HtmlString SelectListLanguage
+    {
+      get
+      {
+        HtmlString selectListLanguage = null;
+        if (HttpContext.Current != null && HttpContext.Current.Session != null)
+        {
+          selectListLanguage = (HtmlString)HttpContext.Current.Session[SelectListUtils.SelectListLanguageSessionKey];
+        }
+
+        if (selectListLanguage == null)
+        {
+          Bm2s.Connectivity.Common.Parameter.Language language = new Bm2s.Connectivity.Common.Parameter.Language();
+          language.Get();
+          selectListLanguage = language.Response.ToHtmlJson();
+
+          if (HttpContext.Current != null && HttpContext.Current.Session != null)
+          {
+            HttpContext.Current.Session[SelectListUtils.SelectListLanguageSessionKey] = selectListLanguage;
+          }
+        }
+
+        return selectListLanguage;
       }
     }
 
@@ -188,6 +216,11 @@ namespace Bm2sBO.Utils
     public static void ForceRefreshListFamily()
     {
       HttpContext.Current.Session[SelectListUtils.SelectListFamilySessionKey] = null;
+    }
+
+    public static void ForceRefreshListLanguage()
+    {
+      HttpContext.Current.Session[SelectListUtils.SelectListLanguageSessionKey] = null;
     }
 
     public static void ForceRefreshListPeriod()

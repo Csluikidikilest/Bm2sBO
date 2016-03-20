@@ -35,7 +35,7 @@ namespace Bm2sBO.Utils
 
     public static List<Module> ModulesAuthorization(int userId)
     {
-      List<Module> modulesAuthorization = (List<Module>)HttpContext.Current.Session[AuthorizationUtils.ModulesAuthorizationSessionKey + userId.ToString()];
+      List<Module> modulesAuthorization = (List<Module>)HttpContext.Current.Session[AuthorizationUtils.ModulesAuthorizationSessionKey + "_" + userId.ToString()];
       if (modulesAuthorization == null)
       {
         modulesAuthorization = new List<Module>();
@@ -68,7 +68,7 @@ namespace Bm2sBO.Utils
           modulesAuthorization.Add(itemUserModule.Module);
         }
 
-        HttpContext.Current.Session[AuthorizationUtils.ModulesAuthorizationSessionKey + userId.ToString()] = modulesAuthorization;
+        HttpContext.Current.Session[AuthorizationUtils.ModulesAuthorizationSessionKey + "_" + userId.ToString()] = modulesAuthorization;
       }
 
       return modulesAuthorization;

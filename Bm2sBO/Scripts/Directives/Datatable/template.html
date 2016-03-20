@@ -3,7 +3,7 @@
     <div class="box">
       <div class="box-header">
         <h3 class="pull-left">{{title}}</h3>
-        <h3><a href="#" data-ng-click="refresh()"><i class="fa fa-refresh pull-right" /></a></h3>
+        <h3><a href="#" data-ng-click="refresh()"><i class="fa fa-refresh pull-right"></i></a></h3>
       </div>
       <div class="box-body">
         <div class="row">
@@ -50,10 +50,10 @@
                     {{line | getValue: columnHeader}}
                   </td>
                   <td data-ng-show="canEdit">
-                    <a href="#" data-ng-click="edit(line)"><i class="fa fa-pencil" /></a>
+                    <a href="#" data-ng-click="edit(line)"><i class="fa fa-pencil"></i></a>
                   </td>
                   <td data-ng-show="canDelete">
-                    <a href="#" data-ng-click="delete(line)"><i class="fa fa-trash" /></a>
+                    <a href="#" data-ng-click="delete(line)"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
               </tbody>
@@ -74,7 +74,7 @@
         </div>
       </div>
       <div class="overlay" data-ng-show="loading">
-        <i class="fa fa-4x fa-refresh fa-spin" />
+        <i class="fa fa-4x fa-refresh fa-spin"></i>
       </div>
     </div>
   </div>

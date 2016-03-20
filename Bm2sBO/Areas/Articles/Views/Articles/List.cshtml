@@ -103,6 +103,8 @@
   var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
   var toText = '@Html.TranslationFor("list", "totext", "to")';
   var ofText = '@Html.TranslationFor("list", "oftext", "of")';
+  var articleListAvailablePagesSize = [@ParameterUtils.Get("articlelistavailablepagessize", "List of available pages size for the list of articles", true, "20, 50, 100, 200")];
+  var articleListPageSize = @ParameterUtils.Get("articlelistpagesize", "Default page size for the list of articles", true, 20);
 
   var canCreate = @UserUtils.CanCreateArticles.ToString().ToLower();
   var canDelete = @UserUtils.CanDeleteArticles.ToString().ToLower();

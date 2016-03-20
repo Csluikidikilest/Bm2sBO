@@ -2,7 +2,7 @@
   $scope.Math = window.Math;
 
   $scope.AlwaysShowFirstLastButtons = true;
-  $scope.AvailablePagesSize = [20, 50, 100, 200];
+  $scope.AvailablePagesSize = nomenclatureListAvailablePagesSize;
   $scope.CanCreate = canCreate;
   $scope.CanDelete = canDelete;
   $scope.CanEdit = canEdit;
@@ -14,7 +14,7 @@
   $scope.LargeStep = 3;
   $scope.Loading = false;
   $scope.OfText = ofText;
-  $scope.PageSize = 20;
+  $scope.PageSize = nomenclatureListPageSize;
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
   $scope.ShowText = showText;
@@ -22,13 +22,13 @@
   $scope.Title = titleNomenclature;
   $scope.ToText = toText;
 
-  $scope.AvailablePagesSizeArticle = [3, 5, 10, 20];
+  $scope.AvailablePagesSizeArticle = articleSelectionAvailablePagesSize;
   $scope.ColumnsHeaderArticle = columnsHeaderArticle;
   $scope.CurrentSelectionArticleParent = [];
   $scope.CurrentSelectionArticleChild = [];
   $scope.LoadingArticle = false;
-  $scope.PageSizeArticleParent = 3;
-  $scope.PageSizeArticleChild = 3;
+  $scope.PageSizeArticleParent = articleSelectionPageSize;
+  $scope.PageSizeArticleChild = articleSelectionPageSize;
   $scope.SelectionModeArticle = 'single';
 
   $scope.edit = function (line) {

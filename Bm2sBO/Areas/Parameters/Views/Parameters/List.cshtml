@@ -1,0 +1,171 @@
+﻿@using Bm2sBO.Utils;
+@{
+  ViewBag.Title = @Html.TranslationFor("listparameters", "title", "Parameters");
+}
+
+@if (!UserUtils.CanListParameters)
+{
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
+}
+
+<div data-ng-controller="ParameterList">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="pull-left">{{Title}}</h3>
+          <h3><a href="#" data-ng-click="getValues()"><i class="fa fa-refresh pull-right"></i></a></h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="pull-left">
+                {{ShowText}}
+                <select data-ng-model="PageSize" data-ng-change="jumpToPage(0)" integer data-ng-options="value for value in AvailablePagesSize"></select>
+                {{EntriesText}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="pull-right">
+                {{SearchText}}
+                <input type="text" data-ng-model="SearchFilter" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>
+                      @Html.TranslationFor("listparameters", "code", "Code")
+                    </th>
+                    <th>
+                      @Html.TranslationFor("listparameters", "description", "Description")
+                    </th>
+                    <th>
+                      @Html.TranslationFor("listparameters", "value", "Value")
+                    </th>
+                    <th data-ng-show="CanEdit">
+                      <div>
+                        &nbsp;
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-ng-repeat="line in FilteredSource = (DataSource | filter:SearchFilter) | startFrom:CurrentPage*PageSize | limitTo:PageSize">
+                    <td>
+                      {{line.Code}}
+                    </td>
+                    <td>
+                      {{line.Description}}
+                    </td>
+                    <td>
+                      <div data-ng-show="line.ValueType == 's'">
+                        {{line.sValue}}
+                      </div>
+                      <div data-ng-show="line.ValueType == 'i'">
+                        {{line.iValue}}
+                      </div>
+                      <div data-ng-show="line.ValueType == 'f'">
+                        {{line.fValue}}
+                      </div>
+                      <div data-ng-show="line.ValueType == 'b'">
+                        {{line.bValue}}
+                      </div>
+                      <div data-ng-show="line.ValueType == 'd'">
+                        {{line | getValue: ColumnHeaderdValue}}
+                      </div>
+                    </td>
+                    <td data-ng-show="CanEdit">
+                      <a href="#" data-ng-click="edit(line)"><i class="fa fa-pencil"></i></a>
+                    </td>
+                    <td>
+                      {{line.ValueType}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="box-footer">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="pull-left">
+                {{ShowingText}} {{FirstItem}} {{ToText}} {{LastItem}} {{OfText}} {{FilteredSource.length}} {{EntriesText}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <pagination data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-current-page="CurrentPage" data-interval="Interval" data-items-count="FilteredSource.length" data-large-step="LargeStep" data-page-size="PageSize" data-small-step="SmallStep" />
+            </div>
+          </div>
+        </div>
+        <div class="overlay" data-ng-show="Loading">
+          <i class="fa fa-4x fa-refresh fa-spin"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="modalEditionParameter" class="modal fade" tabindex="-1" role="dialog">
+    <form data-ng-submit="saveValues(Edition)">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{Title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidCode }">
+                <label class="control-label text-right">@Html.TranslationFor("listarticles", "code", "Code")</label>
+                <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group pull-right">
+              <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listarticles", "save", "Save")
+              </button>
+            </div>
+            <div class="form-group pull-left">
+              <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
+                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listarticles", "cancel", "Cancel")
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  var selectListBrands = @SelectListUtils.SelectListBrand;
+  var selectListFamilies = @SelectListUtils.SelectListFamily;
+  var selectListSubFamilies = @SelectListUtils.SelectListSubFamily;
+  var selectListUnits = @SelectListUtils.SelectListUnit;
+
+  var columnHeaderdValue = {"Key": 'dValue', "Value": "@Html.TranslationFor("listparameters", "value", "Value")", "Type" : "Date"};
+
+  var titleParameter = '@ViewBag.Title';
+  var showText = '@Html.TranslationFor("list", "showtext", "Show")';
+  var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
+  var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';
+  var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
+  var toText = '@Html.TranslationFor("list", "totext", "to")';
+  var ofText = '@Html.TranslationFor("list", "oftext", "of")';
+  var parameterListAvailablePagesSize = [@ParameterUtils.Get("parameterlistavailablepagessize", "List of available pages size for the list of articles", true, "20, 50, 100, 200")];
+  var parameterListPageSize = @ParameterUtils.Get("parameterlistpagesize", "Default page size for the list of articles", true, 20);
+
+  var canCreate = false;
+  var canDelete = false;
+  var canEdit = @UserUtils.CanEditParameters.ToString().ToLower();
+
+  var testDate = '@ParameterUtils.Get("dummy", "dummy", true, DateTime.Now)';
+  var testBool = @ParameterUtils.Get("dummyBool", "dummyBool", true, true);
+  var testFloat = @ParameterUtils.Get("dummyFloat", "dummyFloat", true, (decimal)10.6);
+</script>

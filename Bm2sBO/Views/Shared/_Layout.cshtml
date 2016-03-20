@@ -110,6 +110,9 @@
     <div id="Body" class="content-wrapper">
       @RenderBody()
     </div>
+
+    <!-- User preferences -->
+    @*@{ Html.RenderAction("Index", "Preferences", new { area = string.Empty }); }*@
   </div>
 </body>
 </html>

@@ -1,0 +1,8 @@
+﻿@{
+  ViewBag.Page = "Parameters";
+  ViewBag.Section = "Parameters";
+}
+
+<section class="content">
+  @{ Html.RenderAction("List", "Parameters", new { area = "Parameters" }); }
+</section>

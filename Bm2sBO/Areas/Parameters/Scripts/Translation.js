@@ -1,4 +1,4 @@
-﻿app.controller('Translation', ['$scope', '$http', '$compile', '$filter', '$localStorage', '$sessionStorage', function ($scope, $http, $compile, $filter, $localStorage, $sessionStorage) {
+﻿app.controller('Translation', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
   $scope.Math = window.Math;
 
   $scope.AlwaysShowFirstLastButtons = true;

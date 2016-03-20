@@ -188,7 +188,7 @@
     <Compile Include="Areas\Articles\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Articles\Controllers\BrandsController.cs" />
     <Compile Include="Areas\Articles\Controllers\DashboardController.cs" />
-    <Compile Include="Areas\Articles\Controllers\NomenclatureController.cs" />
+    <Compile Include="Areas\Articles\Controllers\NomenclaturesController.cs" />
     <Compile Include="Areas\Articles\Controllers\PricesController.cs" />
     <Compile Include="Areas\Articles\Controllers\SubFamiliesController.cs" />
     <Compile Include="Areas\Articles\Controllers\FamiliesController.cs" />
@@ -216,6 +216,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LeftMenuController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
+    <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,7 @@
     <Content Include="Areas\Articles\Scripts\subfamilyList.js" />
     <Content Include="Areas\Articles\Scripts\familyList.js" />
     <Content Include="Areas\Dashboard\Scripts\dashboard.js" />
+    <Content Include="Areas\Parameters\Scripts\parameter.js" />
     <Content Include="Areas\Parameters\Scripts\translation.js" />
     <Content Include="Areas\Users\Scripts\groupList.js" />
     <Content Include="Areas\Users\Scripts\moduleList.js" />
@@ -296,6 +298,7 @@
     <Content Include="Pictures\iOs\icon72.png" />
     <Content Include="Scripts\Configurations\config.en-gb.js" />
     <Content Include="Scripts\Controllers\login.js" />
+    <Content Include="Scripts\Controllers\preferences.js" />
     <Content Include="Scripts\Directives\Datatable\datatable.js" />
     <Content Include="Scripts\Directives\Datatable\template.html" />
     <Content Include="Scripts\Directives\Edition\edition.js" />
@@ -348,7 +351,6 @@
     <Folder Include="Areas\Parameters\Views\Countries\" />
     <Folder Include="Areas\Parameters\Views\Inventories\" />
     <Folder Include="Areas\Parameters\Views\Languages\" />
-    <Folder Include="Areas\Parameters\Views\Parameters\" />
     <Folder Include="Areas\Parameters\Views\Periods\" />
     <Folder Include="Areas\Parameters\Views\Units\" />
     <Folder Include="Areas\Parameters\Views\Vats\" />
@@ -393,11 +395,11 @@
     <Content Include="Areas\Articles\Views\SubFamilies\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Articles\Views\Nomenclature\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\Nomenclatures\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Articles\List.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\List.cshtml" />
     <Content Include="Areas\Articles\Views\Families\List.cshtml" />
-    <Content Include="Areas\Articles\Views\Nomenclature\List.cshtml" />
+    <Content Include="Areas\Articles\Views\Nomenclatures\List.cshtml" />
     <Content Include="Areas\Articles\Views\SubFamilies\List.cshtml" />
     <Content Include="Areas\Users\Views\Groups\Index.cshtml" />
     <Content Include="Areas\Users\Views\Groups\List.cshtml" />
@@ -406,10 +408,13 @@
     </Content>
     <Content Include="Areas\Users\Views\Users\Index.cshtml" />
     <Content Include="Areas\Users\Views\Users\List.cshtml" />
+    <Content Include="Areas\Parameters\Views\Parameters\Index.cshtml" />
+    <Content Include="Areas\Parameters\Views\Parameters\List.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\LeftMenu\Index.cshtml" />
+    <Content Include="Views\Preferences\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

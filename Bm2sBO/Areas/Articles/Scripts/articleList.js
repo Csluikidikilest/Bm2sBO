@@ -2,7 +2,7 @@
   $scope.Math = window.Math;
 
   $scope.AlwaysShowFirstLastButtons = true;
-  $scope.AvailablePagesSize = [20, 50, 100, 200];
+  $scope.AvailablePagesSize = articleListAvailablePagesSize;
   $scope.CanCreate = canCreate;
   $scope.CanDelete = canDelete;
   $scope.CanEdit = canEdit;
@@ -14,7 +14,7 @@
   $scope.LargeStep = 3;
   $scope.Loading = false;
   $scope.OfText = ofText;
-  $scope.PageSize = 20;
+  $scope.PageSize = articleListPageSize;
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
   $scope.ShowText = showText;

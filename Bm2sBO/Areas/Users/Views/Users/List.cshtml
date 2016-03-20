@@ -30,13 +30,13 @@
                 <label class="control-label text-right">@Html.TranslationFor("listusers", "startingdate", "Starting date")</label>
                 <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
               </div>
-              <div class="form-group col-xs-6">
-                <label class="control-label text-right">@Html.TranslationFor("listusers", "isadministrator", "Is Administrator")</label>
-                <input name="editionAdministrator" type="checkbox" class="form-control datepicker" data-ng-model="Edition.IsAdministrator" data-ng-required="true" tabindex="0" />
-              </div>
-              <div class="form-group col-xs-6">
-                <label class="control-label text-right">@Html.TranslationFor("listusers", "isanonymous", "Is Anonymous")</label>
-                <input name="editionAdministrator" type="checkbox" class="form-control datepicker" data-ng-model="Edition.IsAnonymous" data-ng-required="true" tabindex="0" />
+              <div class="checkbox">
+                <div class="form-group col-xs-6">
+                  <label class="control-label text-right"><input name="editionAdministrator" type="checkbox" data-ng-model="Edition.IsAdministrator" tabindex="0" />@Html.TranslationFor("listusers", "isadministrator", "Is Administrator")</label>
+                </div>
+                <div class="form-group col-xs-6">
+                  <label class="control-label text-right"><input name="editionAdministrator" type="checkbox" data-ng-model="Edition.IsAnonymous" tabindex="0" />@Html.TranslationFor("listusers", "isanonymous", "Is Anonymous")</label>
+                </div>
               </div>
               <div class="form-group col-xs-12">
                 <label class="control-label text-right">@Html.TranslationFor("listusers", "groups", "Groups")</label>

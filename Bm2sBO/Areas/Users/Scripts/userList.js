@@ -46,12 +46,7 @@
     };
 
     $http.post(url, params).success(function (data, status) {
-      result = data;
-
-      var currentLine = $filter('find')($scope.DataSource, [{ Key: 'Id', Value: data.Id }]);
-      currentLine.Code = data.Code;
-      currentLine.Name = data.Name;
-      currentLine.StartingDate = data.StartingDate;
+      $scope.getValues();
     });
   };
 
@@ -62,8 +57,7 @@
     };
 
     $http.post(url, params).success(function (data, status) {
-      var index = $scope.DataSource.indexOf(line);
-      if (index > -1) {
+      if ($scope.DataSource.indexOf(line) > -1) {
         $scope.getValues();
       }
     });
