@@ -43,6 +43,15 @@
       }
     }, true);
 
+    $scope.changeOrder = function (column) {
+      if ($scope.orderColumn == column) {
+        $scope.orderReverse = !$scope.orderReverse;
+      } else {
+        $scope.orderColumn = column;
+        $scope.orderReverse = false;
+      }
+    }
+
     $scope.jumpToPage = function (currentPage) {
       $scope.CurrentPage = currentPage;
       $scope.refreshPageSize();
@@ -75,6 +84,8 @@
       onDeleteItem: '&',
       onEditItem: '&',
       onRefresh: '&',
+      orderColumn: '=',
+      orderReverse: '=',
       pageSize: '=',
       searchText: '=',
       showingText: '=',

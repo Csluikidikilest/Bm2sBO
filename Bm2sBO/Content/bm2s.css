@@ -7,4 +7,7 @@
 .selection {
   display: inline-table;
 }
+.order-inactive {
+  color: #999;
+}
 /*# sourceMappingURL=bm2s.css.map */

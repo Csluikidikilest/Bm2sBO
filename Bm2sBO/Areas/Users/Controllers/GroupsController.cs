@@ -77,9 +77,6 @@ namespace Bm2sBO.Areas.Users.Controllers
         addUserGroup.Post();
       }
 
-      connect = new Bm2s.Connectivity.Common.User.Group();
-      connect.Request.Ids.Add(group.Id);
-      connect.Get();
       return connect.Response.Groups.FirstOrDefault().ToHtmlJson();
     }
 

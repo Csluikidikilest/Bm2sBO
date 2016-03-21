@@ -364,7 +364,6 @@
     <Folder Include="Areas\Partners\Scripts\" />
     <Folder Include="Areas\Trades\Models\" />
     <Folder Include="Areas\Users\Models\" />
-    <Folder Include="Areas\Users\Views\Modules\" />
     <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
@@ -417,6 +416,8 @@
     <Content Include="Areas\Trades\Views\Sales\List.cshtml" />
     <Content Include="Areas\Trades\Views\Purchases\Index.cshtml" />
     <Content Include="Areas\Trades\Views\Purchases\List.cshtml" />
+    <Content Include="Areas\Users\Views\Modules\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Modules\List.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

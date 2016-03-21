@@ -14,6 +14,8 @@
   $scope.LargeStep = 3;
   $scope.Loading = false;
   $scope.OfText = ofText;
+  $scope.OrderColumn = $scope.ColumnsHeader[0].Key;
+  $scope.OrderReverse = false;
   $scope.PageSize = 20;
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;

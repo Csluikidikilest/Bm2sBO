@@ -25,11 +25,6 @@ namespace Bm2sBO.Areas.Users.Controllers
     public HtmlString GetValues()
     {
       Bm2s.Connectivity.Common.User.Module connect = new Bm2s.Connectivity.Common.User.Module();
-      if (!UserUtils.CurrentUser.IsAdministrator)
-      {
-        connect.Request.Date = DateTime.Now;
-      }
-
       connect.Get();
 
       return connect.Response.Modules.ToHtmlJson();
@@ -42,9 +37,6 @@ namespace Bm2sBO.Areas.Users.Controllers
       connect.Request.Module = module;
       connect.Post();
 
-      connect = new Bm2s.Connectivity.Common.User.Module();
-      connect.Request.Ids.Add(module.Id);
-      connect.Get();
       return connect.Response.Modules.FirstOrDefault().ToHtmlJson();
     }
 

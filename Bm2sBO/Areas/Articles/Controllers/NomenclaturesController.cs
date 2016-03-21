@@ -46,12 +46,13 @@ namespace Bm2sBO.Areas.Articles.Controllers
     }
 
     [HttpPost]
-    public HtmlString DeleteValue(Nomenclature nomenclature)
+    public int DeleteValue(Nomenclature nomenclature)
     {
       Bm2s.Connectivity.Common.Article.Nomenclature connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
       connect.Request.Nomenclature = nomenclature;
       connect.Delete();
-      return true.ToHtmlJson();
+
+      return connect.Request.Nomenclature.Id;
     }
   }
 }

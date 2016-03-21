@@ -12,6 +12,7 @@
   $scope.LargeStep = 3;
   $scope.Loading = false;
   $scope.OfText = ofText;
+  $scope.OrderReverse = false;
   $scope.PageSize = 20;
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
@@ -55,6 +56,7 @@
     angular.forEach($scope.Languages, function (value, key) {
       $scope.ColumnsHeader.push({ "Key": value.Code, "Value": value.Name, "Editable": true, Type: 'text', "Required": false });
     });
+    $scope.OrderColumn = $scope.ColumnsHeader[0].Key;
   };
 
   $scope.getLanguagesValues = function () {

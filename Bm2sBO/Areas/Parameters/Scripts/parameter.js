@@ -14,6 +14,8 @@
   $scope.LargeStep = 3;
   $scope.Loading = false;
   $scope.OfText = ofText;
+  $scope.OrderColumn = "Code";
+  $scope.OrderReverse = false;
   $scope.PageSize = parameterListPageSize;
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
@@ -41,9 +43,10 @@
 
   $scope.formValid = function () {
     $scope.ValidCode = $scope.Edition !== undefined && $scope.Edition.Code !== undefined && $scope.Edition.Code != '';
-    $scope.ValidName = $scope.Edition !== undefined && $scope.Edition.Name !== undefined && $scope.Edition.Name != '';
-    $scope.ValidStartingDate = $scope.Edition !== undefined && $scope.Edition.StartingDate !== undefined && $scope.Edition.StartingDate != '';
-    return true; //$scope.ValidCode && $scope.ValidName && $scope.ValidStartingDate;
+    $scope.ValidDescription = $scope.Edition !== undefined && $scope.Edition.Description !== undefined && $scope.Edition.Description != '';
+    $scope.ValidValueType = $scope.Edition !== undefined && $scope.Edition.ValueType !== undefined && $scope.Edition.ValueType != '';
+    $scope.ValidValue = $scope.Edition !== undefined && ($scope.Edition.ValueType != 's' || ($scope.Edition.sValue !== undefined && $scope.Edition.sValue != '')) && ($scope.Edition.ValueType != 'i' || ($scope.Edition.iValue !== undefined && $scope.Edition.iValue != '')) && ($scope.Edition.ValueType != 'f' || ($scope.Edition.fValue !== undefined && $scope.Edition.fValue != '')) && ($scope.Edition.ValueType != 'b' || ($scope.Edition.bValue !== undefined && $scope.Edition.bValue != '')) && ($scope.Edition.ValueType != 'd' || ($scope.Edition.dValue !== undefined && $scope.Edition.dValue != ''));
+    return $scope.ValidCode && $scope.ValidDescription && $scope.ValidValueType && $scope.ValidValue;
   };
 
   $scope.dismissValues = function () {
@@ -72,6 +75,15 @@
       }
     });
   };
+
+  $scope.changeOrder = function (column) {
+    if ($scope.OrderColumn == column) {
+      $scope.OrderReverse = !$scope.OrderReverse;
+    } else {
+      $scope.OrderColumn = column;
+      $scope.OrderReverse = false;
+    }
+  }
 
   $scope.jumpToPage = function (currentPage) {
     $scope.CurrentPage = currentPage;

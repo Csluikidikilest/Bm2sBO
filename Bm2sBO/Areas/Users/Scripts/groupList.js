@@ -14,12 +14,14 @@
   $scope.LargeStep = 3;
   $scope.Loading = false;
   $scope.OfText = ofText;
+  $scope.OrderColumn = $scope.ColumnsHeader[0].Key;
+  $scope.OrderReverse = false;
   $scope.PageSize = 20;
   $scope.SearchText = searchText;
   $scope.ShowingText = showingText;
   $scope.ShowText = showText;
   $scope.SmallStep = 1;
-  $scope.Title = titleBrand;
+  $scope.Title = titleGroup;
   $scope.ToText = toText;
 
   $scope.AvailablePagesSizeUser = [3, 5, 10, 20];
