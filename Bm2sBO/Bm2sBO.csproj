@@ -207,6 +207,8 @@
     <Compile Include="Areas\Parameters\Controllers\VatsController.cs" />
     <Compile Include="Areas\Parameters\ParametersAreaRegistration.cs" />
     <Compile Include="Areas\Partners\PartnersAreaRegistration.cs" />
+    <Compile Include="Areas\Trades\Controllers\PurchasesController.cs" />
+    <Compile Include="Areas\Trades\Controllers\SalesController.cs" />
     <Compile Include="Areas\Trades\TradesAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\GroupsController.cs" />
     <Compile Include="Areas\Users\Controllers\ModulesController.cs" />
@@ -240,6 +242,8 @@
     <Content Include="Areas\Dashboard\Scripts\dashboard.js" />
     <Content Include="Areas\Parameters\Scripts\parameter.js" />
     <Content Include="Areas\Parameters\Scripts\translation.js" />
+    <Content Include="Areas\Trades\Scripts\purchaseList.js" />
+    <Content Include="Areas\Trades\Scripts\saleList.js" />
     <Content Include="Areas\Users\Scripts\groupList.js" />
     <Content Include="Areas\Users\Scripts\moduleList.js" />
     <Content Include="Areas\Users\Scripts\userList.js" />
@@ -313,6 +317,7 @@
     <Content Include="Scripts\Filters\getValue.js" />
     <Content Include="Scripts\Filters\startFrom.js" />
     <Content Include="Scripts\Lib\adminlte.js" />
+    <Content Include="Scripts\Lib\angular-sanitize.js" />
     <Content Include="Scripts\Lib\angular-ui-date.js" />
     <Content Include="Scripts\Lib\angular.js" />
     <Content Include="Scripts\App\bm2s.js" />
@@ -357,9 +362,7 @@
     <Folder Include="Areas\Partners\Controllers\" />
     <Folder Include="Areas\Partners\Models\" />
     <Folder Include="Areas\Partners\Scripts\" />
-    <Folder Include="Areas\Trades\Controllers\" />
     <Folder Include="Areas\Trades\Models\" />
-    <Folder Include="Areas\Trades\Scripts\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Views\Modules\" />
     <Folder Include="Views\Logout\" />
@@ -410,6 +413,10 @@
     <Content Include="Areas\Users\Views\Users\List.cshtml" />
     <Content Include="Areas\Parameters\Views\Parameters\Index.cshtml" />
     <Content Include="Areas\Parameters\Views\Parameters\List.cshtml" />
+    <Content Include="Areas\Trades\Views\Sales\Index.cshtml" />
+    <Content Include="Areas\Trades\Views\Sales\List.cshtml" />
+    <Content Include="Areas\Trades\Views\Purchases\Index.cshtml" />
+    <Content Include="Areas\Trades\Views\Purchases\List.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

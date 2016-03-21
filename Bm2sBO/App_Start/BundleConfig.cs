@@ -15,7 +15,7 @@ namespace Bm2sBO
 
       bundles.Add(new ScriptBundle("~/bundles/adminlte").Include("~/Scripts/Lib/adminlte.js"));
 
-      bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/Lib/angular.js", "~/Scripts/Lib/angular-ui-date.js", "~/Scripts/Lib/ngStorage.js"));
+      bundles.Add(new ScriptBundle("~/bundles/angular").Include("~/Scripts/Lib/angular.js", "~/Scripts/Lib/angular-sanitize.js", "~/Scripts/Lib/angular-ui-date.js", "~/Scripts/Lib/ngStorage.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/chart").Include("~/Scripts/Lib/chart.js"));
 

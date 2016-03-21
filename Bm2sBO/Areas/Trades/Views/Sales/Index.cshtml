@@ -1,0 +1,8 @@
+﻿@{
+  ViewBag.Page = "Sales";
+  ViewBag.Section = "Trades";
+}
+
+<section class="content">
+  @{ Html.RenderAction("List", "Sales", new { area = "Trades" }); }
+</section>

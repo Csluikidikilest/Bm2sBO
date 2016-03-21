@@ -1,4 +1,4 @@
-﻿var app = angular.module('bm2s', ['ngStorage']);
+﻿var app = angular.module('bm2s', ['ngStorage', 'ngSanitize']);
 
 var regexIso8601 = /Date\((\d{13})[\+\-](\d{4})\)/;
 

@@ -1,0 +1,84 @@
+﻿@using Bm2sBO.Utils;
+@{
+  ViewBag.Title = @Html.TranslationFor("listpurchases", "title", "Purchases");
+}
+
+@if (!UserUtils.CanListPurchases)
+{
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
+}
+
+<div data-ng-controller="PurchaseList">
+  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-line="CurrentLine" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-on-refresh="getValues()" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
+  <div id="modalEditionPurchase" class="modal fade" tabindex="-1" role="dialog">
+    <form data-ng-submit="saveValues(Edition)">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{Title}}</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidCode }">
+                <label class="control-label text-right">@Html.TranslationFor("listpurchases", "code", "Code")</label>
+                <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidName }">
+                <label class="control-label text-right">@Html.TranslationFor("listpurchases", "name", "Name")</label>
+                <input name="editionName" type="text" class="form-control" data-ng-model="Edition.Name" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidStartingDate }">
+                <label class="control-label text-right">@Html.TranslationFor("listpurchases", "date", "Date")</label>
+                <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12">
+                <label class="control-label text-right">@Html.TranslationFor("listpurchases", "endingdate", "Ending date")</label>
+                <input name="editionEndingDate" type="date" class="form-control datepicker" data-ng-model="Edition.EndingDate" data-ng-required="false" tabindex="0" />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group pull-right">
+              <div class="input-group">
+                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
+                  <i class="fa fa-check"></i> @Html.TranslationLabelFor("listpurchases", "save", "Save")
+                </button>
+              </div>
+            </div>
+            <div class="form-group pull-left">
+              <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
+                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listpurchases", "cancel", "Cancel")
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  var columnsHeaderPurchase = [];
+  columnsHeaderPurchase.push({"Key": 'Reference', "Value": "@Html.TranslationFor("listpurchases", "reference", "Reference")", "Type" : "Text"});
+  columnsHeaderPurchase.push({"Key": 'Date', "Value": "@Html.TranslationFor("listpurchases", "date", "Date")", "Type" : "Date"});
+  columnsHeaderPurchase.push({"Key": 'EndingDate', "Value": "@Html.TranslationFor("listpurchases", "endingdate", "Ending Date")", "Type" : "Date"});
+  columnsHeaderPurchase.push({"Key": 'HeaderStatus.Name', "Value": "@Html.TranslationFor("listpurchases", "headerstatus", "Status")", "Type" : "Text"});
+  columnsHeaderPurchase.push({"Key": 'User.FirstName', "Value": "@Html.TranslationFor("listpurchases", "userfirstname", "Creator FirstName")", "Type" : "Text"});
+  columnsHeaderPurchase.push({"Key": 'User.LastName', "Value": "@Html.TranslationFor("listpurchases", "userlastname", "Creator LastName")", "Type" : "Text"});
+
+  var titlePurchase = '@ViewBag.Title';
+  var showText = '@Html.TranslationFor("list", "showtext", "Show")';
+  var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
+  var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';
+  var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
+  var toText = '@Html.TranslationFor("list", "totext", "to")';
+  var ofText = '@Html.TranslationFor("list", "oftext", "of")';
+  var purchaseListAvailablePagesSize = [@ParameterUtils.Get("purchaselistavailablepagessize", "List of available pages size for the list of purchases", true, "20, 50, 100, 200")];
+  var purchaseListPageSize = @ParameterUtils.Get("purchaselistpagesize", "Default page size for the list of purchases", true, 20);
+
+  var canCreate = @UserUtils.CanCreatePurchases.ToString().ToLower();
+  var canDelete = @UserUtils.CanDeletePurchases.ToString().ToLower();
+  var canEdit = @UserUtils.CanEditPurchases.ToString().ToLower();
+</script>

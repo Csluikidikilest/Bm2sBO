@@ -121,20 +121,42 @@
           <div class="modal-body">
             <form class="form-horizontal">
               <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidCode }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "code", "Code")</label>
+                <label class="control-label text-right">@Html.TranslationFor("listparameters", "code", "Code")</label>
                 <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidDescription }">
+                <label class="control-label text-right">@Html.TranslationFor("listparameters", "description", "Description")</label>
+                <input name="editionDescription" type="text" class="form-control" data-ng-model="Edition.Description" data-ng-required="true" tabindex="0" />
+              </div>
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidValueType}">
+                <label class="control-label text-right">@Html.TranslationFor("listparameters", "typeofvalue", "Type of value")</label>
+                <select class="form-control" data-ng-model="Edition.ValueType" tabindex="0">
+                  <option value="s">@Html.TranslationFor("listparameters", "svalue", "String")</option>
+                  <option value="i">@Html.TranslationFor("listparameters", "ivalue", "Integer")</option>
+                  <option value="f">@Html.TranslationFor("listparameters", "fvalue", "Float")</option>
+                  <option value="b">@Html.TranslationFor("listparameters", "bvalue", "Boolean")</option>
+                  <option value="d">@Html.TranslationFor("listparameters", "dvalue", "Date")</option>
+                </select>
+              </div>
+              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidValue }">
+                <label class="control-label text-right">@Html.TranslationFor("listparameters", "value", "Value")</label>
+                <input name="editionsValue" type="text" class="form-control" data-ng-model="Edition.sValue" data-ng-required="true" tabindex="0" data-ng-show="Edition.ValueType == 's'" />
+                <input name="editioniValue" type="integer" class="form-control" data-ng-model="Edition.iValue" data-ng-required="true" tabindex="0" data-ng-show="Edition.ValueType == 'i'" />
+                <input name="editionfValue" type="text" class="form-control" data-ng-model="Edition.fValue" data-ng-required="true" tabindex="0" data-ng-show="Edition.ValueType == 'f'" />
+                <input name="editionbValue" type="checkbox" class="form-control" data-ng-model="Edition.bValue" data-ng-required="true" tabindex="0" data-ng-show="Edition.ValueType == 'b'" />
+                <input name="editiondValue" type="date" class="form-control" data-ng-model="Edition.dValue" data-ng-required="true" tabindex="0" data-ng-show="Edition.ValueType == 'd'" />
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <div class="form-group pull-right">
               <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
-                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listarticles", "save", "Save")
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listparameters", "save", "Save")
               </button>
             </div>
             <div class="form-group pull-left">
               <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
-                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listarticles", "cancel", "Cancel")
+                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listparameters", "cancel", "Cancel")
               </button>
             </div>
           </div>
@@ -164,8 +186,4 @@
   var canCreate = false;
   var canDelete = false;
   var canEdit = @UserUtils.CanEditParameters.ToString().ToLower();
-
-  var testDate = '@ParameterUtils.Get("dummy", "dummy", true, DateTime.Now)';
-  var testBool = @ParameterUtils.Get("dummyBool", "dummyBool", true, true);
-  var testFloat = @ParameterUtils.Get("dummyFloat", "dummyFloat", true, (decimal)10.6);
 </script>
