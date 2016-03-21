@@ -23,15 +23,15 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <table class="table table-striped table-condensed">
+            <table class="table table-striped table-condensed table-bordered">
               <thead>
                 <tr>
-                  <th data-ng-repeat="columnHeader in columnsHeader track by columnHeader.Key">
+                  <th class="text-center" data-ng-repeat="columnHeader in columnsHeader track by columnHeader.Key">
                     {{columnHeader.Value}}
                   </th>
-                  <th data-ng-show="canCreate || canEdit">
+                  <th class="text-center" data-ng-show="canCreate || canEdit">
                     <div data-ng-show="canCreate">
-                      <a href="#" data-ng-click="add()"><i class="fa fa-plus" /></a>
+                      <a href="#" data-ng-click="add()"><i class="fa fa-plus"></i></a>
                     </div>
                     <div data-ng-show="!canCreate">
                       &nbsp;
@@ -46,13 +46,14 @@
               </thead>
               <tbody>
                 <tr data-ng-repeat="line in filteredSource = (source | filter:SearchFilter) | startFrom:CurrentPage*pageSize | limitTo:pageSize">
-                  <td data-ng-repeat="columnHeader in columnsHeader">
-                    {{line | getValue: columnHeader}}
+                  <td class="text-center" data-ng-repeat="columnHeader in columnsHeader">
+                    <div data-ng-bind-html="line | getValue: columnHeader" data-ng-show="columnHeader.Type == 'CheckBox'"></div>
+                    <div data-ng-show="columnHeader.Type != 'CheckBox'">{{line | getValue: columnHeader}}</div>
                   </td>
-                  <td data-ng-show="canEdit">
+                  <td class="text-center" data-ng-show="canEdit">
                     <a href="#" data-ng-click="edit(line)"><i class="fa fa-pencil"></i></a>
                   </td>
-                  <td data-ng-show="canDelete">
+                  <td class="text-center" data-ng-show="canDelete">
                     <a href="#" data-ng-click="delete(line)"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>

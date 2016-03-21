@@ -1,4 +1,4 @@
-﻿app.filter('getValue', function ($filter) {
+﻿app.filter('getValue', function ($filter, $sce) {
   return function (item, columnHeader) {
     var result = '';
 
@@ -9,6 +9,16 @@
         object += "['" + keysKey + "']";
       });
       result = eval(object);
+
+      if (columnHeader.Type == 'CheckBox') {
+        if (result) {
+          result = '<i class="fa fa-check-square-o"></i>';
+        } else {
+          result = '<i class="fa fa-square-o"></i>';
+        }
+
+        result = $sce.trustAsHtml(result);
+      }
 
       if (columnHeader.Type == 'Date') {
         result = $filter('ctime')(result);
