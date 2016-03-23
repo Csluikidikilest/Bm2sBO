@@ -56,11 +56,15 @@
       result = $filter('find')($scope.SelectListSubFamilies.ArticleFamilies, [{ Key: 'FamilyId', Value: $scope.Edition.ArticleFamily.Id }]);
       if (result != null) {
         result = result.ArticleSubFamilies;
-        var selectedSubfamily = $filter('find')(result, [{ Key: 'Id', Value: $scope.Edition.ArticleSubFamily.Id }]);
-        if (selectedSubfamily !== undefined && selectedSubfamily != null) {
-          $scope.Edition.ArticleSubFamily.Id = selectedSubfamily.Id;
+        if ($scope.Edition.ArticleSubFamily === undefined) {
+          $scope.Edition.ArticleSubFamily = result[0];
         } else {
-          $scope.Edition.ArticleSubFamily.Id = result[0].Id;
+          var selectedSubfamily = $filter('find')(result, [{ Key: 'Id', Value: $scope.Edition.ArticleSubFamily.Id }]);
+          if (selectedSubfamily !== undefined && selectedSubfamily != null) {
+            $scope.Edition.ArticleSubFamily.Id = selectedSubfamily.Id;
+          } else {
+            $scope.Edition.ArticleSubFamily.Id = result[0].Id;
+          }
         }
       }
     }
