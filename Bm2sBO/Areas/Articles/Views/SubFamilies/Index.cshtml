@@ -1,6 +1,14 @@
-﻿@{
+﻿@using Bm2sBO.Utils;
+@{
   ViewBag.Page = "SubFamilies";
   ViewBag.Section = "Articles";
+}
+
+@if (!UserUtils.CanListSubFamilies)
+{
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
 }
 
 <section class="content">

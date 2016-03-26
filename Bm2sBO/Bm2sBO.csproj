@@ -195,6 +195,8 @@
     <Compile Include="Areas\Articles\Controllers\SubscriptionsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\InitializationController.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Parameters\Controllers\ActivitiesController.cs" />
     <Compile Include="Areas\Parameters\Controllers\AffairsController.cs" />
     <Compile Include="Areas\Parameters\Controllers\CountriesController.cs" />
@@ -222,11 +224,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\LeftMenuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\AuthorizationUtils.cs" />
     <Compile Include="Utils\MenuUtils.cs" />
+    <Compile Include="Utils\ModuleUtils.cs" />
     <Compile Include="Utils\ParameterUtils.cs" />
     <Compile Include="Utils\SelectListUtils.cs" />
     <Compile Include="Utils\TranslationUtils.cs" />
@@ -234,6 +234,7 @@
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Administration\Scripts\initialization.js" />
     <Content Include="Areas\Articles\Scripts\articleList.js" />
     <Content Include="Areas\Articles\Scripts\brandList.js" />
     <Content Include="Areas\Articles\Scripts\nomenclatureList.js" />
@@ -346,6 +347,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\Models\" />
     <Folder Include="Areas\Articles\Models\" />
     <Folder Include="Areas\Articles\Views\Prices\" />
     <Folder Include="Areas\Articles\Views\Subscriptions\" />
@@ -364,6 +366,7 @@
     <Folder Include="Areas\Partners\Scripts\" />
     <Folder Include="Areas\Trades\Models\" />
     <Folder Include="Areas\Users\Models\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
@@ -418,6 +421,9 @@
     <Content Include="Areas\Trades\Views\Purchases\List.cshtml" />
     <Content Include="Areas\Users\Views\Modules\Index.cshtml" />
     <Content Include="Areas\Users\Views\Modules\List.cshtml" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Initialization\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />

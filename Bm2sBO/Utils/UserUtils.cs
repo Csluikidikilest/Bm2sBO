@@ -17,7 +17,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Articles);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Articles);
       }
     }
 
@@ -25,7 +25,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Brands);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Brands);
       }
     }
 
@@ -33,7 +33,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Families);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Families);
       }
     }
 
@@ -41,7 +41,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Groups);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Groups);
       }
     }
 
@@ -49,7 +49,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Modules);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Modules);
       }
     }
 
@@ -57,7 +57,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Nomenclatures);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Nomenclatures);
       }
     }
 
@@ -65,7 +65,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Parameters);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Parameters);
       }
     }
 
@@ -73,7 +73,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Partners);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Partners);
       }
     }
 
@@ -81,7 +81,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Prices);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Prices);
       }
     }
 
@@ -89,7 +89,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Purchases);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Purchases);
       }
     }
 
@@ -97,7 +97,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Sales);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Sales);
       }
     }
 
@@ -105,7 +105,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.SubFamilies);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.SubFamilies);
       }
     }
 
@@ -113,7 +113,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Subscriptions);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Subscriptions);
       }
     }
 
@@ -121,7 +121,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Trades);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Trades);
       }
     }
 
@@ -129,7 +129,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Translations);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Translations);
       }
     }
 
@@ -137,7 +137,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Utils.Modules.Users);
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Users);
       }
     }
 
@@ -145,7 +145,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Articles);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Articles);
       }
     }
 
@@ -153,7 +153,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Brands);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Brands);
       }
     }
 
@@ -161,7 +161,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Families);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Families);
       }
     }
 
@@ -169,7 +169,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Groups);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Groups);
       }
     }
 
@@ -177,7 +177,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Modules);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Modules);
       }
     }
 
@@ -185,7 +185,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Nomenclatures);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Nomenclatures);
       }
     }
 
@@ -193,7 +193,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Parameters);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Parameters);
       }
     }
 
@@ -201,7 +201,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Partners);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Partners);
       }
     }
 
@@ -209,7 +209,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Prices);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Prices);
       }
     }
 
@@ -217,7 +217,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Purchases);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Purchases);
       }
     }
 
@@ -225,7 +225,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Sales);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Sales);
       }
     }
 
@@ -233,7 +233,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.SubFamilies);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.SubFamilies);
       }
     }
 
@@ -241,7 +241,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Subscriptions);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Subscriptions);
       }
     }
 
@@ -249,7 +249,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Trades);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Trades);
       }
     }
 
@@ -257,7 +257,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Translations);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Translations);
       }
     }
 
@@ -265,7 +265,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Utils.Modules.Users);
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Users);
       }
     }
 
@@ -273,7 +273,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Articles);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Articles);
       }
     }
 
@@ -281,7 +281,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Brands);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Brands);
       }
     }
 
@@ -289,7 +289,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Families);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Families);
       }
     }
 
@@ -297,7 +297,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Groups);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Groups);
       }
     }
 
@@ -305,7 +305,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Modules);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Modules);
       }
     }
 
@@ -313,7 +313,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Nomenclatures);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Nomenclatures);
       }
     }
 
@@ -321,7 +321,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Parameters);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Parameters);
       }
     }
 
@@ -329,7 +329,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Partners);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Partners);
       }
     }
 
@@ -337,7 +337,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Prices);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Prices);
       }
     }
 
@@ -345,7 +345,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Purchases);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Purchases);
       }
     }
 
@@ -353,7 +353,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Sales);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Sales);
       }
     }
 
@@ -361,7 +361,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.SubFamilies);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.SubFamilies);
       }
     }
 
@@ -369,7 +369,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Subscriptions);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Subscriptions);
       }
     }
 
@@ -377,7 +377,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Trades);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Trades);
       }
     }
 
@@ -385,7 +385,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Translations);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Translations);
       }
     }
 
@@ -393,7 +393,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Utils.Modules.Users);
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Users);
       }
     }
 
@@ -529,7 +529,7 @@ namespace Bm2sBO.Utils
     {
       get
       {
-        return AuthorizationUtils.HaveAuthorization(Authorizations.View, Bm2sBO.Utils.Utils.Modules.Dashboard);
+        return ModuleUtils.HaveAuthorization(Authorizations.View, Bm2sBO.Utils.Modules.Dashboard);
       }
     }
 
@@ -599,7 +599,6 @@ namespace Bm2sBO.Utils
     {
       HttpContext.Current.Session[UserUtils.UserSessionKey] = null;
       HttpContext.Current.Session[UserUtils.UserGroupSessionKey] = null;
-      HttpContext.Current.Session[AuthorizationUtils.ModulesAuthorizationSessionKey + "_" + CurrentUser.Id.ToString()] = null;
     }
 
     public static int OpenSession(string userLogin, string userPassword)

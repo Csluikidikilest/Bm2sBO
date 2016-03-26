@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Bm2sBO.Utils;
 using System.Web.Mvc;
-using Bm2sBO.Models;
 
 namespace Bm2sBO.Controllers
 {
   public class LogoutController : Controller
   {
     [HttpPost]
-    public bool Index(LoginModel model)
+    public bool Index()
     {
-      return model.CloseSession();
+      UserUtils.CloseSession();
+      return UserUtils.CurrentUser.IsAnonymous;
     }
   }
 }

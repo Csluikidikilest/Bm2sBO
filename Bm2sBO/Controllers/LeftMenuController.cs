@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Bm2sBO.Models;
+﻿using System.Web.Mvc;
 
 namespace Bm2sBO.Controllers
 {
@@ -11,7 +6,7 @@ namespace Bm2sBO.Controllers
     {
         public ActionResult Index()
         {
-            return PartialView(new LeftMenuModel());
+            return PartialView();
         }
     }
 }

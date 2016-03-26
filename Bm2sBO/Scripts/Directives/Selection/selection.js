@@ -95,6 +95,7 @@
       smallStep: '=',
       source: '=',
       toText: '=',
+      triState: '=',
     },
     link: link,
   };

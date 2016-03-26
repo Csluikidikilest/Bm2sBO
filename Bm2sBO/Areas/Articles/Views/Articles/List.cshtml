@@ -3,18 +3,11 @@
   ViewBag.Title = @Html.TranslationFor("listarticles", "title", "Articles");
 }
 
-@if (!UserUtils.CanListArticles)
-{
-  <script type="text/javascript">
-    window.location = "/";
-  </script>
-}
-
 <div data-ng-controller="ArticleList">
   <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-on-refresh="getValues()" data-order-column="OrderColumn" data-order-reverse="OrderReverse" data-page-size="PageSize" data-search-text="SearchText" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
   <div id="modalEditionArticle" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -22,45 +15,47 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
-              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidCode }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "code", "Code")</label>
-                <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
-              </div>
-              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidDesignation }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "designation", "Designation")</label>
-                <input name="editionDesignation" type="text" class="form-control" data-ng-model="Edition.Designation" data-ng-required="true" tabindex="0" />
-              </div>
-              <div class="form-group col-xs-12">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "description", "Description")</label>
-                <textarea name="editionDescription" type="text" class="form-control" data-ng-model="Edition.Description" data-ng-required="false" tabindex="0"></textarea>
-              </div>
-              <div class="form-group col-xs-12">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "observation", "Observation")</label>
-                <textarea name="editionObservation" type="text" class="form-control" data-ng-model="Edition.Observation" data-ng-required="false" tabindex="0"></textarea>
-              </div>
-              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidStartingDate }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "date", "Date")</label>
-                <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
-              </div>
-              <div class="form-group col-xs-12">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "endingdate", "Ending date")</label>
-                <input name="editionEndingDate" type="date" class="form-control datepicker" data-ng-model="Edition.EndingDate" data-ng-required="false" tabindex="0" />
-              </div>
-              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidArticleFamily }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "family", "Family")</label>
-                <select name="editionFamily" type="text" class="form-control" data-ng-model="Edition.ArticleFamily.Id" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListFamilies.ArticleFamilies"></select>
-              </div>
-              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidArticleSubFamily }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "subfamily", "Sub family")</label>
-                <select name="editionSubFamily" type="text" class="form-control" data-ng-model="Edition.ArticleSubFamily.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in findSubFamilies()"></select>
-              </div>
-              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidBrand }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "brand", "Brand")</label>
-                <select name="editionBrand" type="text" class="form-control" data-ng-model="Edition.Brand.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListBrands.Brands"></select>
-              </div>
-              <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidUnit }">
-                <label class="control-label text-right">@Html.TranslationFor("listarticles", "unit", "Unit")</label>
-                <select name="editionUnit" type="text" class="form-control" data-ng-model="Edition.Unit.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListUnits.Units"></select>
+              <div class="row">
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidCode }">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "code", "Code")</label>
+                  <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+                </div>
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidDesignation }">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "designation", "Designation")</label>
+                  <input name="editionDesignation" type="text" class="form-control" data-ng-model="Edition.Designation" data-ng-required="true" tabindex="0" />
+                </div>
+                <div class="form-group col-lg-6 col-md-12">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "description", "Description")</label>
+                  <textarea name="editionDescription" type="text" class="form-control" data-ng-model="Edition.Description" data-ng-required="false" tabindex="0"></textarea>
+                </div>
+                <div class="form-group col-lg-6 col-md-12">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "observation", "Observation")</label>
+                  <textarea name="editionObservation" type="text" class="form-control" data-ng-model="Edition.Observation" data-ng-required="false" tabindex="0"></textarea>
+                </div>
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidStartingDate }">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "startingdate", "Starting Date")</label>
+                  <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
+                </div>
+                <div class="form-group col-lg-6 col-md-12">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "endingdate", "Ending date")</label>
+                  <input name="editionEndingDate" type="date" class="form-control datepicker" data-ng-model="Edition.EndingDate" data-ng-required="false" tabindex="0" />
+                </div>
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidArticleFamily }">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "family", "Family")</label>
+                  <select name="editionFamily" type="text" class="form-control" data-ng-model="Edition.ArticleFamily.Id" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListFamilies.ArticleFamilies"></select>
+                </div>
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidArticleSubFamily }">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "subfamily", "Sub family")</label>
+                  <select name="editionSubFamily" type="text" class="form-control" data-ng-model="Edition.ArticleSubFamily.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in findSubFamilies()"></select>
+                </div>
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidBrand }">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "brand", "Brand")</label>
+                  <select name="editionBrand" type="text" class="form-control" data-ng-model="Edition.Brand.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListBrands.Brands"></select>
+                </div>
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidUnit }">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticles", "unit", "Unit")</label>
+                  <select name="editionUnit" type="text" class="form-control" data-ng-model="Edition.Unit.Id" data-ng-required="true" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListUnits.Units"></select>
+                </div>
               </div>
             </form>
           </div>
@@ -90,7 +85,7 @@
   var columnsHeaderArticle = [];
   columnsHeaderArticle.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")", "Type" : "Text"});
   columnsHeaderArticle.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")", "Type" : "Text"});
-  columnsHeaderArticle.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticles", "date", "Date")", "Type" : "Date"});
+  columnsHeaderArticle.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticles", "startingdate", "Starting Date")", "Type" : "Date"});
   columnsHeaderArticle.push({"Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "family", "Family")", "Type" : "Text"});
   columnsHeaderArticle.push({"Key": 'ArticleSubFamily.Designation', "Value": "@Html.TranslationFor("listarticles", "subfamily", "Sub family")", "Type" : "Text"});
   columnsHeaderArticle.push({"Key": 'Brand.Name', "Value": "@Html.TranslationFor("listarticles", "brand", "Brand")", "Type" : "Text"});

@@ -1,15 +1,37 @@
 ﻿@using Bm2sBO.Utils;
 
+@if (!UserUtils.CanListArticles && !UserUtils.CanListBrands && !UserUtils.CanListNomenclatures && !UserUtils.CanListFamilies && !UserUtils.CanListSubFamilies)
+{
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
+}
+
 <section class="content">
   <div class="row">
     <div class="col-lg-6 col-md-12">
-      @{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }
-      @{ Html.RenderAction("List", "Brands", new { area = "Articles" }); }
-      @{ Html.RenderAction("List", "Nomenclatures", new { area = "Articles" }); }
+      @if (UserUtils.CanListArticles)
+      {
+        <text>@{ Html.RenderAction("List", "Articles", new { area = "Articles" }); }</text>
+      }
+      @if (UserUtils.CanListBrands)
+      {
+        <text>@{ Html.RenderAction("List", "Brands", new { area = "Articles" }); }</text>
+      }
+      @if (UserUtils.CanListNomenclatures)
+      {
+        <text>@{ Html.RenderAction("List", "Nomenclatures", new { area = "Articles" }); }</text>
+      }
     </div>
     <div class="col-lg-6 col-md-12">
-      @{ Html.RenderAction("List", "Families", new { area = "Articles" }); }
-      @{ Html.RenderAction("List", "SubFamilies", new { area = "Articles" }); }
+      @if (UserUtils.CanListFamilies)
+      {
+        <text>@{ Html.RenderAction("List", "Families", new { area = "Articles" }); }</text>
+      }
+      @if (UserUtils.CanListSubFamilies)
+      {
+        <text>@{ Html.RenderAction("List", "SubFamilies", new { area = "Articles" }); }</text>
+      }
     </div>
   </div>
 </section>

@@ -1,0 +1,38 @@
+﻿@using Bm2sBO.Utils;
+@if (!UserUtils.CurrentUser.IsAdministrator)
+{
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
+}
+
+<section class="content">
+  <div data-ng-controller="Initialization">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="pull-left">@Html.TranslationFor("initialization", "titlemodules", "Initialization of modules")</h3>
+          </div>
+          <div class="box-body">
+            @Html.TranslationFor("initialization", "descriptionmodules", "The purpose of this button is to initialize differents modules in bm2s.<br/>Once clicked, you can manually edit modules to active/unactive them.")
+          </div>
+          <div class="box-footer">
+            <div class="form-group pull-right">
+              <button class="btn btn-default" data-ng-click="ModulesInitialization()" tabindex="0" data-ng-disabled="!NeedModulesInitialization">
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("initialization", "button", "Initialization")
+              </button>
+            </div>
+          </div>
+          <div class="overlay" data-ng-show="Loading">
+            <i class="fa fa-4x fa-refresh fa-spin"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  var needModulesInitialization = @ModuleUtils.NeedModulesInitialization.ToString().ToLower();
+</script>

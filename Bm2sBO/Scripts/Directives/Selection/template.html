@@ -1,4 +1,4 @@
-﻿<div class="selection">
+﻿<div class="row">
   <div class="col-sm-12">
     <div class="col-sm-6">
       <div class="pull-left">
@@ -31,8 +31,7 @@
       <tbody>
         <tr data-ng-repeat="item in filteredSource = (source | filter:SearchFilter) | startFrom:CurrentPage*pageSize | limitTo:pageSize" data-ng-class="{success: containsSelection(item.Id)}" data-ng-click="toggleSelection(item.Id)" class="cursor-arrow">
           <td>
-            {{inputMode}}
-            <input type="{{inputMode()}}" data-ng-checked="containsSelection(item.Id)" data-ng-click="toggleSelection(item.Id)" />
+            <input type="{{inputMode()}}" data-ng-checked="containsSelection(item.Id)" />
           </td>
           <td data-ng-repeat="columnHeader in columnsHeader">
             {{item | getValue: columnHeader}}

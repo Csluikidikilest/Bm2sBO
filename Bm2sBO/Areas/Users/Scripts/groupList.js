@@ -30,6 +30,7 @@
   $scope.LoadingUser = false;
   $scope.PageSizeUser = 3;
   $scope.SelectionModeUser = 'multi';
+  $scope.TriStateUser = false;
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);

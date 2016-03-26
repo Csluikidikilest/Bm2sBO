@@ -14,26 +14,5 @@ namespace Bm2sBO.Utils
     {
       return new HtmlString(value.ToString());
     }
-
-    public enum Modules
-    {
-      Articles,
-      Brands,
-      Dashboard,
-      Families,
-      Groups,
-      Modules,
-      Nomenclatures,
-      Parameters,
-      Partners,
-      Prices,
-      Purchases,
-      Sales,
-      SubFamilies,
-      Subscriptions,
-      Trades,
-      Translations,
-      Users,
-    }
   }
 }

@@ -1,5 +1,5 @@
-﻿using System.Web.Mvc;
-using Bm2sBO.Models;
+﻿using Bm2sBO.Utils;
+using System.Web.Mvc;
 
 namespace Bm2sBO.Controllers
 {
@@ -7,13 +7,13 @@ namespace Bm2sBO.Controllers
   {
     public ActionResult Index()
     {
-      return PartialView(new LoginModel());
+      return PartialView();
     }
 
     [HttpPost]
-    public int Index(LoginModel model)
+    public int Index(string userLogin, string password)
     {
-      return model.OpenSession();
+      return UserUtils.OpenSession(userLogin, password);
     }
   }
 }

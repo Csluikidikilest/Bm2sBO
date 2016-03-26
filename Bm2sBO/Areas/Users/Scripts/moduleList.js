@@ -31,9 +31,15 @@
   $scope.PageSizeUser = 3;
   $scope.SelectionModeUser = 'multi';
 
+  $scope.AvailablePagesSizeGroup = [3, 5, 10, 20];
+  $scope.ColumnsHeaderGroup = columnsHeaderGroup;
+  $scope.CurrentSelectionGroup = [];
+  $scope.LoadingGroup = false;
+  $scope.PageSizeGroup = 3;
+  $scope.SelectionModeGroup = 'multi';
+
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
-    $scope.getUsersModule($scope.Edition.Id);
     $('#modalEditionModule').modal('show');
   };
 

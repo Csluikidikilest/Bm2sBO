@@ -31,6 +31,12 @@ namespace Bm2sBO.Areas.Users.Controllers
     }
 
     [HttpPost]
+    public HtmlString GetUsersModule(int moduleId)
+    {
+      return "a".ToHtmlString();
+    }
+
+    [HttpPost]
     public HtmlString SetValue(Module module)
     {
       Bm2s.Connectivity.Common.User.Module connect = new Bm2s.Connectivity.Common.User.Module();

@@ -32,6 +32,8 @@
   $scope.PageSizeArticleParent = articleSelectionPageSize;
   $scope.PageSizeArticleChild = articleSelectionPageSize;
   $scope.SelectionModeArticle = 'single';
+  $scope.TriStateArticleParent = false;
+  $scope.TriStateArticleChild = false;
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
