@@ -33,13 +33,13 @@
             @if (UserUtils.CanListBrands)
             {
               <li class="@(MenuUtils.Page == "Brands" ? "active" : "")"><a href="/Articles/Brands">@Html.TranslationLabelFor("menu", "brands", "Brands")</a></li>}
-            @if (UserUtils.CanListNomenclatures)
+            @if (false && UserUtils.CanListNomenclatures)
             {
               <li class="@(MenuUtils.Page == "Nomenclature" ? "active" : "")"><a href="/Articles/Nomenclatures">@Html.TranslationLabelFor("menu", "nomenclatures", "Nomenclatures")</a></li>}
             @if (UserUtils.CanListPrices)
             {
               <li class="@(MenuUtils.Page == "Prices" ? "active" : "")"><a href="/Articles/Prices">@Html.TranslationLabelFor("menu", "prices", "Prices")</a></li>}
-            @if (UserUtils.CanListSubscriptions)
+            @if (false && UserUtils.CanListSubscriptions)
             {
               <li class="@(MenuUtils.Page == "Subscriptions" ? "active" : "")"><a href="/Articles/Subscriptions">@Html.TranslationLabelFor("menu", "subscriptions", "Subscriptions")</a></li>}
           </ul>

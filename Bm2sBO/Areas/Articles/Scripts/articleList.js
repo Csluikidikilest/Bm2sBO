@@ -9,6 +9,7 @@
   $scope.ColumnsHeader = columnsHeaderArticle;
   $scope.Configuration = configuration;
   $scope.CurrentPage = 0;
+  $scope.CustomActions = customActionsArticles;
   $scope.EntriesText = entriesText;
   $scope.Interval = 2;
   $scope.LargeStep = 3;
@@ -29,60 +30,20 @@
   $scope.SelectListSubFamilies = selectListSubFamilies;
   $scope.SelectListUnits = selectListUnits;
 
-  $scope.edit = function (line) {
-    $scope.Edition = angular.copy(line);
-    $('#modalEditionArticle').modal('show');
-  };
-
   $scope.add = function () {
     $scope.Edition = {};
     $('#modalEditionArticle').modal('show');
   };
 
-  $scope.formValid = function () {
-    $scope.ValidCode = $scope.Edition !== undefined && $scope.Edition.Code !== undefined && $scope.Edition.Code != '';
-    $scope.ValidDesignation = $scope.Edition !== undefined && $scope.Edition.Designation !== undefined && $scope.Edition.Designation != '';
-    $scope.ValidStartingDate = $scope.Edition !== undefined && $scope.Edition.StartingDate !== undefined && $scope.Edition.StartingDate != '';
-    $scope.ValidArticleFamily = $scope.Edition !== undefined && $scope.Edition.ArticleFamily !== undefined && $scope.Edition.ArticleFamily != '';
-    $scope.ValidArticleSubFamily = $scope.Edition !== undefined && $scope.Edition.ArticleSubFamily !== undefined && $scope.Edition.ArticleSubFamily != '';
-    $scope.ValidBrand = $scope.Edition !== undefined && $scope.Edition.Brand !== undefined && $scope.Edition.Brand != '';
-    $scope.ValidUnit = $scope.Edition !== undefined && $scope.Edition.Unit !== undefined && $scope.Edition.Unit != '';
-    return $scope.ValidCode && $scope.ValidDesignation && $scope.ValidStartingDate && $scope.ValidArticleFamily && $scope.ValidArticleSubFamily && $scope.ValidBrand && $scope.ValidUnit;
-  };
-
-  $scope.findSubFamilies = function () {
-    var result = null;
-    if ($scope.Edition !== undefined && $scope.Edition.ArticleFamily !== undefined) {
-      result = $filter('find')($scope.SelectListSubFamilies.ArticleFamilies, [{ Key: 'FamilyId', Value: $scope.Edition.ArticleFamily.Id }]);
-      if (result != null) {
-        result = result.ArticleSubFamilies;
-        if ($scope.Edition.ArticleSubFamily === undefined) {
-          $scope.Edition.ArticleSubFamily = result[0];
-        } else {
-          var selectedSubfamily = $filter('find')(result, [{ Key: 'Id', Value: $scope.Edition.ArticleSubFamily.Id }]);
-          if (selectedSubfamily !== undefined && selectedSubfamily != null) {
-            $scope.Edition.ArticleSubFamily.Id = selectedSubfamily.Id;
-          } else {
-            $scope.Edition.ArticleSubFamily.Id = result[0].Id;
-          }
-        }
-      }
+  $scope.customAction = function (event, line) {
+    switch (event) {
+      case 'EditPrices':
+        $scope.editPrices(line);
+        break;
+      case 'ShowNomenclatures':
+        $scope.showNomenclatures(line);
+        break;
     }
-    return result;
-  }
-
-  $scope.dismissValues = function () {
-  };
-
-  $scope.saveValues = function (line) {
-    var url = "/Articles/Articles/SetValue";
-    var params = {
-      article: line
-    };
-
-    $http.post(url, params).success(function (data, status) {
-      $scope.getValues();
-    });
   };
 
   $scope.deleteValue = function (line) {
@@ -98,6 +59,52 @@
     });
   };
 
+  $scope.dismissValues = function () { };
+
+  $scope.dismissValuesPrice = function () { };
+
+  $scope.edit = function (line) {
+    $scope.Edition = angular.copy(line);
+    $('#modalEditionArticle').modal('show');
+  };
+
+  $scope.editPrices = function (line) {
+    $scope.EditionPrice = angular.copy(line);
+    $('#modalEditionArticle').modal('show');
+  };
+
+  $scope.findSubFamilies = function () {
+    var result = null;
+    if ($scope.Edition !== undefined && $scope.Edition.ArticleFamily !== undefined) {
+      result = $filter('find')($scope.SelectListSubFamilies.ArticleFamilies, [{ Key: 'FamilyId', Value: $scope.Edition.ArticleFamily.Id }]);
+      if (result !== null) {
+        result = result.ArticleSubFamilies;
+        if ($scope.Edition.ArticleSubFamily === undefined) {
+          $scope.Edition.ArticleSubFamily = result[0];
+        } else {
+          var selectedSubfamily = $filter('find')(result, [{ Key: 'Id', Value: $scope.Edition.ArticleSubFamily.Id }]);
+          if (selectedSubfamily !== undefined && selectedSubfamily !== null) {
+            $scope.Edition.ArticleSubFamily.Id = selectedSubfamily.Id;
+          } else {
+            $scope.Edition.ArticleSubFamily.Id = result[0].Id;
+          }
+        }
+      }
+    }
+    return result;
+  };
+
+  $scope.formValid = function () {
+    $scope.ValidCode = $scope.Edition !== undefined && $scope.Edition.Code !== undefined && $scope.Edition.Code !== '';
+    $scope.ValidDesignation = $scope.Edition !== undefined && $scope.Edition.Designation !== undefined && $scope.Edition.Designation !== '';
+    $scope.ValidStartingDate = $scope.Edition !== undefined && $scope.Edition.StartingDate !== undefined && $scope.Edition.StartingDate !== '';
+    $scope.ValidArticleFamily = $scope.Edition !== undefined && $scope.Edition.ArticleFamily !== undefined && $scope.Edition.ArticleFamily !== '';
+    $scope.ValidArticleSubFamily = $scope.Edition !== undefined && $scope.Edition.ArticleSubFamily !== undefined && $scope.Edition.ArticleSubFamily !== '';
+    $scope.ValidBrand = $scope.Edition !== undefined && $scope.Edition.Brand !== undefined && $scope.Edition.Brand !== '';
+    $scope.ValidUnit = $scope.Edition !== undefined && $scope.Edition.Unit !== undefined && $scope.Edition.Unit !== '';
+    return $scope.ValidCode && $scope.ValidDesignation && $scope.ValidStartingDate && $scope.ValidArticleFamily && $scope.ValidArticleSubFamily && $scope.ValidBrand && $scope.ValidUnit;
+  };
+
   $scope.getValues = function () {
     $scope.Loading = true;
     var url = "/Articles/Articles/GetValues";
@@ -109,6 +116,24 @@
     }).then(function () {
       $scope.Loading = false;
     });
+  };
+
+  $scope.saveValues = function (line) {
+    var url = "/Articles/Articles/SetValue";
+    var params = {
+      article: line
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.getValues();
+    });
+  };
+
+  $scope.saveValuesPrice = function (line) {
+  };
+
+  $scope.showNomenclatures = function (line) {
+
   };
 
   $scope.getValues();
