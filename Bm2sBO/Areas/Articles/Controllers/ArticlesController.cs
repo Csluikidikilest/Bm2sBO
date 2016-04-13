@@ -36,6 +36,16 @@ namespace Bm2sBO.Areas.Articles.Controllers
     }
 
     [HttpPost]
+    public HtmlString GetPrices(int articleId)
+    {
+      Bm2s.Connectivity.Common.Article.Price connect = new Bm2s.Connectivity.Common.Article.Price();
+      connect.Request.ArticleId = articleId;
+      connect.Get();
+
+      return connect.Response.Prices.ToHtmlJson();
+    }
+
+    [HttpPost]
     public HtmlString SetValue(Article article)
     {
       Bm2s.Connectivity.Common.Article.Article connect = new Bm2s.Connectivity.Common.Article.Article();

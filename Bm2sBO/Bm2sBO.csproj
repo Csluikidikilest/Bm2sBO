@@ -114,6 +114,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>ExternalLib\ServiceStack.Common.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExternalLib\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Bm2sServer\Bm2s.Connectivity.Common\bin\Debug\ServiceStack.Text.dll</HintPath>
@@ -287,6 +291,7 @@
     <Content Include="ExternalLib\Bm2s.Response.dll" />
     <Content Include="ExternalLib\ServiceStack.Common.dll" />
     <Content Include="ExternalLib\ServiceStack.dll" />
+    <Content Include="ExternalLib\ServiceStack.Interfaces.dll" />
     <Content Include="ExternalLib\ServiceStack.Text.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

@@ -25,6 +25,8 @@
   $scope.Title = titleArticle;
   $scope.ToText = toText;
 
+  $scope.TitlePrice = titlePrice;
+
   $scope.SelectListBrands = selectListBrands;
   $scope.SelectListFamilies = selectListFamilies;
   $scope.SelectListSubFamilies = selectListSubFamilies;
@@ -69,8 +71,9 @@
   };
 
   $scope.editPrices = function (line) {
+    $scope.getPrices(line.Id);
     $scope.EditionPrice = angular.copy(line);
-    $('#modalEditionArticle').modal('show');
+    $('#modalEditionPrices').modal('show');
   };
 
   $scope.findSubFamilies = function () {
@@ -113,6 +116,20 @@
 
     $http.post(url, params).success(function (data, status) {
       $scope.DataSource = data;
+    }).then(function () {
+      $scope.Loading = false;
+    });
+  };
+
+  $scope.getPrices = function (articleId) {
+    $scope.Loading = true;
+    var url = "/Articles/Articles/GetPrices";
+    var params = {
+      articleId: articleId
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.PricesDataSource = data;
     }).then(function () {
       $scope.Loading = false;
     });
