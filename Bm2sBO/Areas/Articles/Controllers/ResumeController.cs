@@ -2,7 +2,7 @@
 
 namespace Bm2sBO.Areas.Articles.Controllers
 {
-  public class DashboardController : Controller
+  public class ResumeController : Controller
   {
     [HttpGet]
     public ViewResult Index()

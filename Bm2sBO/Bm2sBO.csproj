@@ -191,7 +191,7 @@
     <Compile Include="Areas\Articles\ArticlesAreaRegistration.cs" />
     <Compile Include="Areas\Articles\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Articles\Controllers\BrandsController.cs" />
-    <Compile Include="Areas\Articles\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Articles\Controllers\ResumeController.cs" />
     <Compile Include="Areas\Articles\Controllers\NomenclaturesController.cs" />
     <Compile Include="Areas\Articles\Controllers\SubFamiliesController.cs" />
     <Compile Include="Areas\Articles\Controllers\FamiliesController.cs" />
@@ -402,7 +402,7 @@
     <Content Include="Areas\Articles\Views\Families\Index.cshtml" />
     <Content Include="Areas\Articles\Views\SubFamilies\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\Index.cshtml" />
-    <Content Include="Areas\Articles\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\Resume\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclatures\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Articles\List.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\List.cshtml" />

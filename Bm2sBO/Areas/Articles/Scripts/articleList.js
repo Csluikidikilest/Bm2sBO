@@ -9,7 +9,6 @@
   $scope.ColumnsHeader = columnsHeaderArticle;
   $scope.Configuration = configuration;
   $scope.CurrentPage = 0;
-  $scope.CustomActions = customActionsArticles;
   $scope.EntriesText = entriesText;
   $scope.Interval = 2;
   $scope.LargeStep = 3;
@@ -25,8 +24,6 @@
   $scope.Title = titleArticle;
   $scope.ToText = toText;
 
-  $scope.TitlePrice = titlePrice;
-
   $scope.SelectListBrands = selectListBrands;
   $scope.SelectListFamilies = selectListFamilies;
   $scope.SelectListSubFamilies = selectListSubFamilies;
@@ -35,17 +32,6 @@
   $scope.add = function () {
     $scope.Edition = {};
     $('#modalEditionArticle').modal('show');
-  };
-
-  $scope.customAction = function (event, line) {
-    switch (event) {
-      case 'EditPrices':
-        $scope.editPrices(line);
-        break;
-      case 'ShowNomenclatures':
-        $scope.showNomenclatures(line);
-        break;
-    }
   };
 
   $scope.deleteValue = function (line) {
@@ -68,12 +54,6 @@
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
     $('#modalEditionArticle').modal('show');
-  };
-
-  $scope.editPrices = function (line) {
-    $scope.getPrices(line.Id);
-    $scope.EditionPrice = angular.copy(line);
-    $('#modalEditionPrices').modal('show');
   };
 
   $scope.findSubFamilies = function () {
@@ -121,20 +101,6 @@
     });
   };
 
-  $scope.getPrices = function (articleId) {
-    $scope.Loading = true;
-    var url = "/Articles/Articles/GetPrices";
-    var params = {
-      articleId: articleId
-    };
-
-    $http.post(url, params).success(function (data, status) {
-      $scope.PricesDataSource = data;
-    }).then(function () {
-      $scope.Loading = false;
-    });
-  };
-
   $scope.saveValues = function (line) {
     var url = "/Articles/Articles/SetValue";
     var params = {
@@ -147,10 +113,6 @@
   };
 
   $scope.saveValuesPrice = function (line) {
-  };
-
-  $scope.showNomenclatures = function (line) {
-
   };
 
   $scope.getValues();

@@ -20,7 +20,7 @@
             <i class="fa fa-product-hunt text-purple"></i> <span>@Html.TranslationLabelFor("menu", "articles", "Articles")</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li class="@(MenuUtils.Page == "Dashboard" ? "active" : "")"><a href="/Articles/Dashboard">@Html.TranslationLabelFor("menu", "dashboard", "Dashboard")</a></li>
+            <li class="@(MenuUtils.Page == "Resume" ? "active" : "")"><a href="/Articles/Resume">@Html.TranslationLabelFor("menu", "resume", "Resume")</a></li>
             @if (UserUtils.CanListArticles)
             {
               <li class="@(MenuUtils.Page == "Articles" ? "active" : "")"><a href="/Articles/Articles">@Html.TranslationLabelFor("menu", "articles", "Articles")</a></li>}
