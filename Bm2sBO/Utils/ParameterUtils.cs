@@ -23,7 +23,7 @@ namespace Bm2sBO.Utils
       return result.ToLower();
     }
 
-    public static string Get(string code, string description, bool isOverloadable, DateTime defaultValue)
+    public static string Get(string code, string description, bool isOverloadable, DateTime? defaultValue)
     {
       string result = (HttpContext.Current.Session[ParameterUtils.ParameterSessionKey + "_" + code] as string);
 
@@ -108,7 +108,7 @@ namespace Bm2sBO.Utils
       HttpContext.Current.Session[ParameterUtils.ParameterSessionKey + "_" + code] = value;
     }
 
-    public static void Set(string code, string description, bool isOverloadable, DateTime value)
+    public static void Set(string code, string description, bool isOverloadable, DateTime? value)
     {
       Parameter parameter = new Parameter();
       parameter.Request.Code = code;

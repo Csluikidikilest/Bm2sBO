@@ -1,14 +1,40 @@
 ﻿using Bm2s.Poco.Common.Article;
 using Bm2sBO.Utils;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ServiceStack.Text;
 
 namespace Bm2sBO.Areas.Articles.Controllers
 {
   public class ArticlesController : Controller
   {
+    [HttpPost]
+    public HtmlString AddPrice(List<Price> oldPrices, Price newPrice)
+    {
+      List<Price> result = new List<Price>();
+      DateTime endingDatePrevious = newPrice.StartingDate.AddDays(-1);
+
+      if (oldPrices.All(price => !price.EndingDate.HasValue || newPrice.StartingDate > price.EndingDate.Value))
+      {
+        Price currentPrice = oldPrices.FirstOrDefault(price => !price.EndingDate.HasValue);
+        if (currentPrice != null)
+        {
+          currentPrice.EndingDate = endingDatePrevious;
+        }
+        result.AddRange(oldPrices);
+        result.Add(newPrice);
+      }
+      else
+      {
+
+      }
+
+      return result.ToHtmlJson();
+    }
+
     [HttpGet]
     public ViewResult Index()
     {
@@ -19,6 +45,16 @@ namespace Bm2sBO.Areas.Articles.Controllers
     public PartialViewResult List()
     {
       return PartialView();
+    }
+
+    [HttpPost]
+    public HtmlString GetPrices(int articleId)
+    {
+      Bm2s.Connectivity.Common.Article.Price connect = new Bm2s.Connectivity.Common.Article.Price();
+      connect.Request.ArticleId = articleId;
+      connect.Get();
+
+      return connect.Response.Prices.ToHtmlJson();
     }
 
     [HttpPost]
@@ -36,13 +72,13 @@ namespace Bm2sBO.Areas.Articles.Controllers
     }
 
     [HttpPost]
-    public HtmlString GetPrices(int articleId)
+    public HtmlString SetPrice(Price price)
     {
       Bm2s.Connectivity.Common.Article.Price connect = new Bm2s.Connectivity.Common.Article.Price();
-      connect.Request.ArticleId = articleId;
-      connect.Get();
+      connect.Request.Price = price;
+      connect.Post();
 
-      return connect.Response.Prices.ToHtmlJson();
+      return connect.Response.Prices.FirstOrDefault().ToHtmlJson();
     }
 
     [HttpPost]

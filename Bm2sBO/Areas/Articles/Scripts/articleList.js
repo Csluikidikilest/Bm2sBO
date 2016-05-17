@@ -24,6 +24,20 @@
   $scope.Title = titleArticle;
   $scope.ToText = toText;
 
+  $scope.AvailablePagesSizePrice = priceListAvailablePagesSize;
+  $scope.CanCreatePrice = false;
+  $scope.CanDeletePrice = false;
+  $scope.CanEditPrice = false;
+  $scope.ColumnsHeaderPrice = columnsHeaderPrice;
+  $scope.CurrentPagePrice = 0;
+  $scope.EntriesTextPrice = entriesText;
+  $scope.IntervalPrice = 2;
+  $scope.LoadingPrice = false;
+  $scope.OrderColumnPrice = $scope.ColumnsHeaderPrice[0].Key;
+  $scope.OrderReversePrice = true;
+  $scope.PageSizePrice = priceListPageSize;
+  $scope.TitlePrice = titlePrice;
+
   $scope.SelectListBrands = selectListBrands;
   $scope.SelectListFamilies = selectListFamilies;
   $scope.SelectListSubFamilies = selectListSubFamilies;
@@ -32,6 +46,28 @@
   $scope.add = function () {
     $scope.Edition = {};
     $('#modalEditionArticle').modal('show');
+  };
+
+  $scope.addPrice = function () {
+    var url = "/Articles/Articles/AddPrice";
+    var paramsPrice = {
+      oldPrices: $scope.DataSourcePrice,
+      newPrice: {
+        id: 0,
+        BasePrice: $scope.EditionPrice.BasePrice,
+        StartingDate: $scope.EditionPrice.StartingDate,
+        EndingDate: $scope.EditionPrice.EndingDate,
+        ArticleId: $scope.Edition.Id
+      }
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.DataSourcePrice = data;
+    });
+
+    $scope.EditionPrice.BasePrice = null;
+    $scope.EditionPrice.StartingDate = '';
+    $scope.EditionPrice.EndingDate = '';
   };
 
   $scope.deleteValue = function (line) {
@@ -53,6 +89,7 @@
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
+    $scope.getValuesPrice($scope.Edition.Id);
     $('#modalEditionArticle').modal('show');
   };
 
@@ -88,6 +125,12 @@
     return $scope.ValidCode && $scope.ValidDesignation && $scope.ValidStartingDate && $scope.ValidArticleFamily && $scope.ValidArticleSubFamily && $scope.ValidBrand && $scope.ValidUnit;
   };
 
+  $scope.formValidPrice = function () {
+    $scope.ValidBasePrice = $scope.EditionPrice !== undefined && $scope.EditionPrice.BasePrice != undefined && parseFloat($scope.EditionPrice.BasePrice) !== NaN;
+    $scope.ValidStartingDatePrice = $scope.EditionPrice !== undefined && $scope.EditionPrice.StartingDate !== undefined && $scope.EditionPrice.StartingDate !== '';
+    return $scope.ValidBasePrice && $scope.ValidStartingDatePrice;
+  }
+
   $scope.getValues = function () {
     $scope.Loading = true;
     var url = "/Articles/Articles/GetValues";
@@ -98,6 +141,17 @@
       $scope.DataSource = data;
     }).then(function () {
       $scope.Loading = false;
+    });
+  };
+
+  $scope.getValuesPrice = function (articleId) {
+    var url = "/Articles/Articles/GetPrices";
+    var params = {
+      articleId: articleId
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.DataSourcePrice = data;
     });
   };
 
@@ -113,6 +167,14 @@
   };
 
   $scope.saveValuesPrice = function (line) {
+    var url = "/Articles/Articles/SetValue";
+    var params = {
+      article: line
+    };
+
+    $http.post(url, params).success(function (data, status) {
+      $scope.getValues();
+    });
   };
 
   $scope.getValues();

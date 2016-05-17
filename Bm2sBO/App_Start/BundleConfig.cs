@@ -21,6 +21,8 @@ namespace Bm2sBO
 
       bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts/App/bm2s.js"));
 
+      bundles.Add(new ScriptBundle("~/bundles/comparators").Include("~/Scripts/Comparators/*.js"));
+
       bundles.Add(new ScriptBundle("~/bundles/controllers").Include("~/Scripts/Controllers/*.js", "~/Areas/Articles/Scripts/*.js", "~/Areas/Administration/Scripts/*.js", "~/Areas/Parameters/Scripts/*.js", "~/Areas/Partners/Scripts/*.js", "~/Areas/Trades/Scripts/*.js", "~/Areas/Users/Scripts/*.js", "~/Areas/Dashboard/Scripts/*.js"));
 
       bundles.Add(new ScriptBundle("~/bundles/directives").Include("~/Scripts/Directives/Datatable/datatable.js", "~/Scripts/Directives/Edition/edition.js", "~/Scripts/Directives/InputFormat/inputFormat.js", "~/Scripts/Directives/Pagination/pagination.js", "~/Scripts/Directives/Selection/selection.js"));

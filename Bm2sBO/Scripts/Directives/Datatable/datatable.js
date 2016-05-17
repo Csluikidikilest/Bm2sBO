@@ -94,6 +94,8 @@
       orderReverse: '=',
       pageSize: '=',
       searchText: '=',
+      showBorder: '=',
+      showHeader: '=',
       showingText: '=',
       showText: '=',
       smallStep: '=',

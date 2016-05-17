@@ -305,6 +305,7 @@
     <Content Include="Pictures\iOs\icon144.png" />
     <Content Include="Pictures\iOs\icon57.png" />
     <Content Include="Pictures\iOs\icon72.png" />
+    <Content Include="Scripts\Comparators\DateComparators.js" />
     <Content Include="Scripts\Configurations\config.en-gb.js" />
     <Content Include="Scripts\Controllers\login.js" />
     <Content Include="Scripts\Controllers\preferences.js" />
