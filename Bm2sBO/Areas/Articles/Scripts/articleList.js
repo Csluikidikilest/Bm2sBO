@@ -50,11 +50,11 @@
 
   $scope.addPrice = function () {
     var url = "/Articles/Articles/AddPrice";
-    var paramsPrice = {
+    var params = {
       oldPrices: $scope.DataSourcePrice,
       newPrice: {
         id: 0,
-        BasePrice: $scope.EditionPrice.BasePrice,
+        BasePrice: parseFloat($scope.EditionPrice.BasePrice.replace(",", ".")),
         StartingDate: $scope.EditionPrice.StartingDate,
         EndingDate: $scope.EditionPrice.EndingDate,
         ArticleId: $scope.Edition.Id

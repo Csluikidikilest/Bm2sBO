@@ -24,13 +24,20 @@ namespace Bm2sBO.Areas.Articles.Controllers
         {
           currentPrice.EndingDate = endingDatePrevious;
         }
-        result.AddRange(oldPrices);
-        result.Add(newPrice);
       }
       else
       {
-
+        Price currentPrice = oldPrices.FirstOrDefault(price => price.EndingDate > newPrice.StartingDate);
+        DateTime? oldEndingDate = currentPrice.EndingDate;
+        currentPrice.EndingDate = endingDatePrevious;
+        if (newPrice.EndingDate.HasValue && oldEndingDate > newPrice.EndingDate.Value)
+        {
+          result.Add(new Price() { Article = currentPrice.Article, BasePrice = currentPrice.BasePrice, StartingDate = newPrice.EndingDate.Value.AddDays(1), EndingDate = oldEndingDate });
+        }
       }
+
+      result.Add(newPrice);
+      result.AddRange(oldPrices);
 
       return result.ToHtmlJson();
     }
