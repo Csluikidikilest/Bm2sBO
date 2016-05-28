@@ -1,0 +1,219 @@
+﻿@using Bm2sBO.Utils;
+@{
+  ViewBag.Title = @Html.TranslationFor("listpartners", "title", "Partners");
+}
+
+<div data-ng-controller="PartnerList">
+  <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-custom-actions="CustomActionsPartner" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-custom-action="customAction(event, line)" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-on-refresh="getValues()" data-order-column="OrderColumn" data-order-reverse="OrderReverse" data-page-size="PageSize" data-search-text="SearchText" data-show-border='true' data-show-header="true" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
+  <div id="modalEditionPartner" class="modal fade" tabindex="-1" role="dialog">
+    <form data-ng-submit="saveValues(Edition)">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-ng-click="dismissValues()" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{Title}}</h4>
+          </div>
+          <div class="modal-body">
+            <ul class="nav nav-tabs" role="tablist">
+              <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">@Html.TranslationFor("listpartners", "generaltab", "General")</a></li>
+              <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab" data-ng-disabled="Edition.Id <= 0">@Html.TranslationFor("listpartners", "contacttab", "Contact")</a></li>
+              <li role="presentation"><a href="#families" aria-controls="contact" role="tab" data-toggle="tab" data-ng-disabled="Edition.Id <= 0">@Html.TranslationFor("listpartners", "familiestab", "Families")</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="general">
+                <div class="row">
+                  <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidCode }">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "code", "Code")</label>
+                    <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" maxlength="250" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "companyname", "Company Name")</label>
+                    <input name="editionCompanyName" type="text" class="form-control" data-ng-model="Edition.CompanyName" data-ng-required="false" tabindex="0" maxlength="250" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "phonenumber", "Phone Number")</label>
+                    <input name="editionPhoneNumber" type="tel" class="form-control" data-ng-model="Edition.PhoneNumber" data-ng-required="false" tabindex="0" maxlength="20" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "faxnumber", "Fax Number")</label>
+                    <input name="editionFaxNumber" type="tel" class="form-control" data-ng-model="Edition.FaxNumber" data-ng-required="false" tabindex="0" maxlength="20" />
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "website", "Website")</label>
+                    <input name="editionWebsite" type="url" value="http://" class="form-control" data-ng-model="Edition.WebSite" data-ng-required="true" tabindex="0" maxlength="8000" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "email", "Email")</label>
+                    <input name="editionEmail" type="email" class="form-control" data-ng-model="Edition.Email" data-ng-required="true" tabindex="0" maxlength="255" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "pricemultiplier", "Price Multiplier")</label>
+                    <input name="editionPriceMultiplier" type="number" class="form-control" data-ng-model="Edition.PriceMultiplier" data-ng-required="false" data-ng-disabled="!Edition.IsCustomer" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidStartingDate }">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "startingdate", "Starting Date")</label>
+                    <input name="editionStartingDate" type="date" class="form-control" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "endingdate", "Ending date")</label>
+                    <input name="editionEndingDate" type="date" class="form-control datepicker" data-ng-model="Edition.EndingDate" data-ng-required="false" tabindex="0" />
+                  </div>
+                  <div class="checkbox">
+                    <div class="form-group col-lg-6">
+                      <label class="control-label text-right"><input name="editionCustomer" type="checkbox" data-ng-model="Edition.IsCustomer" tabindex="0" />@Html.TranslationFor("listpartners", "iscustomer", "Is Customer")</label>
+                    </div>
+                    <div class="form-group col-lg-6">
+                      <label class="control-label text-right"><input name="editionSupplier" type="checkbox" data-ng-model="Edition.IsSupplier" tabindex="0" />@Html.TranslationFor("listpartners", "issupplier", "Is Supplier")</label>
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "observation", "Observation")</label>
+                    <textarea name="editionObservation" type="text" class="form-control" data-ng-model="Edition.Observation" data-ng-required="false" tabindex="0" maxlength="8000"></textarea>
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "companyidentifier", "Company Identifier")</label>
+                    <textarea name="editionCompanyIdentifier" type="text" class="form-control" data-ng-model="Edition.CompanyIdentifier" data-ng-required="false" tabindex="0" maxlength="8000"></textarea>
+                  </div>
+                  <div class="form-group col-xs-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "seller", "Seller")</label>
+                    <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizeUser" data-columns-header="ColumnsHeaderUser" data-current-page="CurrentPage" data-current-selection="Edition.User.Id" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingUser" data-of-text="OfText" data-page-size="PageSizeUser" data-search-text="SearchText" data-selection-mode="SelectionModeUser" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourceUser" data-to-text="ToText" data-tri-state="TriStateUser" />
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade in" id="contact">
+                <div class="row">
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "code", "Code")</label>
+                    <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" data-ng-disabled="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "companyname", "Company Name")</label>
+                    <input name="editionCompanyName" type="text" class="form-control" data-ng-model="Edition.CompanyName" data-ng-required="false" data-ng-disabled="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "firstname", "First name")</label>
+                    <input name="editionContactFirstName" type="text" class="form-control" data-ng-model="EditionContact.FirstName" data-ng-required="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "lastname", "Last name")</label>
+                    <input name="editionContactLastName" type="text" class="form-control" data-ng-model="EditionContact.LastName" data-ng-required="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "function", "Function")</label>
+                    <input name="editionContactFunction" type="text" class="form-control" data-ng-model="EditionContact.LastName" data-ng-required="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "phonenumber", "Phone Number")</label>
+                    <input name="editionContactPhoneNumber" type="tel" class="form-control" data-ng-model="EditionContact.PhoneNumber" data-ng-required="false" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "mobilePhonenumber", "Mobile Phone Number")</label>
+                    <input name="editionContactMobilePhoneNumber" type="tel" class="form-control" data-ng-model="EditionContact.MobilePhoneNumber" data-ng-required="false" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "faxnumber", "Fax Number")</label>
+                    <input name="editionContactFaxNumber" type="tel" class="form-control" data-ng-model="EditionContact.FaxNumber" data-ng-required="false" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "email", "Email")</label>
+                    <input name="editionEmail" type="email" class="form-control" data-ng-model="Edition.Email" data-ng-required="true" tabindex="0" maxlength="255" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "startingdate", "Starting date")</label>
+                    <input name="editionContactStartingDate" type="date" class="form-control datepicker" data-ng-model="EditionContact.StartingDate" data-ng-required="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "endingdate", "Ending date")</label>
+                    <input name="editionContactEndingDate" type="date" class="form-control datepicker" data-ng-model="EditionContact.EndingDate" data-ng-required="false" tabindex="0" />
+                  </div>
+                </div>
+              </div>
+              <div role="tabpanel" class="tab-pane fade in" id="families">
+                <div class="row">
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "code", "Code")</label>
+                    <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" data-ng-disabled="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-lg-6 col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "companyname", "Company Name")</label>
+                    <input name="editionCompanyName" type="text" class="form-control" data-ng-model="Edition.CompanyName" data-ng-required="false" data-ng-disabled="true" tabindex="0" />
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label class="control-label text-right">@Html.TranslationFor("listpartners", "families", "Partner Families")</label>
+                    <selection data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSizePartnerFamilies" data-columns-header="ColumnsHeaderPartnerFamilies" data-current-page="CurrentPage" data-current-selection="CurrentSelectionPartnerParentFamilies" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="LoadingPartnerFamilies" data-of-text="OfText" data-page-size="PageSizePartnerParentFamilies" data-search-text="SearchText" data-selection-mode="SelectionModePartnerFamilies" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSourcePartnerFamilies" data-to-text="ToText" data-tri-state="TriStatePartnerFamilies" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="form-group pull-right">
+                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
+                  <i class="fa fa-check"></i> @Html.TranslationLabelFor("listpartners", "saveandclose", "Save and close")
+                </button>
+              </div>
+              <div class="form-group pull-right">
+                &nbsp;
+              </div>
+              <div class="form-group pull-right">
+                <button class="btn" data-ng-click="saveValues(Edition)" tabindex="0" data-ng-disabled="!formValid()">
+                  <i class="fa fa-check"></i> @Html.TranslationLabelFor("listpartners", "save", "Save")
+                </button>
+              </div>
+              <div class="form-group pull-left">
+                <button class="btn" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
+                  <i class="fa fa-times"></i> @Html.TranslationLabelFor("listpartners", "cancel", "Cancel")
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+  var selectListBrands = @SelectListUtils.SelectListBrand;
+  var selectListFamilies = @SelectListUtils.SelectListFamily;
+  var selectListSubFamilies = @SelectListUtils.SelectListSubFamily;
+  var selectListUnits = @SelectListUtils.SelectListUnit;
+
+  var columnsHeaderPartner = [];
+  columnsHeaderPartner.push({"Key": 'Code', "Value": "@Html.TranslationFor("listpartners", "code", "Code")", "Type" : "Text"});
+  columnsHeaderPartner.push({"Key": 'CompanyName', "Value": "@Html.TranslationFor("listpartners", "companyname", "Company Name")", "Type" : "Text"});
+  columnsHeaderPartner.push({"Key": 'PhoneNumber', "Value": "@Html.TranslationFor("listpartners", "phonenumber", "Phone Number")", "Type" : "Tel"});
+  columnsHeaderPartner.push({"Key": 'FaxNumber', "Value": "@Html.TranslationFor("listpartners", "faxnumber", "Fax Number")", "Type" : "Tel"});
+  columnsHeaderPartner.push({"Key": 'CompanyIdentifier', "Value": "@Html.TranslationFor("listpartners", "companyidentifier", "Company Identifier")", "Type" : "Text"});
+  columnsHeaderPartner.push({"Key": 'PriceMultiplier', "Value": "@Html.TranslationFor("listpartners", "pricemultiplier", "Price Multiplier")", "Type" : "Text"});
+  columnsHeaderPartner.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listpartners", "startingdate", "Starting Date")", "Type" : "Date"});
+  columnsHeaderPartner.push({"Key": 'User.LastName', "Value": "@Html.TranslationFor("listpartners", "userlastname", "Seller Last Name")", "Type" : "Text"});
+  columnsHeaderPartner.push({"Key": 'User.FirstName', "Value": "@Html.TranslationFor("listpartners", "userfirstname", "Seller First Name")", "Type" : "Text"});
+
+  var customActionsPartner = [];
+  customActionsPartner.push({"Event": 'website', "Icon": "fa-external-link", "Text" : "", "ShowCondition" : "WebSite !== 'undefined' && WebSite !== ''"});
+  customActionsPartner.push({"Event": 'mail', "Icon": "fa-envelope", "Text" : "", "Condition" : "Email !== 'undefined' && Email !== ''"});
+
+  var columnsHeaderUser = [];
+  columnsHeaderUser.push({ "Key": 'FirstName', "Value": "@Html.TranslationFor("listusers", "firstname", "First name")", "Type": "Text" });
+  columnsHeaderUser.push({ "Key": 'LastName', "Value": "@Html.TranslationFor("listusers", "lastname", "Last name")", "Type": "Text" });
+
+  var columnsHeaderPartnerFamilies = [];
+  columnsHeaderPartnerFamilies.push({ "Key": 'Code', "Value": "@Html.TranslationFor("listarticles", "code", "Code")", "Type": "Text" });
+  columnsHeaderPartnerFamilies.push({ "Key": 'Designation', "Value": "@Html.TranslationFor("listarticles", "designation", "Designation")", "Type": "Text" });
+
+  var titlePartner = '@ViewBag.Title';
+  var showText = '@Html.TranslationFor("list", "showtext", "Show")';
+  var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
+  var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';
+  var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
+  var toText = '@Html.TranslationFor("list", "totext", "to")';
+  var ofText = '@Html.TranslationFor("list", "oftext", "of")';
+  var partnerListAvailablePagesSize = [@ParameterUtils.Get("partnerlistavailablepagessize", "List of available pages size for the list of partners", true, "20, 50, 100, 200")];
+  var partnerListPageSize = @ParameterUtils.Get("partnerlistpagesize", "Default page size for the list of partners", true, 20);
+  var userSelectionAvailablePagesSize = [@ParameterUtils.Get("userselectionavailablepagessize", "List of available pages size for the selection of users", true, "3, 5, 10, 20")];
+  var userSelectionPageSize = @ParameterUtils.Get("userselectionpagesize", "Default page size for the selection of users", true, 3);
+  var partnerFamiliesSelectionAvailablePagesSize = [@ParameterUtils.Get("partnerselectionavailablepagessize", "List of available pages size for the selection of partner's families", true, "10, 20, 30")];
+  var partnerFamiliesSelectionPageSize = @ParameterUtils.Get("partnerselectionpagesize", "Default page size for the selection of partner's families", true, 10);
+
+  var canCreate = @UserUtils.CanCreatePartners.ToString().ToLower();
+  var canDelete = @UserUtils.CanDeletePartners.ToString().ToLower();
+  var canEdit = @UserUtils.CanEditPartners.ToString().ToLower();
+</script>

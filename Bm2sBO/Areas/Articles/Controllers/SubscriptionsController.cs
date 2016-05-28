@@ -8,7 +8,7 @@ namespace Bm2sBO.Areas.Articles.Controllers
 {
   public class SubscriptionsController : Controller
   {
-    // GET: Articles/Subscriptions
+    [HttpGet]
     public ActionResult Index()
     {
       return View();

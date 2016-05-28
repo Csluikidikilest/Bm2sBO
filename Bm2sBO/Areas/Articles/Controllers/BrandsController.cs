@@ -9,16 +9,14 @@ namespace Bm2sBO.Areas.Articles.Controllers
 {
   public class BrandsController : Controller
   {
-    [HttpGet]
-    public ViewResult Index()
+    [HttpPost]
+    public int DeleteValue(Brand brand)
     {
-      return View();
-    }
+      Bm2s.Connectivity.Common.Article.Brand connect = new Bm2s.Connectivity.Common.Article.Brand();
+      connect.Request.Brand = brand;
+      connect.Delete();
 
-    [HttpGet]
-    public PartialViewResult List()
-    {
-      return PartialView();
+      return connect.Request.Brand.Id;
     }
 
     [HttpPost]
@@ -35,6 +33,18 @@ namespace Bm2sBO.Areas.Articles.Controllers
       return connect.Response.Brands.ToHtmlJson();
     }
 
+    [HttpGet]
+    public ViewResult Index()
+    {
+      return View();
+    }
+
+    [HttpGet]
+    public PartialViewResult List()
+    {
+      return PartialView();
+    }
+
     [HttpPost]
     public HtmlString SetValue(Brand brand)
     {
@@ -45,16 +55,6 @@ namespace Bm2sBO.Areas.Articles.Controllers
       SelectListUtils.ForceRefreshListFamily();
 
       return connect.Response.Brands.FirstOrDefault().ToHtmlJson();
-    }
-
-    [HttpPost]
-    public int DeleteValue(Brand brand)
-    {
-      Bm2s.Connectivity.Common.Article.Brand connect = new Bm2s.Connectivity.Common.Article.Brand();
-      connect.Request.Brand = brand;
-      connect.Delete();
-
-      return connect.Request.Brand.Id;
     }
   }
 }

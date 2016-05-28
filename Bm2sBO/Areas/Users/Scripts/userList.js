@@ -29,7 +29,7 @@
   $scope.CurrentSelectionGroup = [];
   $scope.LoadingGroup = false;
   $scope.PageSizeGroup = 3;
-  $scope.SelectionModeGroup = 'multi';
+  $scope.SelectionModeGroup = 'multiple';
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
@@ -42,9 +42,10 @@
 
   $scope.saveValues = function (line) {
     var url = "/Users/Users/SetValue";
+
     var params = {
       user: line,
-      GroupsId: $scope.CurrentSelectionGroup
+      groupsId: $scope.CurrentSelectionGroup
     };
 
     $http.post(url, params).success(function (data, status) {

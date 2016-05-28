@@ -4,7 +4,7 @@
   ViewBag.Section = "Articles";
 }
 
-@if (!UserUtils.CanListFamilies)
+@if (!UserUtils.CanListArticleFamilies)
 {
   <script type="text/javascript">
     window.location = "/";
@@ -12,5 +12,5 @@
 }
 
 <section class="content">
-  @{ Html.RenderAction("List", "Families", new { area = "Articles" }); }
+  @{ Html.RenderAction("List", "ArticleFamilies", new { area = "Articles" }); }
 </section>

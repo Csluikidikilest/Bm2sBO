@@ -13,6 +13,14 @@ namespace Bm2sBO.Utils
 
     public const string UserGroupSessionKey = "currentUserGroups";
 
+    public static bool CanCreateArticleFamilies
+    {
+      get
+      {
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.ArticleFamilies);
+      }
+    }
+
     public static bool CanCreateArticles
     {
       get
@@ -26,14 +34,6 @@ namespace Bm2sBO.Utils
       get
       {
         return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Brands);
-      }
-    }
-
-    public static bool CanCreateFamilies
-    {
-      get
-      {
-        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Families);
       }
     }
 
@@ -66,6 +66,14 @@ namespace Bm2sBO.Utils
       get
       {
         return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.Parameters);
+      }
+    }
+
+    public static bool CanCreatePartnerFamilies
+    {
+      get
+      {
+        return ModuleUtils.HaveAuthorization(Authorizations.Create, Bm2sBO.Utils.Modules.PartnerFamilies);
       }
     }
 
@@ -141,6 +149,14 @@ namespace Bm2sBO.Utils
       }
     }
 
+    public static bool CanDeleteArticleFamilies
+    {
+      get
+      {
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.ArticleFamilies);
+      }
+    }
+
     public static bool CanDeleteArticles
     {
       get
@@ -154,14 +170,6 @@ namespace Bm2sBO.Utils
       get
       {
         return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Brands);
-      }
-    }
-
-    public static bool CanDeleteFamilies
-    {
-      get
-      {
-        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Families);
       }
     }
 
@@ -194,6 +202,14 @@ namespace Bm2sBO.Utils
       get
       {
         return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.Parameters);
+      }
+    }
+
+    public static bool CanDeletePartnerFamilies
+    {
+      get
+      {
+        return ModuleUtils.HaveAuthorization(Authorizations.Delete, Bm2sBO.Utils.Modules.PartnerFamilies);
       }
     }
 
@@ -269,6 +285,14 @@ namespace Bm2sBO.Utils
       }
     }
 
+    public static bool CanEditArticleFamilies
+    {
+      get
+      {
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.ArticleFamilies);
+      }
+    }
+
     public static bool CanEditArticles
     {
       get
@@ -282,14 +306,6 @@ namespace Bm2sBO.Utils
       get
       {
         return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Brands);
-      }
-    }
-
-    public static bool CanEditFamilies
-    {
-      get
-      {
-        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Families);
       }
     }
 
@@ -322,6 +338,14 @@ namespace Bm2sBO.Utils
       get
       {
         return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.Parameters);
+      }
+    }
+
+    public static bool CanEditPartnerFamilies
+    {
+      get
+      {
+        return ModuleUtils.HaveAuthorization(Authorizations.Edit, Bm2sBO.Utils.Modules.PartnerFamilies);
       }
     }
 
@@ -413,11 +437,11 @@ namespace Bm2sBO.Utils
       }
     }
 
-    public static bool CanListFamilies
+    public static bool CanListArticleFamilies
     {
       get
       {
-        return UserUtils.CanCreateFamilies || UserUtils.CanDeleteFamilies || UserUtils.CanEditFamilies;
+        return UserUtils.CanCreateArticleFamilies || UserUtils.CanDeleteArticleFamilies || UserUtils.CanEditArticleFamilies;
       }
     }
 
@@ -450,6 +474,14 @@ namespace Bm2sBO.Utils
       get
       {
         return UserUtils.CanCreateParameters || UserUtils.CanDeleteParameters || UserUtils.CanEditParameters;
+      }
+    }
+
+    public static bool CanListPartnerFamilies
+    {
+      get
+      {
+        return UserUtils.CanCreatePartnerFamilies || UserUtils.CanDeletePartnerFamilies || UserUtils.CanEditPartnerFamilies;
       }
     }
 

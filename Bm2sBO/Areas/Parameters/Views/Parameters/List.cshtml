@@ -127,7 +127,7 @@
             <form class="form-horizontal">
               <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidCode }">
                 <label class="control-label text-right">@Html.TranslationFor("listparameters", "code", "Code")</label>
-                <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+                <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" data-ng-disabled="true" tabindex="0" />
               </div>
               <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidDescription }">
                 <label class="control-label text-right">@Html.TranslationFor("listparameters", "description", "Description")</label>
@@ -135,7 +135,7 @@
               </div>
               <div class="form-group col-xs-12" data-ng-class="{ 'has-error': !ValidValueType}">
                 <label class="control-label text-right">@Html.TranslationFor("listparameters", "typeofvalue", "Type of value")</label>
-                <select class="form-control" data-ng-model="Edition.ValueType" tabindex="0">
+                <select class="form-control" data-ng-model="Edition.ValueType" tabindex="0" data-ng-disabled="true">
                   <option value="s">@Html.TranslationFor("listparameters", "svalue", "String")</option>
                   <option value="i">@Html.TranslationFor("listparameters", "ivalue", "Integer")</option>
                   <option value="f">@Html.TranslationFor("listparameters", "fvalue", "Float")</option>

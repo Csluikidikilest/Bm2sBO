@@ -1,6 +1,6 @@
 ﻿@using Bm2sBO.Utils;
 
-@if (!UserUtils.CanListArticles && !UserUtils.CanListBrands && !UserUtils.CanListNomenclatures && !UserUtils.CanListFamilies && !UserUtils.CanListSubFamilies)
+@if (!UserUtils.CanListArticles && !UserUtils.CanListBrands && !UserUtils.CanListNomenclatures && !UserUtils.CanListArticleFamilies && !UserUtils.CanListSubFamilies)
 {
   <script type="text/javascript">
     window.location = "/";
@@ -24,9 +24,9 @@
       }
     </div>
     <div class="col-lg-6 col-md-12">
-      @if (UserUtils.CanListFamilies)
+      @if (UserUtils.CanListArticleFamilies)
       {
-        <text>@{ Html.RenderAction("List", "Families", new { area = "Articles" }); }</text>
+        <text>@{ Html.RenderAction("List", "ArticleFamilies", new { area = "Articles" }); }</text>
       }
       @if (UserUtils.CanListSubFamilies)
       {

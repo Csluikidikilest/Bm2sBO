@@ -158,7 +158,8 @@
   $scope.saveValues = function (line) {
     var url = "/Articles/Articles/SetValue";
     var params = {
-      article: line
+      article: line,
+      prices: $scope.DataSourcePrice
     };
 
     $http.post(url, params).success(function (data, status) {

@@ -1,8 +1,7 @@
-﻿app.controller('Initialization', ['$scope', '$http', '$compile', '$filter', function ($scope, $http, $compile, $filter) {
+﻿app.controller('Setup', ['$scope', '$http', '$compile', '$filter', function ($scope, $http, $compile, $filter) {
   $scope.Loading = false;
-  $scope.NeedModulesInitialization = needModulesInitialization;
 
-  $scope.ModulesInitialization = function () {
+  $scope.ConfirmSetup = function () {
     $scope.Loading = true;
     var url = "/Administration/Administration/ModulesInitialization";
     var params = {};

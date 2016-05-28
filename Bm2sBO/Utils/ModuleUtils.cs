@@ -117,14 +117,15 @@ namespace Bm2sBO.Utils
 
   public enum Modules
   {
+    ArticleFamilies,
     Articles,
     Brands,
     Dashboard,
-    Families,
     Groups,
     Modules,
     Nomenclatures,
     Parameters,
+    PartnerFamilies,
     Partners,
     Prices,
     Purchases,

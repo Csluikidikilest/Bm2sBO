@@ -66,7 +66,7 @@ namespace Bm2sBO.Areas.Users.Controllers
       }
 
       Bm2s.Connectivity.Common.User.UserGroup addUserGroup;
-      foreach (int groupId in groupsId.Where(item => !connectUserGroup.Response.UserGroups.Any(ug => ug.Group.Id == item)))
+      foreach (int groupId in groupsId.Where(item => !connectUserGroup.Response.UserGroups.Any(usgr => usgr.Group.Id == item)))
       {
         addUserGroup = new Bm2s.Connectivity.Common.User.UserGroup();
         addUserGroup.Request.UserGroup = new Bm2s.Poco.Common.User.UserGroup();

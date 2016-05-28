@@ -18,11 +18,11 @@
               <div class="row">
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidCode }">
                   <label class="control-label text-right">@Html.TranslationFor("listbrands", "code", "Code")</label>
-                  <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
+                  <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" maxlength="250" />
                 </div>
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidName }">
                   <label class="control-label text-right">@Html.TranslationFor("listbrands", "name", "Name")</label>
-                  <input name="editionName" type="text" class="form-control" data-ng-model="Edition.Name" data-ng-required="true" tabindex="0" />
+                  <input name="editionName" type="text" class="form-control" data-ng-model="Edition.Name" data-ng-required="true" tabindex="0" maxlength="250" />
                 </div>
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidStartingDate }">
                   <label class="control-label text-right">@Html.TranslationFor("listbrands", "startingdate", "Starting Date")</label>
@@ -37,14 +37,20 @@
           </div>
           <div class="modal-footer">
             <div class="form-group pull-right">
-              <div class="input-group">
-                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
-                  <i class="fa fa-check"></i> @Html.TranslationLabelFor("listbrands", "save", "Save")
-                </button>
-              </div>
+              <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listbrands", "saveandclose", "Save and close")
+              </button>
+            </div>
+            <div class="form-group pull-right">
+              &nbsp;
+            </div>
+            <div class="form-group pull-right">
+              <button class="btn" data-ng-click="saveValues(Edition)" tabindex="0" data-ng-disabled="!formValid()">
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listbrands", "save", "Save")
+              </button>
             </div>
             <div class="form-group pull-left">
-              <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
+              <button class="btn" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
                 <i class="fa fa-times"></i> @Html.TranslationLabelFor("listbrands", "cancel", "Cancel")
               </button>
             </div>

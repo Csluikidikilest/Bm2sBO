@@ -29,14 +29,14 @@
   $scope.CurrentSelectionUser = [];
   $scope.LoadingUser = false;
   $scope.PageSizeUser = 3;
-  $scope.SelectionModeUser = 'multi';
+  $scope.SelectionModeUser = 'multiple';
 
   $scope.AvailablePagesSizeGroup = [3, 5, 10, 20];
   $scope.ColumnsHeaderGroup = columnsHeaderGroup;
   $scope.CurrentSelectionGroup = [];
   $scope.LoadingGroup = false;
   $scope.PageSizeGroup = 3;
-  $scope.SelectionModeGroup = 'multi';
+  $scope.SelectionModeGroup = 'multiple';
 
   $scope.edit = function (line) {
     $scope.Edition = angular.copy(line);
@@ -48,9 +48,11 @@
 
   $scope.saveValues = function (line) {
     var url = "/Users/Modules/SetValue";
+
     var params = {
       module: line,
-      usersId: $scope.CurrentSelectionUser
+      usersId: $scope.CurrentSelectionUser,
+      groupsId: $scope.CurrentSelectionGroup
     };
 
     $http.post(url, params).success(function (data, status) {

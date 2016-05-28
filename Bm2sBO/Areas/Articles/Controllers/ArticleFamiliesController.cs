@@ -7,18 +7,16 @@ using Bm2sBO.Utils;
 
 namespace Bm2sBO.Areas.Articles.Controllers
 {
-  public class FamiliesController : Controller
+  public class ArticleFamiliesController : Controller
   {
-    [HttpGet]
-    public ViewResult Index()
+    [HttpPost]
+    public int DeleteValue(ArticleFamily articleFamily)
     {
-      return View();
-    }
+      Bm2s.Connectivity.Common.Article.ArticleFamily connect = new Bm2s.Connectivity.Common.Article.ArticleFamily();
+      connect.Request.ArticleFamily = articleFamily;
+      connect.Delete();
 
-    [HttpGet]
-    public PartialViewResult List()
-    {
-      return PartialView();
+      return connect.Request.ArticleFamily.Id;
     }
 
     [HttpPost]
@@ -35,6 +33,18 @@ namespace Bm2sBO.Areas.Articles.Controllers
       return connect.Response.ArticleFamilies.ToHtmlJson();
     }
 
+    [HttpGet]
+    public ViewResult Index()
+    {
+      return View();
+    }
+
+    [HttpGet]
+    public PartialViewResult List()
+    {
+      return PartialView();
+    }
+
     [HttpPost]
     public HtmlString SetValue(ArticleFamily articleFamily)
     {
@@ -45,16 +55,6 @@ namespace Bm2sBO.Areas.Articles.Controllers
       SelectListUtils.ForceRefreshListFamily();
 
       return connect.Response.ArticleFamilies.FirstOrDefault().ToHtmlJson();
-    }
-
-    [HttpPost]
-    public int DeleteValue(ArticleFamily articleFamily)
-    {
-      Bm2s.Connectivity.Common.Article.ArticleFamily connect = new Bm2s.Connectivity.Common.Article.ArticleFamily();
-      connect.Request.ArticleFamily = articleFamily;
-      connect.Delete();
-
-      return connect.Request.ArticleFamily.Id;
     }
   }
 }

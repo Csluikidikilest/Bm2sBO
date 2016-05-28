@@ -1,9 +1,9 @@
 ﻿@using Bm2sBO.Utils;
 @{
-  ViewBag.Title = @Html.TranslationFor("listfamilies", "title", "Article families");
+  ViewBag.Title = @Html.TranslationFor("listpartnerfamilies", "title", "Partner families");
 }
 
-<div data-ng-controller="FamilyList">
+<div data-ng-controller="PartnerFamilyList">
   <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-on-refresh="getValues()" data-order-column="OrderColumn" data-order-reverse="OrderReverse" data-page-size="PageSize" data-search-text="SearchText" data-show-border='true' data-show-header="true" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
   <div id="modalEditionFamily" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
@@ -17,43 +17,45 @@
             <form class="form-horizontal">
               <div class="row">
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidCode }">
-                  <label class="control-label text-right">@Html.TranslationFor("listfamilies", "code", "Code")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listpartnerfamilies", "code", "Code")</label>
                   <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" />
                 </div>
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidDesignation}">
-                  <label class="control-label text-right">@Html.TranslationFor("listfamilies", "designation", "Designation")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listpartnerfamilies", "designation", "Designation")</label>
                   <input name="editionDesignation" type="text" class="form-control" data-ng-model="Edition.Designation" data-ng-required="true" tabindex="0" />
                 </div>
                 <div class="form-group col-md-12">
-                  <label class="control-label text-right">@Html.TranslationFor("listfamilies", "description", "Description")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listpartnerfamilies", "description", "Description")</label>
                   <textarea name="editionDescription" type="text" class="form-control" data-ng-model="Edition.Description" data-ng-required="false" tabindex="0"></textarea>
                 </div>
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidStartingDate }">
-                  <label class="control-label text-right">@Html.TranslationFor("listfamilies", "startingdate", "Starting Date")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listpartnerfamilies", "startingdate", "Starting Date")</label>
                   <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
                 </div>
                 <div class="form-group col-lg-6 col-md-12">
-                  <label class="control-label text-right">@Html.TranslationFor("listfamilies", "endingdate", "Ending date")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listpartnerfamilies", "endingdate", "Ending date")</label>
                   <input name="editionEndingDate" type="date" class="form-control datepicker" data-ng-model="Edition.EndingDate" data-ng-required="false" tabindex="0" />
-                </div>
-                <div class="form-group col-lg-6 col-md-12">
-                  <label class="control-label text-right">@Html.TranslationFor("listfamilies", "accountingentry", "Accounting Entry")</label>
-                  <input name="editionAccountingEntry" type="text" class="form-control" data-ng-model="Edition.AccountingEntry" data-ng-required="true" tabindex="0" />
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <div class="form-group pull-right">
-              <div class="input-group">
-                <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
-                  <i class="fa fa-check"></i> @Html.TranslationLabelFor("listfamilies", "save", "Save")
-                </button>
-              </div>
+              <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listpartnerfamilies", "saveandclose", "Save and close")
+              </button>
+            </div>
+            <div class="form-group pull-right">
+              &nbsp;
+            </div>
+            <div class="form-group pull-right">
+              <button class="btn" data-ng-click="saveValues(Edition)" tabindex="0" data-ng-disabled="!formValid()">
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listpartnerfamilies", "save", "Save")
+              </button>
             </div>
             <div class="form-group pull-left">
-              <button class="btn btn-default" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
-                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listfamilies", "cancel", "Cancel")
+              <button class="btn" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
+                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listpartnerfamilies", "cancel", "Cancel")
               </button>
             </div>
           </div>
@@ -64,11 +66,10 @@
 </div>
 <script type="text/javascript">
   var columnsHeaderFamily = [];
-  columnsHeaderFamily.push({"Key": 'Code', "Value": "@Html.TranslationFor("listfamilies", "code", "Code")", "Type" : "Text"});
-  columnsHeaderFamily.push({"Key": 'AccountingEntry', "Value": "@Html.TranslationFor("listfamilies", "accountingentry", "Accounting Entry")", "Type" : "Text"});
-  columnsHeaderFamily.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listfamilies", "designation", "Designation")", "Type" : "Text"});
-  columnsHeaderFamily.push({"Key": 'Description', "Value": "@Html.TranslationFor("listfamilies", "description", "Description")", "Type" : "Text"});
-  columnsHeaderFamily.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listfamilies", "startingdate", "Starting Date")", "Type" : "Date"});
+  columnsHeaderFamily.push({"Key": 'Code', "Value": "@Html.TranslationFor("listpartnerfamilies", "code", "Code")", "Type" : "Text"});
+  columnsHeaderFamily.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listpartnerfamilies", "designation", "Designation")", "Type" : "Text"});
+  columnsHeaderFamily.push({"Key": 'Description', "Value": "@Html.TranslationFor("listpartnerfamilies", "description", "Description")", "Type" : "Text"});
+  columnsHeaderFamily.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listpartnerfamilies", "startingdate", "Starting Date")", "Type" : "Date"});
 
   var titleFamily = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';
@@ -77,10 +78,10 @@
   var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
   var toText = '@Html.TranslationFor("list", "totext", "to")';
   var ofText = '@Html.TranslationFor("list", "oftext", "of")';
-  var familyListAvailablePagesSize = [@ParameterUtils.Get("familylistavailablepagessize", "List of available pages size for the list of families", true, "20, 50, 100, 200")];
-  var familyListPageSize = @ParameterUtils.Get("familylistpagesize", "Default page size for the list of families", true, 20);
+  var familyListAvailablePagesSize = [@ParameterUtils.Get("partnerfamilylistavailablepagessize", "List of available pages size for the list of partner's families", true, "20, 50, 100, 200")];
+  var familyListPageSize = @ParameterUtils.Get("partnerfamilylistpagesize", "Default page size for the list of partner's families", true, 20);
 
-  var canCreate = @UserUtils.CanCreateFamilies.ToString().ToLower();
-  var canDelete = @UserUtils.CanDeleteFamilies.ToString().ToLower();
-  var canEdit = @UserUtils.CanEditFamilies.ToString().ToLower();
+  var canCreate = @UserUtils.CanCreatePartnerFamilies.ToString().ToLower();
+  var canDelete = @UserUtils.CanDeletePartnerFamilies.ToString().ToLower();
+  var canEdit = @UserUtils.CanEditPartnerFamilies.ToString().ToLower();
 </script>

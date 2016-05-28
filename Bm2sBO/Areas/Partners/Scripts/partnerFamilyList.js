@@ -1,4 +1,4 @@
-﻿app.controller('FamilyList', ['$scope', '$http', '$compile', '$filter', function ($scope, $http, $compile, $filter) {
+﻿app.controller('PartnerFamilyList', ['$scope', '$http', '$compile', '$filter', function ($scope, $http, $compile, $filter) {
   $scope.Math = window.Math;
 
   $scope.AlwaysShowFirstLastButtons = true;
@@ -45,9 +45,9 @@
   };
 
   $scope.saveValues = function (line) {
-    var url = "/Articles/Families/SetValue";
+    var url = "/Partners/PartnerFamilies/SetValue";
     var params = {
-      articleFamily: line
+      partnerFamily: line
     };
 
     $http.post(url, params).success(function (data, status) {
@@ -56,9 +56,9 @@
   };
 
   $scope.deleteValue = function (line) {
-    var url = "/Articles/Families/DeleteValue";
+    var url = "/Partners/PartnerFamilies/DeleteValue";
     var params = {
-      articleFamily: line
+      partnerFamily: line
     };
 
     $http.post(url, params).success(function (data, status) {
@@ -70,7 +70,7 @@
 
   $scope.getValues = function () {
     $scope.Loading = true;
-    var url = "/Articles/Families/GetValues";
+    var url = "/Partners/PartnerFamilies/GetValues";
     var params = {
     };
 

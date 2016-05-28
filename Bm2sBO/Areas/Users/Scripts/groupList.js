@@ -29,7 +29,7 @@
   $scope.CurrentSelectionUser = [];
   $scope.LoadingUser = false;
   $scope.PageSizeUser = 3;
-  $scope.SelectionModeUser = 'multi';
+  $scope.SelectionModeUser = 'multiple';
   $scope.TriStateUser = false;
 
   $scope.edit = function (line) {
@@ -43,6 +43,7 @@
 
   $scope.saveValues = function (line) {
     var url = "/Users/Groups/SetValue";
+
     var params = {
       group: line,
       usersId: $scope.CurrentSelectionUser

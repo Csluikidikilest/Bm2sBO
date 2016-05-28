@@ -1,0 +1,16 @@
+﻿@using Bm2sBO.Utils;
+@{
+  ViewBag.Page = "Families";
+  ViewBag.Section = "Partners";
+}
+
+@if (!UserUtils.CanListPartnerFamilies)
+{
+  <script type="text/javascript">
+    window.location = "/";
+  </script>
+}
+
+<section class="content">
+  @{ Html.RenderAction("List", "PartnerFamilies", new { area = "Partners" }); }
+</section>

@@ -1,11 +1,11 @@
 ﻿@using Bm2sBO.Utils;
 @{
-  ViewBag.Title = @Html.TranslationFor("listsubfamilies", "title", "Article subfamilies");
+  ViewBag.Title = @Html.TranslationFor("listarticlefamilies", "title", "Article families");
 }
 
-<div data-ng-controller="SubFamilyList">
+<div data-ng-controller="ArticleFamilyList">
   <datatable data-always-show-first-last-buttons="AlwaysShowFirstLastButtons" data-available-pages-size="AvailablePagesSize" data-can-create="CanCreate" data-can-delete="CanDelete" data-can-edit="CanEdit" data-columns-header="ColumnsHeader" data-current-page="CurrentPage" data-entries-text="EntriesText" data-interval="Interval" data-large-step="LargeStep" data-loading="Loading" data-of-text="OfText" data-on-add-item="add()" data-on-delete-item="delete(line)" data-on-edit-item="edit(line)" data-on-refresh="getValues()" data-order-column="OrderColumn" data-order-reverse="OrderReverse" data-page-size="PageSize" data-search-text="SearchText" data-show-border='true' data-show-header="true" data-showing-text="ShowingText" data-show-text="ShowText" data-small-step="SmallStep" data-source="DataSource" data-title="Title" data-to-text="ToText"></datatable>
-  <div id="modalEditionSubFamily" class="modal fade" tabindex="-1" role="dialog">
+  <div id="modalEditionFamily" class="modal fade" tabindex="-1" role="dialog">
     <form data-ng-submit="saveValues(Edition)">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -17,31 +17,27 @@
             <form class="form-horizontal">
               <div class="row">
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidCode }">
-                  <label class="control-label text-right">@Html.TranslationFor("listsubfamilies", "code", "Code")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listarticlefamilies", "code", "Code")</label>
                   <input name="editionCode" type="text" class="form-control" data-ng-model="Edition.Code" data-ng-required="true" tabindex="0" maxlength="250" />
                 </div>
-                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidDesignation }">
-                  <label class="control-label text-right">@Html.TranslationFor("listsubfamilies", "designation", "Designation")</label>
+                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidDesignation}">
+                  <label class="control-label text-right">@Html.TranslationFor("listarticlefamilies", "designation", "Designation")</label>
                   <input name="editionDesignation" type="text" class="form-control" data-ng-model="Edition.Designation" data-ng-required="true" tabindex="0" maxlength="250" />
                 </div>
                 <div class="form-group col-md-12">
-                  <label class="control-label text-right">@Html.TranslationFor("listsubfamilies", "description", "Description")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listarticlefamilies", "description", "Description")</label>
                   <textarea name="editionDescription" type="text" class="form-control" data-ng-model="Edition.Description" data-ng-required="false" tabindex="0" maxlength="8000"></textarea>
                 </div>
                 <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidStartingDate }">
-                  <label class="control-label text-right">@Html.TranslationFor("listsubfamilies", "startingdate", "Starting Date")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listarticlefamilies", "startingdate", "Starting Date")</label>
                   <input name="editionDate" type="date" class="form-control datepicker" data-ng-model="Edition.StartingDate" data-ng-required="true" tabindex="0" />
                 </div>
                 <div class="form-group col-lg-6 col-md-12">
-                  <label class="control-label text-right">@Html.TranslationFor("listsubfamilies", "endingdate", "Ending date")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listarticlefamilies", "endingdate", "Ending date")</label>
                   <input name="editionEndingDate" type="date" class="form-control datepicker" data-ng-model="Edition.EndingDate" data-ng-required="false" tabindex="0" />
                 </div>
-                <div class="form-group col-lg-6 col-md-12" data-ng-class="{ 'has-error': !ValidArticleFamily }">
-                  <label class="control-label text-right">@Html.TranslationFor("listsubfamilies", "family", "Family")</label>
-                  <select name="editionFamily" type="text" class="form-control" data-ng-model="Edition.ArticleFamily.Id" tabindex="0" data-ng-options="item.Id as item.Label for item in SelectListFamilies.ArticleFamilies"></select>
-                </div>
                 <div class="form-group col-lg-6 col-md-12">
-                  <label class="control-label text-right">@Html.TranslationFor("listsubfamilies", "accountingentry", "Accounting Entry")</label>
+                  <label class="control-label text-right">@Html.TranslationFor("listarticlefamilies", "accountingentry", "Accounting Entry")</label>
                   <input name="editionAccountingEntry" type="text" class="form-control" data-ng-model="Edition.AccountingEntry" data-ng-required="true" tabindex="0" maxlength="50" />
                 </div>
               </div>
@@ -50,7 +46,7 @@
           <div class="modal-footer">
             <div class="form-group pull-right">
               <button class="btn btn-default" data-ng-click="saveValues(Edition)" data-dismiss="modal" tabindex="0" data-ng-disabled="!formValid()">
-                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listsubfamilies", "saveandclose", "Save and close")
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listarticlefamilies", "saveandclose", "Save and close")
               </button>
             </div>
             <div class="form-group pull-right">
@@ -58,12 +54,12 @@
             </div>
             <div class="form-group pull-right">
               <button class="btn" data-ng-click="saveValues(Edition)" tabindex="0" data-ng-disabled="!formValid()">
-                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listsubfamilies", "save", "Save")
+                <i class="fa fa-check"></i> @Html.TranslationLabelFor("listarticlefamilies", "save", "Save")
               </button>
             </div>
             <div class="form-group pull-left">
               <button class="btn" data-ng-click="dismissValues()" data-dismiss="modal" tabindex="0">
-                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listsubfamilies", "cancel", "Cancel")
+                <i class="fa fa-times"></i> @Html.TranslationLabelFor("listarticlefamilies", "cancel", "Cancel")
               </button>
             </div>
           </div>
@@ -73,27 +69,24 @@
   </div>
 </div>
 <script type="text/javascript">
-  var columnsHeaderSubFamily = [];
-  columnsHeaderSubFamily.push({"Key": 'Code', "Value": "@Html.TranslationFor("listsubfamilies", "code", "Code")", "Type" : "Text"});
-  columnsHeaderSubFamily.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listsubfamilies", "designation", "Designation")", "Type" : "Text"});
-  columnsHeaderSubFamily.push({"Key": 'Description', "Value": "@Html.TranslationFor("listsubfamilies", "description", "Description")", "Type" : "Text"});
-  columnsHeaderSubFamily.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listsubfamilies", "startingdate", "Starting Date")", "Type" : "Date"});
-  columnsHeaderSubFamily.push({"Key": 'ArticleFamily.Designation', "Value": "@Html.TranslationFor("listsubfamilies", "family", "Family")", "Type" : "Text"});
-  columnsHeaderSubFamily.push({"Key": 'AccountingEntry', "Value": "@Html.TranslationFor("listsubfamilies", "accountingentry", "Accounting Entry")", "Type" : "Text"});
+  var columnsHeaderFamily = [];
+  columnsHeaderFamily.push({"Key": 'Code', "Value": "@Html.TranslationFor("listarticlefamilies", "code", "Code")", "Type" : "Text"});
+  columnsHeaderFamily.push({"Key": 'AccountingEntry', "Value": "@Html.TranslationFor("listarticlefamilies", "accountingentry", "Accounting Entry")", "Type" : "Text"});
+  columnsHeaderFamily.push({"Key": 'Designation', "Value": "@Html.TranslationFor("listarticlefamilies", "designation", "Designation")", "Type" : "Text"});
+  columnsHeaderFamily.push({"Key": 'Description', "Value": "@Html.TranslationFor("listarticlefamilies", "description", "Description")", "Type" : "Text"});
+  columnsHeaderFamily.push({"Key": 'StartingDate', "Value": "@Html.TranslationFor("listarticlefamilies", "startingdate", "Starting Date")", "Type" : "Date"});
 
-  var selectListFamilies = @SelectListUtils.SelectListFamily;
-
-  var titleSubFamily = '@ViewBag.Title';
+  var titleFamily = '@ViewBag.Title';
   var showText = '@Html.TranslationFor("list", "showtext", "Show")';
   var entriesText = '@Html.TranslationFor("list", "entriestext", "entries")';
   var searchText = '@Html.TranslationFor("list", "searchtext", "Search")';
   var showingText = '@Html.TranslationFor("list", "showingtext", "Showing")';
   var toText = '@Html.TranslationFor("list", "totext", "to")';
   var ofText = '@Html.TranslationFor("list", "oftext", "of")';
-  var subFamilyListAvailablePagesSize = [@ParameterUtils.Get("subfamilylistavailablepagessize", "List of available pages size for the list of sub families", true, "20, 50, 100, 200")];
-  var subFamilyListPageSize = @ParameterUtils.Get("subfamilylistpagesize", "Default page size for the list of sub families", true, 20);
+  var familyListAvailablePagesSize = [@ParameterUtils.Get("articlefamilylistavailablepagessize", "List of available pages size for the list of article's families", true, "20, 50, 100, 200")];
+  var familyListPageSize = @ParameterUtils.Get("articlefamilylistpagesize", "Default page size for the list of article's families", true, 20);
 
-  var canCreate = @UserUtils.CanCreateSubFamilies.ToString().ToLower();
-  var canDelete = @UserUtils.CanDeleteSubFamilies.ToString().ToLower();
-  var canEdit = @UserUtils.CanEditSubFamilies.ToString().ToLower();
+  var canCreate = @UserUtils.CanCreateArticleFamilies.ToString().ToLower();
+  var canDelete = @UserUtils.CanDeleteArticleFamilies.ToString().ToLower();
+  var canEdit = @UserUtils.CanEditArticleFamilies.ToString().ToLower();
 </script>

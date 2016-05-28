@@ -64,8 +64,8 @@
 
   $scope.saveValues = function (line) {
     var url = "/Articles/Nomenclatures/SetValue";
-    line.ArticleParent = { Id: $scope.CurrentSelectionArticleParent[0] };
-    line.ArticleChild = { Id: $scope.CurrentSelectionArticleChild[0] };
+    line.ArticleParent = { Id: $scope.CurrentSelectionArticleParent[0].Id };
+    line.ArticleChild = { Id: $scope.CurrentSelectionArticleChild[0].Id };
     var params = {
       nomenclature: line
     };

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -194,11 +196,11 @@
     <Compile Include="Areas\Articles\Controllers\ResumeController.cs" />
     <Compile Include="Areas\Articles\Controllers\NomenclaturesController.cs" />
     <Compile Include="Areas\Articles\Controllers\SubFamiliesController.cs" />
-    <Compile Include="Areas\Articles\Controllers\FamiliesController.cs" />
+    <Compile Include="Areas\Articles\Controllers\ArticleFamiliesController.cs" />
     <Compile Include="Areas\Articles\Controllers\SubscriptionsController.cs" />
     <Compile Include="Areas\Dashboard\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Controllers\InitializationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Parameters\Controllers\ActivitiesController.cs" />
     <Compile Include="Areas\Parameters\Controllers\AffairsController.cs" />
@@ -211,6 +213,8 @@
     <Compile Include="Areas\Parameters\Controllers\UnitsController.cs" />
     <Compile Include="Areas\Parameters\Controllers\VatsController.cs" />
     <Compile Include="Areas\Parameters\ParametersAreaRegistration.cs" />
+    <Compile Include="Areas\Partners\Controllers\PartnerFamiliesController.cs" />
+    <Compile Include="Areas\Partners\Controllers\PartnersController.cs" />
     <Compile Include="Areas\Partners\PartnersAreaRegistration.cs" />
     <Compile Include="Areas\Trades\Controllers\PurchasesController.cs" />
     <Compile Include="Areas\Trades\Controllers\SalesController.cs" />
@@ -238,14 +242,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Administration\Scripts\initialization.js" />
+    <Content Include="Areas\Administration\Scripts\setup.js" />
     <Content Include="Areas\Articles\Scripts\articleList.js" />
     <Content Include="Areas\Articles\Scripts\brandList.js" />
     <Content Include="Areas\Articles\Scripts\nomenclatureList.js" />
     <Content Include="Areas\Articles\Scripts\subfamilyList.js" />
-    <Content Include="Areas\Articles\Scripts\familyList.js" />
+    <Content Include="Areas\Articles\Scripts\articleFamilyList.js" />
     <Content Include="Areas\Dashboard\Scripts\dashboard.js" />
     <Content Include="Areas\Parameters\Scripts\parameter.js" />
     <Content Include="Areas\Parameters\Scripts\translation.js" />
+    <Content Include="Areas\Partners\Scripts\partnerFamilyList.js" />
+    <Content Include="Areas\Partners\Scripts\partnerList.js" />
     <Content Include="Areas\Trades\Scripts\purchaseList.js" />
     <Content Include="Areas\Trades\Scripts\saleList.js" />
     <Content Include="Areas\Users\Scripts\groupList.js" />
@@ -365,9 +372,7 @@
     <Folder Include="Areas\Parameters\Views\Periods\" />
     <Folder Include="Areas\Parameters\Views\Units\" />
     <Folder Include="Areas\Parameters\Views\Vats\" />
-    <Folder Include="Areas\Partners\Controllers\" />
     <Folder Include="Areas\Partners\Models\" />
-    <Folder Include="Areas\Partners\Scripts\" />
     <Folder Include="Areas\Trades\Models\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Models\" />
@@ -400,14 +405,14 @@
     <Content Include="Areas\Dashboard\Views\web.config" />
     <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Dashboard\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Articles\Views\Families\Index.cshtml" />
+    <Content Include="Areas\Articles\Views\ArticleFamilies\Index.cshtml" />
     <Content Include="Areas\Articles\Views\SubFamilies\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Resume\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclatures\Index.cshtml" />
     <Content Include="Areas\Articles\Views\Articles\List.cshtml" />
     <Content Include="Areas\Articles\Views\Brands\List.cshtml" />
-    <Content Include="Areas\Articles\Views\Families\List.cshtml" />
+    <Content Include="Areas\Articles\Views\ArticleFamilies\List.cshtml" />
     <Content Include="Areas\Articles\Views\Nomenclatures\List.cshtml" />
     <Content Include="Areas\Articles\Views\SubFamilies\List.cshtml" />
     <Content Include="Areas\Users\Views\Groups\Index.cshtml" />
@@ -427,7 +432,11 @@
     <Content Include="Areas\Users\Views\Modules\List.cshtml" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administration\Views\Initialization\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\Index.cshtml" />
+    <Content Include="Areas\Partners\Views\Partners\Index.cshtml" />
+    <Content Include="Areas\Partners\Views\Partners\List.cshtml" />
+    <Content Include="Areas\Partners\Views\PartnerFamilies\Index.cshtml" />
+    <Content Include="Areas\Partners\Views\PartnerFamilies\List.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\Configurations\config.fr-fr.js" />
     <Content Include="Views\Login\Index.cshtml" />
@@ -439,6 +448,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

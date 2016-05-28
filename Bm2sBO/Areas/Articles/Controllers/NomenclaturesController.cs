@@ -9,16 +9,20 @@ namespace Bm2sBO.Areas.Articles.Controllers
 {
   public class NomenclaturesController : Controller
   {
+    [HttpPost]
+    public int DeleteValue(Nomenclature nomenclature)
+    {
+      Bm2s.Connectivity.Common.Article.Nomenclature connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
+      connect.Request.Nomenclature = nomenclature;
+      connect.Delete();
+
+      return connect.Request.Nomenclature.Id;
+    }
+
     [HttpGet]
     public ViewResult Index()
     {
       return View();
-    }
-
-    [HttpGet]
-    public PartialViewResult List()
-    {
-      return PartialView();
     }
 
     [HttpPost]
@@ -35,6 +39,12 @@ namespace Bm2sBO.Areas.Articles.Controllers
       return connect.Response.Nomenclatures.ToHtmlJson();
     }
 
+    [HttpGet]
+    public PartialViewResult List()
+    {
+      return PartialView();
+    }
+
     [HttpPost]
     public HtmlString SetValue(Nomenclature nomenclature)
     {
@@ -43,16 +53,6 @@ namespace Bm2sBO.Areas.Articles.Controllers
       connect.Post();
 
       return connect.Response.Nomenclatures.FirstOrDefault().ToHtmlJson();
-    }
-
-    [HttpPost]
-    public int DeleteValue(Nomenclature nomenclature)
-    {
-      Bm2s.Connectivity.Common.Article.Nomenclature connect = new Bm2s.Connectivity.Common.Article.Nomenclature();
-      connect.Request.Nomenclature = nomenclature;
-      connect.Delete();
-
-      return connect.Request.Nomenclature.Id;
     }
   }
 }

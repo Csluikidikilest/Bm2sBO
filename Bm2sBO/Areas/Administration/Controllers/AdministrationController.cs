@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Bm2sBO.Areas.Administration.Controllers
 {
-  public class InitializationController : Controller
+  public class AdministrationController : Controller
   {
     [HttpGet]
     public ActionResult Index()
@@ -20,6 +20,18 @@ namespace Bm2sBO.Areas.Administration.Controllers
     {
       ModuleUtils.ModulesInitialization();
       return true;
+    }
+
+    [HttpGet]
+    public bool GetConfigValue(string parameter)
+    {
+      return false;
+    }
+
+    [HttpPost]
+    public bool SetConfigValue(string parameter, bool value)
+    {
+      return false;
     }
   }
 }
